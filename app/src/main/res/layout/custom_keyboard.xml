@@ -212,6 +212,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="12dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_backspace_white_24dp" />
@@ -258,6 +259,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:padding="12dp"
                 android:layout_alignParentTop="true"
                 android:layout_alignParentRight="true"
                 android:src="@drawable/ic_keyboard_return_white_24dp" />
