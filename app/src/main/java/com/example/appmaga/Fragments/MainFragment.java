@@ -1,5 +1,6 @@
 package com.example.appmaga.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
@@ -39,9 +40,17 @@ public class MainFragment extends Fragment {
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //
+                sendMessage(editText.getText().toString());
             }
         });
         return view;
+    }
+
+    private void sendMessage(String message){
+        final Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setType("*/*");
+        startActivity(Intent.createChooser(intent, "Share with friends"));
     }
 }
