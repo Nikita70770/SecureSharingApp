@@ -20,7 +20,7 @@ import com.example.appmaga.R;
 public class MainFragment extends Fragment {
 
     private EditText editText;
-    private Button btnSendMessage, btnClearEditText;
+    private Button btnSendMessage;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -36,7 +36,6 @@ public class MainFragment extends Fragment {
         // pass the InputConnection from the EditText to the keyboard
         InputConnection ic = editText.onCreateInputConnection(new EditorInfo());
         keyboard.setInputConnection(ic);
-        
         btnSendMessage = view.findViewById(R.id.btnSend);
         btnSendMessage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,16 +43,6 @@ public class MainFragment extends Fragment {
                 sendMessage(editText.getText().toString());
             }
         });
-
-        btnClearEditText = view.findViewById(R.id.btnClear);
-        btnClearEditText.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                if(editText.getText().length() > 0)
-                    editText.getText().clear();
-            }
-        });
-
         return view;
     }
 
