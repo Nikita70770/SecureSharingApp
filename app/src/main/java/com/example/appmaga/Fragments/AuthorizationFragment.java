@@ -41,20 +41,20 @@ public class AuthorizationFragment extends Fragment implements View.OnClickListe
     }
 
     private void initElements(View view) {
-        editPassword = view.findViewById(R.id.editPassword);
-        editPassword.setText("admin");
-        login = view.findViewById(R.id.btnLogin);
-        login.setOnClickListener(this);
+//        editPassword = view.findViewById(R.id.editPassword);
+//        editPassword.setText("admin");
+//        login = view.findViewById(R.id.btnLogin);
+//        login.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        if(editPassword.getText().toString().equals("admin")){
-            Toast.makeText(getContext(), "Вход выполнен!", Toast.LENGTH_SHORT).show();
-            authoFragmentListener.onAuthoFragmentListener();
-        }
-        else{
-            Toast.makeText(getContext(), "Неправильные данные!", Toast.LENGTH_SHORT).show();
-        }
+//        if(editPassword.getText().toString().equals("admin")){
+//            Toast.makeText(getContext(), "Вход выполнен!", Toast.LENGTH_SHORT).show();
+//            authoFragmentListener.onAuthoFragmentListener();
+//        }
+//        else{
+//            Toast.makeText(getContext(), "Неправильные данные!", Toast.LENGTH_SHORT).show();
+//        }
     }
 }
