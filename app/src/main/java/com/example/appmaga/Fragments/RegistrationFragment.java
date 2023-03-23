@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -55,7 +56,21 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnRegister:
-                registerFragmentListener.onRegisterListener();
+                if(getLoginName().isEmpty() && getPassword().isEmpty()){
+                    Toast.makeText(getContext(), "Пожалуйста, заполните поля Login и Password!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    if(getLoginName().isEmpty()){
+                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Login!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(getPassword().isEmpty()){
+                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Password!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        registerFragmentListener.onRegisterListener();
+                        Toast.makeText(getContext(), "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 break;
 
             case R.id.btnSignIn:
