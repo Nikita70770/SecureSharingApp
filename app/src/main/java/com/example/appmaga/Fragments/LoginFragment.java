@@ -57,18 +57,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         switch(view.getId()){
             case R.id.btnLogin:
                 if(getLoginName().isEmpty() && getPassword().isEmpty()){
-                    Toast.makeText(getContext(), "Пожалуйста, заполните поля Login и Password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.register_login_msg_1, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     if(getLoginName().isEmpty()){
-                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Login!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.register_login_msg_2, Toast.LENGTH_SHORT).show();
                     }
                     else if(getPassword().isEmpty()){
-                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Password!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.register_login_msg_3, Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        loginFragmentListener.onLoginListener();
-                        Toast.makeText(getContext(), "Авторизация прошла успешно!", Toast.LENGTH_SHORT).show();
+                        loginFragmentListener.onLoginListener(getLoginName(), getPassword());
                     }
                 }
                 break;
@@ -77,13 +76,6 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
                 loginFragmentListener.onLoginSignUpListener();
                 break;
         }
-//        if(editPassword.getText().toString().equals("admin")){
-//            Toast.makeText(getContext(), "Вход выполнен!", Toast.LENGTH_SHORT).show();
-//            authoFragmentListener.onAuthoFragmentListener();
-//        }
-//        else{
-//            Toast.makeText(getContext(), "Неправильные данные!", Toast.LENGTH_SHORT).show();
-//        }
     }
 
     public String getLoginName() {

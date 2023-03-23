@@ -5,4 +5,15 @@
     <string name="login_password_hint">Password</string>
     <string name="signup_login_hint">Already have an account? Sign In</string>
     <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+
+    <string name="register_login_msg_1">Пожалуйста, заполните поля Login и Password!</string>
+    <string name="register_login_msg_2">Пожалуйста, заполните поле Login!</string>
+    <string name="register_login_msg_3">Пожалуйста, заполните поле Password!</string>
+
+    <string name="register_msg_1">Вы уже зарегистрированы в приложении!</string>
+    <string name="register_msg_2">Регистрация прошла успешно!</string>
+
+    <string name="login_msg_1">Вы не зарегистрированы в приложении!</string>
+    <string name="login_msg_2">Введен неверный логин или пароль! Попробуйте заново.</string>
+    <string name="login_msg_3">Авторизация прошла успешно!</string>
 </resources>

@@ -56,18 +56,17 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
         switch(view.getId()){
             case R.id.btnRegister:
                 if(getLoginName().isEmpty() && getPassword().isEmpty()){
-                    Toast.makeText(getContext(), "Пожалуйста, заполните поля Login и Password!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.register_login_msg_1, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     if(getLoginName().isEmpty()){
-                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Login!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.register_login_msg_2, Toast.LENGTH_SHORT).show();
                     }
                     else if(getPassword().isEmpty()){
-                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Password!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.register_login_msg_3, Toast.LENGTH_SHORT).show();
                     }
                     else{
                         registerFragmentListener.onRegisterListener(getLoginName(), getPassword());
-                        Toast.makeText(getContext(), "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
                     }
                 }
                 break;
