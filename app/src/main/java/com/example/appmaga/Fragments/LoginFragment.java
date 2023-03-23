@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -57,7 +58,21 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnLogin:
-                loginFragmentListener.onLoginListener();
+                if(getLoginName().isEmpty() && getPassword().isEmpty()){
+                    Toast.makeText(getContext(), "Пожалуйста, заполните поля Login и Password!", Toast.LENGTH_SHORT).show();
+                }
+                else{
+                    if(getLoginName().isEmpty()){
+                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Login!", Toast.LENGTH_SHORT).show();
+                    }
+                    else if(getPassword().isEmpty()){
+                        Toast.makeText(getContext(), "Пожалуйста, заполните поле Password!", Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        loginFragmentListener.onLoginListener();
+                        Toast.makeText(getContext(), "Авторизация прошла успешно!", Toast.LENGTH_SHORT).show();
+                    }
+                }
                 break;
 
             case R.id.btnSignUp:
