@@ -66,7 +66,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
                         Toast.makeText(getContext(), "Пожалуйста, заполните поле Password!", Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        registerFragmentListener.onRegisterListener();
+                        registerFragmentListener.onRegisterListener(getLoginName(), getPassword());
                         Toast.makeText(getContext(), "Регистрация прошла успешно!", Toast.LENGTH_SHORT).show();
                     }
                 }

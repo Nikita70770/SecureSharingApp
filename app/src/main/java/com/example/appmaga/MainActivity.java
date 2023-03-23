@@ -2,6 +2,7 @@ package com.example.appmaga;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import com.example.appmaga.Fragments.LoginFragment;
@@ -16,10 +17,16 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     LoginFragment loginFragment;
     MainFragment mainFragment;
 
+    private SharedPreferences settings;
+    private SharedPreferences.Editor editorSettings;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        settings = getSharedPreferences(UserSettings.APP_PREFERENCES, UserSettings.ACCESS_MODE);
+        editorSettings = settings.edit();
 
         if(savedInstanceState == null){
             registrationFragment = new RegistrationFragment();
@@ -31,7 +38,10 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     }
 
     @Override
-    public void onRegisterListener() {
+    public void onRegisterListener(String loginName, String password) {
+        editorSettings.putString(UserSettings.APP_PREFERENCES_LOGIN_NAME, loginName);
+        editorSettings.putString(UserSettings.APP_PREFERENCES_PASSWORD, password);
+        editorSettings.apply();
         mainFragment = new MainFragment();
         getSupportFragmentManager()
                 .beginTransaction()
