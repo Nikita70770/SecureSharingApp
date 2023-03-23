@@ -13,7 +13,8 @@
     <LinearLayout
         style="@style/linearParent"
         android:layout_gravity="center"
-        android:padding="@dimen/loginViewsMargin">
+        android:padding="@dimen/loginViewsMargin"
+        android:background="@color/midnightExpress">
 
         <TextView
             style="@style/headerTextPrimary"
@@ -53,18 +54,19 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/cirLoginButton"
+            android:id="@+id/btnLogin"
             style="@style/loginButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:text="Login" />
 
         <Button
-            android:id="@+id/button4"
+            android:id="@+id/btnSignUp"
             style="@style/parent"
-            android:textColor="@color/primaryTextColor"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/login_signup_hint" />
+            android:text="@string/login_signup_hint"
+            android:textColor="@color/primaryTextColor"
+            android:background="@color/midnightExpress" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

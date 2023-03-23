@@ -3,7 +3,7 @@
     <dimen name="headerTextSize">22sp</dimen>
     <dimen name="textSize">22sp</dimen>
     <dimen name="newsMoreTextSize">12sp</dimen>
-    <dimen name="fragmentContainer">30dp</dimen>
+    <dimen name="fragmentContainer">15dp</dimen>
     <dimen name="loginCardRadius">20dp</dimen>
     <dimen name="loginViewsMargin">20dp</dimen>
     <dimen name="buttonRegister">20dp</dimen>

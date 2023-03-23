@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Secure Messaging App</string>
-<!--    <string name="application_name">Secure Messaging App</string>-->
     <string name="register">Register</string>
     <string name="login_email_hint">Login</string>
     <string name="login_password_hint">Password</string>
