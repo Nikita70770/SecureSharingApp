@@ -2,6 +2,7 @@ package com.example.appmaga.Fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,10 +13,11 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.R;
+import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
 
-    private EditText editPassword;
+    private TextInputEditText editTextNameLogForm, editTextPasswordLogForm;
 
     private Button btnLogin, btnSignUp;
 
@@ -36,13 +38,14 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
             loginFragmentListener = (ILoginFragmentListener) context;
         } else {
             throw new RuntimeException(context.toString()
-                    + " must implement IAuthoFragmentListener");
+                    + " must implement ILoginFragmentListener");
         }
     }
 
     private void initElements(View view) {
-//        editPassword = view.findViewById(R.id.editPassword);
-//        editPassword.setText("admin");
+        editTextNameLogForm = view.findViewById(R.id.editTextNameLogForm);
+        editTextPasswordLogForm = view.findViewById(R.id.editTextPasswordLogForm);
+
         btnLogin = view.findViewById(R.id.btnLogin);
         btnSignUp = view.findViewById(R.id.btnSignUp);
 
@@ -68,5 +71,13 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 //        else{
 //            Toast.makeText(getContext(), "Неправильные данные!", Toast.LENGTH_SHORT).show();
 //        }
+    }
+
+    public String getLoginName() {
+        return String.valueOf(editTextNameLogForm.getText());
+    }
+
+    public String getPassword() {
+        return String.valueOf(editTextPasswordLogForm.getText());
     }
 }

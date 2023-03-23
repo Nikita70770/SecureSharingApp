@@ -24,29 +24,29 @@
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputEmail"
+            android:id="@+id/textInputNameRegForm"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_email_hint">
+            android:hint="@string/login_name_hint">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextEmail"
+                android:id="@+id/editTextNameRegForm"
                 style="@style/modifiedEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:inputType="textEmailAddress"
+                android:inputType="text"
                 android:maxLines="1" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputPassword"
+            android:id="@+id/textInputPasswordRegForm"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:hint="@string/login_password_hint">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPassword"
+                android:id="@+id/editTextPasswordRegForm"
                 style="@style/modifiedEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
