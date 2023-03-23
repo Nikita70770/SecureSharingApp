@@ -32,7 +32,11 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
 
     @Override
     public void onRegisterListener() {
-
+        mainFragment = new MainFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainFragmentContainer, mainFragment)
+                .commit();
     }
 
     @Override
@@ -46,7 +50,11 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
 
     @Override
     public void onLoginListener() {
-
+        mainFragment = new MainFragment();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.mainFragmentContainer, mainFragment)
+                .commit();
     }
 
     @Override

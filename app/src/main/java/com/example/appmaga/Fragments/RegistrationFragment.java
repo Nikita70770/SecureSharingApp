@@ -37,8 +37,10 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     }
 
     private void initElements(View view) {
+        btnRegister = view.findViewById(R.id.btnRegister);
         btnSignIn = view.findViewById(R.id.btnSignIn);
 
+        btnRegister.setOnClickListener(this);
         btnSignIn.setOnClickListener(this);
 //        editPassword = view.findViewById(R.id.editPassword);
 //        editPassword.setText("admin");
@@ -49,6 +51,10 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch(view.getId()){
+            case R.id.btnRegister:
+                registerFragmentListener.onRegisterListener();
+                break;
+
             case R.id.btnSignIn:
                 registerFragmentListener.onRegisterSignInListener();
                 break;

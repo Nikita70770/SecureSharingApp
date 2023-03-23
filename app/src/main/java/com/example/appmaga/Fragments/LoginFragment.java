@@ -43,14 +43,20 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private void initElements(View view) {
 //        editPassword = view.findViewById(R.id.editPassword);
 //        editPassword.setText("admin");
+        btnLogin = view.findViewById(R.id.btnLogin);
         btnSignUp = view.findViewById(R.id.btnSignUp);
 
+        btnLogin.setOnClickListener(this);
         btnSignUp.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch(view.getId()){
+            case R.id.btnLogin:
+                loginFragmentListener.onLoginListener();
+                break;
+
             case R.id.btnSignUp:
                 loginFragmentListener.onLoginSignUpListener();
                 break;
