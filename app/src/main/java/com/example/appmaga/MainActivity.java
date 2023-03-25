@@ -2,6 +2,7 @@ package com.example.appmaga;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     private LoginFragment loginFragment;
     private MainFragment mainFragment;
 
+    private final FragmentManager fragmentManager = getSupportFragmentManager();
+
     private SharedPreferences settings;
     private SharedPreferences.Editor editorSettings;
 
@@ -37,10 +40,7 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
 
         if(savedInstanceState == null){
             registrationFragment = new RegistrationFragment();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .add(R.id.formFragmentContainer, registrationFragment)
-                    .commit();
+            addFragment(R.id.formFragmentContainer, registrationFragment);
         }
     }
 
@@ -54,10 +54,7 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
             hideFragment(registrationFragment);
             closeSystemKeyboard();
             mainFragment = new MainFragment();
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.mainFragmentContainer, mainFragment)
-                    .commit();
+            replaceFragment(R.id.mainFragmentContainer, mainFragment);
             Toast.makeText(this, R.string.register_msg_2, Toast.LENGTH_SHORT).show();
         }
     }
@@ -65,10 +62,7 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     @Override
     public void onRegisterSignInListener() {
         loginFragment = new LoginFragment();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.formFragmentContainer, loginFragment)
-                .commit();
+        replaceFragment(R.id.formFragmentContainer, loginFragment);
     }
 
     @Override
@@ -85,10 +79,7 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
                 hideFragment(loginFragment);
                 closeSystemKeyboard();
                 mainFragment = new MainFragment();
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.mainFragmentContainer, mainFragment)
-                        .commit();
+                replaceFragment(R.id.mainFragmentContainer, mainFragment);
                 Toast.makeText(this, R.string.login_msg_3, Toast.LENGTH_SHORT).show();
             }
         }
@@ -97,10 +88,7 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     @Override
     public void onLoginSignUpListener() {
         registrationFragment = new RegistrationFragment();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.formFragmentContainer, registrationFragment)
-                .commit();
+        replaceFragment(R.id.formFragmentContainer, registrationFragment);
     }
 
     private void closeSystemKeyboard(){
@@ -111,8 +99,22 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
         }
     }
 
+    private void addFragment(int idElement, Fragment fragment){
+        fragmentManager
+                .beginTransaction()
+                .add(idElement, fragment)
+                .commit();
+    }
+
+    private void replaceFragment(int idElement, Fragment fragment){
+        fragmentManager
+                .beginTransaction()
+                .replace(idElement, fragment)
+                .commit();
+    }
+
     private void hideFragment(Fragment  fragment){
-        getSupportFragmentManager()
+        fragmentManager
                 .beginTransaction()
                 .hide(fragment)
                 .commit();
