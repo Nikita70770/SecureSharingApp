@@ -14,6 +14,7 @@ import com.example.appmaga.Fragments.MainFragment;
 import com.example.appmaga.Fragments.RegistrationFragment;
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
+import com.example.appmaga.User.UserSettings;
 
 public class MainActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
 
@@ -46,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
 
         String savedLogin = settings.getString(UserSettings.APP_PREFERENCES_LOGIN_NAME, "undefined");
         String savedPassword = settings.getString(UserSettings.APP_PREFERENCES_PASSWORD, "undefined");
-        
+
         if(!savedLogin.equals("undefined") && !savedPassword.equals("undefined")){
             Toast.makeText(getApplicationContext(), R.string.register_msg_1, Toast.LENGTH_SHORT).show();
         }

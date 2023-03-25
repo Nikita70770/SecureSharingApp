@@ -1,4 +1,4 @@
-package com.example.appmaga;
+package com.example.appmaga.User;
 
 import android.content.Context;
 import android.content.SharedPreferences;
