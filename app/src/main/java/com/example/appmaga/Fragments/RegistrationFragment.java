@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
+import com.example.appmaga.User.User;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class RegistrationFragment extends Fragment implements View.OnClickListener {
@@ -66,7 +67,8 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
                         Toast.makeText(getContext(), R.string.register_login_msg_3, Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        registerFragmentListener.onRegisterListener(getLoginName(), getPassword());
+                        User user = new User(getLoginName(), getPassword());
+                        registerFragmentListener.onRegisterListener(user);
                     }
                 }
                 break;

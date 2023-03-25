@@ -1,6 +1,7 @@
 package com.example.appmaga;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,6 +15,7 @@ import com.example.appmaga.Fragments.MainFragment;
 import com.example.appmaga.Fragments.RegistrationFragment;
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
+import com.example.appmaga.User.User;
 import com.example.appmaga.User.UserSettings;
 
 public class MainActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
@@ -43,19 +45,13 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     }
 
     @Override
-    public void onRegisterListener(String loginName, String password) {
-
-        String savedLogin = settings.getString(UserSettings.APP_PREFERENCES_LOGIN_NAME, "undefined");
-        String savedPassword = settings.getString(UserSettings.APP_PREFERENCES_PASSWORD, "undefined");
-
-        if(!savedLogin.equals("undefined") && !savedPassword.equals("undefined")){
+    public void onRegisterListener(User user) {
+        if(UserSettings.getUser(settings) != null){
             Toast.makeText(getApplicationContext(), R.string.register_msg_1, Toast.LENGTH_SHORT).show();
         }
         else{
-            editorSettings.putString(UserSettings.APP_PREFERENCES_LOGIN_NAME, loginName);
-            editorSettings.putString(UserSettings.APP_PREFERENCES_PASSWORD, password);
-            editorSettings.apply();
-
+            UserSettings.saveUser(editorSettings, user);
+            hideFragment(registrationFragment);
             closeSystemKeyboard();
             mainFragment = new MainFragment();
             getSupportFragmentManager()
@@ -115,5 +111,12 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(view.getWindowToken(), 0);
         }
+    }
+
+    private void hideFragment(Fragment  fragment){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .hide(fragment)
+                .commit();
     }
 }
