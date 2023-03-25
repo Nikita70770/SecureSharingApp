@@ -73,18 +73,16 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
 
     @Override
     public void onLoginListener(String loginName, String password) {
-
-        String savedLogin = settings.getString(UserSettings.APP_PREFERENCES_LOGIN_NAME, "undefined");
-        String savedPassword = settings.getString(UserSettings.APP_PREFERENCES_PASSWORD, "undefined");
-
-        if(savedLogin.equals("undefined") && savedPassword.equals("undefined")){
+        User savedUser = UserSettings.getUser(settings);
+        if(savedUser == null){
             Toast.makeText(this, R.string.login_msg_1, Toast.LENGTH_SHORT).show();
         }
         else{
-            if(!savedLogin.equals(loginName) || !savedPassword.equals(password)){
+            if(!savedUser.getLogin().equals(loginName) || !savedUser.getPassword().equals(password)){
                 Toast.makeText(this, R.string.login_msg_2, Toast.LENGTH_SHORT).show();
             }
             else{
+                hideFragment(loginFragment);
                 closeSystemKeyboard();
                 mainFragment = new MainFragment();
                 getSupportFragmentManager()
