@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.R;
+import com.example.appmaga.User.UserHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
@@ -83,6 +84,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     }
 
     public String getPassword() {
-        return String.valueOf(editTextPasswordLogForm.getText());
+        String password = String.valueOf(editTextPasswordLogForm.getText());
+        return new UserHelper().getPasswordHash(password);
     }
 }
