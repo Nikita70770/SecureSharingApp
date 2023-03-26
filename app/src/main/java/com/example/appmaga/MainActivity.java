@@ -3,6 +3,7 @@ package com.example.appmaga;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -25,7 +26,7 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     private LoginFragment loginFragment;
     private MainFragment mainFragment;
 
-    private final FragmentManager fragmentManager = getSupportFragmentManager();
+    private final FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
     private SharedPreferences settings;
     private SharedPreferences.Editor editorSettings;
@@ -100,22 +101,19 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
     }
 
     private void addFragment(int idElement, Fragment fragment){
-        fragmentManager
-                .beginTransaction()
+        fragmentTransaction
                 .add(idElement, fragment)
                 .commit();
     }
 
     private void replaceFragment(int idElement, Fragment fragment){
-        fragmentManager
-                .beginTransaction()
+        fragmentTransaction
                 .replace(idElement, fragment)
                 .commit();
     }
 
     private void hideFragment(Fragment  fragment){
-        fragmentManager
-                .beginTransaction()
+        fragmentTransaction
                 .hide(fragment)
                 .commit();
     }
