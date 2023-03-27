@@ -1,10 +1,11 @@
-package com.example.appmaga;
+package com.example.appmaga.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
@@ -12,18 +13,17 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.example.appmaga.Fragments.LoginFragment;
-import com.example.appmaga.Fragments.MainFragment;
 import com.example.appmaga.Fragments.RegistrationFragment;
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
+import com.example.appmaga.R;
 import com.example.appmaga.User.User;
 import com.example.appmaga.User.UserSettings;
 
-public class MainActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
+public class AuthorizationActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
 
     private RegistrationFragment registrationFragment;
     private LoginFragment loginFragment;
-    private MainFragment mainFragment;
     private final FragmentManager fragmentManager = getSupportFragmentManager();
 
     private SharedPreferences settings;
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
             UserSettings.saveUser(editorSettings, user);
             hideFragment(registrationFragment);
             closeSystemKeyboard();
-            mainFragment = new MainFragment();
-            replaceFragment(R.id.mainFragmentContainer, mainFragment);
+            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+            startActivity(intent);
             Toast.makeText(this, R.string.register_msg_2, Toast.LENGTH_SHORT).show();
         }
     }
@@ -77,8 +77,8 @@ public class MainActivity extends AppCompatActivity implements IRegisterFragment
             else{
                 hideFragment(loginFragment);
                 closeSystemKeyboard();
-                mainFragment = new MainFragment();
-                replaceFragment(R.id.mainFragmentContainer, mainFragment);
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
                 Toast.makeText(this, R.string.login_msg_3, Toast.LENGTH_SHORT).show();
             }
         }

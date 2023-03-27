@@ -16,4 +16,7 @@
     <string name="login_msg_1">Вы не зарегистрированы в приложении!</string>
     <string name="login_msg_2">Введен неверный логин или пароль! Попробуйте заново.</string>
     <string name="login_msg_3">Авторизация прошла успешно!</string>
+
+    <string name="exchange_data">Обменяться данными</string>
+    <string name="add_contact">Добавить контакт</string>
 </resources>

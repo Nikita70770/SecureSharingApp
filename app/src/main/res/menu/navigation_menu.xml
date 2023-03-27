@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="HardcodedText">
+
+    <item
+        android:id="@+id/nav_exchange_data"
+        android:icon="@drawable/ic_data_transfer"
+        android:title="@string/exchange_data" />
+
+    <item
+        android:id="@+id/nav_add_contact"
+        android:icon="@drawable/ic_add_user"
+        android:title="@string/add_contact" />
+</menu>
