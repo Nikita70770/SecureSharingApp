@@ -50,16 +50,9 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/fragmentContainer">
                 </FrameLayout>
-<!--                <include-->
-<!--                    layout="@layout/register_fragment"/>-->
 
             </LinearLayout>
         </RelativeLayout>
 
     </ScrollView>
-    <FrameLayout
-        android:id="@+id/mainFragmentContainer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </FrameLayout>
 </RelativeLayout>
