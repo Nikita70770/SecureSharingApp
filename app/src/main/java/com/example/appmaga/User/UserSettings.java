@@ -9,6 +9,7 @@ public class UserSettings {
     public static final String APP_PREFERENCES = "UserSettings";
     public static final String APP_PREFERENCES_USER_OBJECT = "UserObject";
     public static final int ACCESS_MODE = Context.MODE_PRIVATE;
+    public static User user;
     private static final Gson gson = new Gson();
 
     public static void saveUser(SharedPreferences.Editor editorSettings, User user){
@@ -17,9 +18,16 @@ public class UserSettings {
         editorSettings.apply();
     }
 
-    public static User getUser(SharedPreferences settings){
+    public static void requestUser(SharedPreferences settings){
         String jsonUser = settings.getString(APP_PREFERENCES_USER_OBJECT, null);
-        User user = gson.fromJson(jsonUser, User.class);
+        setUser(gson.fromJson(jsonUser, User.class));
+    }
+
+    public static User getUser() {
         return user != null ? user : null;
+    }
+
+    public static void setUser(User user) {
+        UserSettings.user = user;
     }
 }

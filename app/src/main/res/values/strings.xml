@@ -20,6 +20,8 @@
     <string name="nav_open">Открыть</string>
     <string name="nav_close">Закрыть</string>
 
+    <string name="nav_header_title">Логин</string>
+
     <string name="exchange_data">Обменяться данными</string>
     <string name="add_contact">Добавить контакт</string>
 </resources>

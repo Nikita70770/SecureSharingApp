@@ -1,10 +1,11 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryDark">@color/midnightExpress</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:textColorHint">@color/colorPrimary</item>
+        <item name="drawerArrowStyle">@style/DrawerIcon</item>
     </style>
 
     <style name="AppTheme.NoActionBar">
@@ -59,5 +60,13 @@
 
     <style name="customPopupMenuStyle" parent="@android:style/Widget.PopupMenu">
         <item name = "android:listPreferredItemHeightSmall">60dp</item>
+    </style>
+
+    <style name="TransparentView">
+        <item name="background">@android:color/transparent</item>
+    </style>
+
+    <style name="DrawerIcon" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@color/white</item>
     </style>
 </resources>

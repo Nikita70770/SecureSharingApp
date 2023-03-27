@@ -45,11 +45,13 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
     @Override
     public void onRegisterListener(User user) {
-        if(UserSettings.getUser(settings) != null){
+        UserSettings.requestUser(settings);
+        if(UserSettings.getUser() != null){
             Toast.makeText(getApplicationContext(), R.string.register_msg_1, Toast.LENGTH_SHORT).show();
         }
         else{
             UserSettings.saveUser(editorSettings, user);
+            UserSettings.requestUser(settings);
             hideFragment(registrationFragment);
             closeSystemKeyboard();
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -66,12 +68,13 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
     @Override
     public void onLoginListener(String loginName, String password) {
-        User savedUser = UserSettings.getUser(settings);
-        if(savedUser == null){
+//        User savedUser = UserSettings.requestUser(settings);
+        UserSettings.requestUser(settings);
+        if(UserSettings.getUser() == null){
             Toast.makeText(this, R.string.login_msg_1, Toast.LENGTH_SHORT).show();
         }
         else{
-            if(!savedUser.getLogin().equals(loginName) || !savedUser.getPassword().equals(password)){
+            if(!UserSettings.getUser().getLogin().equals(loginName) || !UserSettings.getUser().getPassword().equals(password)){
                 Toast.makeText(this, R.string.login_msg_2, Toast.LENGTH_SHORT).show();
             }
             else{

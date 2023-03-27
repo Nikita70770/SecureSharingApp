@@ -11,8 +11,16 @@
     tools:ignore="HardcodedText">
 
     <LinearLayout
+        android:id="@+id/mainContent"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- The ActionBar displayed at the top -->
+        <include
+            layout="@layout/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="match_parent"
@@ -20,6 +28,7 @@
             android:layout_marginTop="128dp"
             android:gravity="center"
             android:text="Hello World"
+            android:textColor="@color/black"
             android:textSize="@dimen/textSize_2" />
     </LinearLayout>
 
@@ -29,6 +38,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:theme="@style/customPopupMenuStyle"
+        app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/navigation_menu" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
