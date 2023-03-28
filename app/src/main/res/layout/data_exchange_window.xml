@@ -6,7 +6,6 @@
     android:layout_gravity="center"
     android:layout_marginTop="@dimen/loginViewsMargin"
     android:layout_marginBottom="@dimen/loginViewsMargin"
-    android:background="@color/whiteCardColor"
     android:elevation="5dp"
     app:cardCornerRadius="@dimen/loginCardRadius">
 
@@ -25,7 +24,8 @@
             android:id="@+id/textInputLoginSendWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/your_login_hint">
+            android:hint="@string/your_login_hint"
+            android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextLoginSendWind"
@@ -41,7 +41,8 @@
             android:id="@+id/textInputPasswordSendWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/your_password_hint">
+            android:hint="@string/your_password_hint"
+            android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextPasswordSendWind"

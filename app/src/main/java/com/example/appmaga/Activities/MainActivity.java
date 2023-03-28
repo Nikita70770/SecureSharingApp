@@ -1,13 +1,12 @@
 package com.example.appmaga.Activities;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
@@ -23,14 +22,14 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
-    private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
+    private ActionBarDrawerToggle actionBarDrawerToggle;
     private View headerView, dataExchangeView, addContactView;
     private TextView txtLoginUser;
 
+    private AlertDialog dialog;
     private AlertDialog.Builder alertDialogBuilder;
 
     private String loginUser, passwordUser;
@@ -61,9 +60,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.navExchangeData:
+                if(dataExchangeView.getParent() != null){
+                    ((ViewGroup)dataExchangeView.getParent()).removeView(dataExchangeView);
+                }
+                alertDialogBuilder.setView(dataExchangeView);
+                dialog = alertDialogBuilder.create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
                 return true;
 
             case R.id.navAddContact:
+                if(addContactView.getParent() != null){
+                    ((ViewGroup)addContactView.getParent()).removeView(addContactView);
+                }
+                alertDialogBuilder.setView(addContactView);
+                dialog = alertDialogBuilder.create();
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
                 return true;
 
             default:
@@ -74,10 +87,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void initElements(){
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
         navigationView = findViewById(R.id.navigationView);
         headerView = MainActivity.this.navigationView.getHeaderView(0);
         txtLoginUser = headerView.findViewById(R.id.txtLoginUser);
+
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
         alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
 
         txtLoginUser.setText(loginUser);
