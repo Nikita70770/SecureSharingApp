@@ -20,5 +20,7 @@
     <color name="loginBkColor">#f0f0f0</color>
 
     <!--colros for card-->
-    <color name="whiteCardColor">#fff</color>
+    <color name="whiteCardColor">#FFFFFF</color>
+    <color name="smokyWhite">#f4f4f4</color>
+<!--    <color name="smokyWhite">#59b7ce</color>-->
 </resources>

@@ -1,10 +1,15 @@
 <resources>
     <string name="app_name">Secure Messaging App</string>
-    <string name="register">Register</string>
-    <string name="login_name_hint">Login</string>
-    <string name="login_password_hint">Password</string>
-    <string name="signup_login_hint">Already have an account? Sign In</string>
-    <string name="login_signup_hint">Don\'t have an account? Sign Up</string>
+    <string name="register_form_title">Регистрация</string>
+    <string name="login_form_title">Авторизация</string>
+    <string name="login_name_hint">Логин</string>
+    <string name="login_password_hint">Пароль</string>
+    <string name="btn_login_text">Войти</string>
+    <string name="btn_register_text">Зарегистрироваться</string>
+    <string name="signup_login_hint">Уже есть аккаунт? Войти</string>
+    <string name="login_signup_hint">Еще нет аккаунта? Зарегистрироваться</string>
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
 
     <string name="register_login_msg_1">Пожалуйста, заполните поля Login и Password!</string>
     <string name="register_login_msg_2">Пожалуйста, заполните поле Login!</string>
@@ -17,11 +22,18 @@
     <string name="login_msg_2">Введен неверный логин или пароль! Попробуйте заново.</string>
     <string name="login_msg_3">Авторизация прошла успешно!</string>
 
-    <string name="nav_open">Открыть</string>
-    <string name="nav_close">Закрыть</string>
-
     <string name="nav_header_title">Логин</string>
 
     <string name="exchange_data">Обменяться данными</string>
+    <string name="data_exchange">Обмен данными</string>
+
     <string name="add_contact">Добавить контакт</string>
+    <string name="adding_contact">Добавление контакта</string>
+
+    <string name="your_login_hint">Ваш логин</string>
+    <string name="your_password_hint">Ваш пароль</string>
+    <string name="login_password_contact_hint">Логин и пароль контакта</string>
+
+    <string name="send_user_data">Отправить данные</string>
+    <string name="get_user_data">Сохранить данные</string>
 </resources>

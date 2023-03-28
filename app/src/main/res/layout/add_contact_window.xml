@@ -19,13 +19,13 @@
         <TextView
             style="@style/headerTextPrimary"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/login_form_title" />
+            android:text="@string/adding_contact" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputNameLogForm"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_name_hint">
+            android:hint="@string/your_login_hint">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextNameLogForm"
@@ -37,37 +37,12 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputPasswordLogForm"
-            style="@style/parent"
-            android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_password_hint">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPasswordLogForm"
-                style="@style/modifiedEditText"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:inputType="textPassword"
-                android:maxLines="1" />
-
-        </com.google.android.material.textfield.TextInputLayout>
-
         <Button
-            android:id="@+id/btnLogin"
-            style="@style/loginButton"
+            android:id="@+id/btnSendData"
+            style="@style/SendAndGetDataButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/btn_login_text" />
-
-        <Button
-            android:id="@+id/btnSignUp"
-            style="@style/parent"
-            android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/login_signup_hint"
-            android:textAllCaps="false"
-            android:textColor="@color/primaryTextColor"
-            android:background="@color/midnightExpress" />
+            android:text="@string/get_user_data"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

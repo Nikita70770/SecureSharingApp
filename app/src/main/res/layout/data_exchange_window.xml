@@ -2,15 +2,13 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     style="@style/loginCard"
-    app:cardCornerRadius="@dimen/loginCardRadius"
-    android:elevation="5dp"
     android:layout_gravity="center"
     android:layout_marginTop="@dimen/loginViewsMargin"
     android:layout_marginBottom="@dimen/loginViewsMargin"
     android:background="@color/whiteCardColor"
-    tools:ignore="MissingDefaultResource">
+    android:elevation="5dp"
+    app:cardCornerRadius="@dimen/loginCardRadius">
 
     <LinearLayout
         style="@style/linearParent"
@@ -20,17 +18,17 @@
 
         <TextView
             style="@style/headerTextPrimary"
-            android:text="@string/register_form_title"
-            android:layout_marginTop="@dimen/loginViewsMargin"/>
+            android:layout_marginTop="@dimen/loginViewsMargin"
+            android:text="@string/data_exchange" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputNameRegForm"
+            android:id="@+id/textInputNameLogForm"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_name_hint">
+            android:hint="@string/your_login_hint">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextNameRegForm"
+                android:id="@+id/editTextNameLogForm"
                 style="@style/modifiedEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -40,13 +38,13 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputPasswordRegForm"
+            android:id="@+id/textInputPasswordSendWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_password_hint">
+            android:hint="@string/your_password_hint">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextPasswordRegForm"
+                android:id="@+id/editTextPasswordSendWind"
                 style="@style/modifiedEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -56,21 +54,11 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnRegister"
-            style="@style/loginButton"
-            android:layout_marginTop="@dimen/buttonRegister"
-            android:layout_gravity="center"
-            android:text="@string/btn_register_text" />
-
-        <Button
-            android:id="@+id/btnSignIn"
-            style="@style/parent"
+            android:id="@+id/btnSendData"
+            style="@style/SendAndGetDataButton"
+            android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:textStyle="bold"
-            android:text="@string/signup_login_hint"
-            android:textAllCaps="false"
-            android:textColor="@color/primaryTextColor"
-            android:background="@color/midnightExpress"/>
+            android:text="@string/send_user_data"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
