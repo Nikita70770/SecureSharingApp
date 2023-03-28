@@ -6,13 +6,13 @@
 
     <item
         app:showAsAction="always"
-        android:id="@+id/nav_exchange_data"
+        android:id="@+id/navExchangeData"
         android:icon="@drawable/ic_data_transfer"
         android:title="@string/exchange_data" />
 
     <item
         app:showAsAction="always"
-        android:id="@+id/nav_add_contact"
+        android:id="@+id/navAddContact"
         android:icon="@drawable/ic_add_user"
         android:title="@string/add_contact" />
 </menu>

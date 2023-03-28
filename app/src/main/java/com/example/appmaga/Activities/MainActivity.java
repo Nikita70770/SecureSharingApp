@@ -1,9 +1,13 @@
 package com.example.appmaga.Activities;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.widget.Toolbar;
 
@@ -17,7 +21,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
@@ -42,8 +46,26 @@ public class MainActivity extends AppCompatActivity {
             case android.R.id.home:
                 drawerLayout.openDrawer(GravityCompat.START);
                 return true;
+
+            default:
+                return super.onOptionsItemSelected(item);
         }
-        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.navExchangeData:
+                Toast.makeText(this, "R.id.navExchangeData: " + String.valueOf(R.id.navExchangeData), Toast.LENGTH_SHORT).show();
+                return true;
+
+            case R.id.navAddContact:
+                Toast.makeText(this, "R.id.navAddContact: " + String.valueOf(R.id.navAddContact), Toast.LENGTH_SHORT).show();
+                return true;
+
+            default:
+                return false;
+        }
     }
 
     private void initElements(){
@@ -59,7 +81,9 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
         setSupportActionBar(toolbar);
+
         navigationView.setItemIconTintList(null);
+        navigationView.setNavigationItemSelectedListener(this);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
