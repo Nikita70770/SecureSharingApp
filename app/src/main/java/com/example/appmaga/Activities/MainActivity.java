@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
@@ -61,7 +62,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.navAddContact:
-                //
+                addContactFragment = new AddContactFragment();
+                showDialogFragment(addContactFragment, AddContactFragment.ID_DIALOG_ADD_CONTACT);
                 return true;
 
             default:
@@ -92,6 +94,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         switch(fragmentId){
             case DataExchangeFragment.ID_FRAGMENT_DATA_EXCHANGE:
                 fragment.show(getSupportFragmentManager(), "dataExchangeFragment");
+                break;
+
+            case AddContactFragment.ID_DIALOG_ADD_CONTACT:
+                fragment.show(getSupportFragmentManager(), "addContactFragment");
                 break;
         }
     }
