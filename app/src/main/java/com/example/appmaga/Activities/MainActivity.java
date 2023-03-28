@@ -60,23 +60,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.navExchangeData:
-                if(dataExchangeView.getParent() != null){
-                    ((ViewGroup)dataExchangeView.getParent()).removeView(dataExchangeView);
-                }
-                alertDialogBuilder.setView(dataExchangeView);
-                dialog = alertDialogBuilder.create();
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                showDialogWindow(dataExchangeView);
                 return true;
 
             case R.id.navAddContact:
-                if(addContactView.getParent() != null){
-                    ((ViewGroup)addContactView.getParent()).removeView(addContactView);
-                }
-                alertDialogBuilder.setView(addContactView);
-                dialog = alertDialogBuilder.create();
-                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-                dialog.show();
+                showDialogWindow(addContactView);
                 return true;
 
             default:
@@ -103,6 +91,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+    }
+
+    private void showDialogWindow(View view){
+        if(view.getParent() != null){
+            ((ViewGroup)(view.getParent())).removeView(view);
+        }
+        alertDialogBuilder.setView(view);
+        dialog = alertDialogBuilder.create();
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.show();
     }
 
     private void initViewElements(){
