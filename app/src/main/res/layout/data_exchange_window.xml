@@ -22,13 +22,13 @@
             android:text="@string/data_exchange" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputNameLogForm"
+            android:id="@+id/textInputLoginSendWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:hint="@string/your_login_hint">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextNameLogForm"
+                android:id="@+id/editTextLoginSendWind"
                 style="@style/modifiedEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"

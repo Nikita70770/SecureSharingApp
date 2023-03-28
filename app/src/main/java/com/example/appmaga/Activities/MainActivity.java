@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.appmaga.R;
@@ -27,7 +28,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private NavigationView navigationView;
+    private View headerView, dataExchangeView, addContactView;
     private TextView txtLoginUser;
+
+    private AlertDialog.Builder alertDialogBuilder;
 
     private String loginUser, passwordUser;
 
@@ -38,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         initDataUser();
         initElements();
+        initViewElements();
     }
 
     @Override
@@ -56,11 +61,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.navExchangeData:
-                Toast.makeText(this, "R.id.navExchangeData: " + String.valueOf(R.id.navExchangeData), Toast.LENGTH_SHORT).show();
                 return true;
 
             case R.id.navAddContact:
-                Toast.makeText(this, "R.id.navAddContact: " + String.valueOf(R.id.navAddContact), Toast.LENGTH_SHORT).show();
                 return true;
 
             default:
@@ -73,19 +76,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toolbar = findViewById(R.id.toolbar);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
         navigationView = findViewById(R.id.navigationView);
-
-        View headerView = MainActivity.this.navigationView.getHeaderView(0);
+        headerView = MainActivity.this.navigationView.getHeaderView(0);
         txtLoginUser = headerView.findViewById(R.id.txtLoginUser);
-        txtLoginUser.setText(loginUser);
+        alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
 
+        txtLoginUser.setText(loginUser);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
+
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+    }
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+    private void initViewElements(){
+        dataExchangeView = getLayoutInflater().inflate(R.layout.data_exchange_window, null);
+        addContactView = getLayoutInflater().inflate(R.layout.add_contact_window, null);
     }
 
     private void initDataUser(){
