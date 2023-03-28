@@ -86,4 +86,9 @@
     <style name="NotCapsButton" parent="Widget.AppCompat.Button">
         <item name="android:textAllCaps">false</item>
     </style>
+
+    <style name="DialogStyle" parent="Base.Theme.AppCompat.Dialog">
+        <item name="android:windowMinWidthMajor">95%</item>
+        <item name="android:windowMinWidthMinor">95%</item>
+    </style>
 </resources>

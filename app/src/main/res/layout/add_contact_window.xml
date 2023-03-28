@@ -39,7 +39,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <Button
-            android:id="@+id/btnSendData"
+            android:id="@+id/btnSaveData"
             style="@style/SendAndGetDataButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"

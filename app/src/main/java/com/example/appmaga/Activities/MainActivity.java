@@ -1,16 +1,14 @@
 package com.example.appmaga.Activities;
 
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
 import com.google.android.material.navigation.NavigationView;
@@ -20,17 +18,16 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.DialogFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private View headerView, dataExchangeView, addContactView;
+    private View headerView;
+    private DialogFragment dataExchangeFragment, addContactFragment;
     private TextView txtLoginUser;
-
-    private AlertDialog dialog;
-    private AlertDialog.Builder alertDialogBuilder;
 
     private String loginUser, passwordUser;
 
@@ -41,7 +38,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         initDataUser();
         initElements();
-        initViewElements();
     }
 
     @Override
@@ -60,11 +56,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.navExchangeData:
-                showDialogWindow(dataExchangeView);
+                dataExchangeFragment = new DataExchangeFragment();
+                showDialogFragment(dataExchangeFragment, DataExchangeFragment.ID_FRAGMENT_DATA_EXCHANGE);
                 return true;
 
             case R.id.navAddContact:
-                showDialogWindow(addContactView);
+                //
                 return true;
 
             default:
@@ -78,9 +75,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.navigationView);
         headerView = MainActivity.this.navigationView.getHeaderView(0);
         txtLoginUser = headerView.findViewById(R.id.txtLoginUser);
-
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
-        alertDialogBuilder = new AlertDialog.Builder(MainActivity.this);
 
         txtLoginUser.setText(loginUser);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -93,19 +88,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView.setNavigationItemSelectedListener(this);
     }
 
-    private void showDialogWindow(View view){
-        if(view.getParent() != null){
-            ((ViewGroup)(view.getParent())).removeView(view);
+    private void showDialogFragment(DialogFragment fragment, int fragmentId){
+        switch(fragmentId){
+            case DataExchangeFragment.ID_FRAGMENT_DATA_EXCHANGE:
+                fragment.show(getSupportFragmentManager(), "dataExchangeFragment");
+                break;
         }
-        alertDialogBuilder.setView(view);
-        dialog = alertDialogBuilder.create();
-        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        dialog.show();
-    }
-
-    private void initViewElements(){
-        dataExchangeView = getLayoutInflater().inflate(R.layout.data_exchange_window, null);
-        addContactView = getLayoutInflater().inflate(R.layout.add_contact_window, null);
     }
 
     private void initDataUser(){
