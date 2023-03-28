@@ -57,7 +57,7 @@
 
         <Button
             android:id="@+id/btnRegister"
-            style="@style/loginButton"
+            style="@style/registerButton"
             android:layout_marginTop="@dimen/buttonRegister"
             android:layout_gravity="center"
             android:text="@string/btn_register_text" />

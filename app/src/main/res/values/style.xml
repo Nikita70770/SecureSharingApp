@@ -54,13 +54,19 @@
     </style>
 
     <style name="loginButton" parent="viewParent">
-        <item name="android:background">@drawable/button_bk</item>
+        <item name="android:background">@drawable/button_login_bk</item>
+        <item name="android:textColor">@color/whiteTextColor</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="registerButton" parent="viewParent">
+        <item name="android:background">@drawable/button_register_bk</item>
         <item name="android:textColor">@color/whiteTextColor</item>
         <item name="android:textStyle">bold</item>
     </style>
 
     <style name="SendAndGetDataButton" parent="viewParent">
-        <item name="android:background">@drawable/send_data_button_bk</item>
+        <item name="android:background">@drawable/button_login_bk</item>
         <item name="android:textColor">@color/smokyWhite</item>
         <item name="android:textStyle">normal</item>
     </style>
