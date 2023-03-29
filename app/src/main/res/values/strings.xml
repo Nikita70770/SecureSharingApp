@@ -14,6 +14,7 @@
     <string name="register_login_msg_1">Пожалуйста, заполните поля Логин и Пароль!</string>
     <string name="register_login_msg_2">Пожалуйста, заполните поле Логин!</string>
     <string name="register_login_msg_3">Пожалуйста, заполните поле Пароль!</string>
+    <string name="register_login_contact">Пожалуйста, заполните поля Логин и Пароль контакта!</string>
 
     <string name="register_msg_1">Вы уже зарегистрированы в приложении!</string>
     <string name="register_msg_2">Регистрация прошла успешно!</string>

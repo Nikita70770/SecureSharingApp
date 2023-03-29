@@ -52,13 +52,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
 
     private void sendData(){
         if(checkSendData()){
-            if(!UserSettings.getUser().getLogin().equals(getUserLogin()) &&
-                    !UserSettings.getUser().getPassword().equals(getHashPassword())){
-                Toast.makeText(getContext(), R.string.data_exchange_error, Toast.LENGTH_SHORT).show();
-            }
-            else{
-                getDialog().dismiss();
-            }
+            getDialog().dismiss();
         }
     }
 
@@ -77,7 +71,12 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
                 return false;
             }
             else{
-                return true;
+                if(!UserSettings.getUser().getLogin().equals(getUserLogin()) &&
+                        !UserSettings.getUser().getPassword().equals(getHashPassword())){
+                    Toast.makeText(getContext(), R.string.data_exchange_error, Toast.LENGTH_SHORT).show();
+                    return false;
+                }
+                else return true;
             }
         }
     }
