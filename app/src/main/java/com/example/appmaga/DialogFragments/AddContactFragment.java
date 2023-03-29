@@ -16,6 +16,9 @@ import com.google.android.material.textfield.TextInputEditText;
 public class AddContactFragment extends DialogFragment implements View.OnClickListener {
     public static final int ID_DIALOG_ADD_CONTACT = 2;
 
+    private TextInputEditText editTextAddContactWind;
+    private Button btnSaveData;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,14 +35,21 @@ public class AddContactFragment extends DialogFragment implements View.OnClickLi
     }
 
     private void initViewElements(View windowView){
-        TextInputEditText editTextDataExchangeWind = windowView.findViewById(R.id.editTextDataExchangeWind);
+        editTextAddContactWind = windowView.findViewById(R.id.editTextAddContactWind);
 
-        Button btnSaveData = windowView.findViewById(R.id.btnSaveData);
+        btnSaveData = windowView.findViewById(R.id.btnSaveData);
         btnSaveData.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getContext(), "btnSaveData.click", Toast.LENGTH_SHORT).show();
+        saveData();
+    }
+
+    private void saveData(){
+    }
+
+    private String getContactData(){
+        return String.valueOf(editTextAddContactWind.getText());
     }
 }

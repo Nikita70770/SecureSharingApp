@@ -22,14 +22,14 @@
             android:text="@string/adding_contact" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/textInputDataExchangeWind"
+            android:id="@+id/textInputAddContactWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
             android:hint="@string/login_password_contact_hint"
             android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/editTextDataExchangeWind"
+                android:id="@+id/editTextAddContactWind"
                 style="@style/modifiedEditText"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
