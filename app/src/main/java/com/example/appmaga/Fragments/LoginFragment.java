@@ -86,7 +86,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private String getPassword() {
         return String.valueOf(editTextPasswordLogForm.getText());
     }
-     private String getHashPassword(){
+
+    private String getHashPassword(){
         return new UserHelper().getPasswordHash(getPassword());
     }
 }
