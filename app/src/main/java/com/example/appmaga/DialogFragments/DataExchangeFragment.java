@@ -17,6 +17,9 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
 
     public static final int ID_FRAGMENT_DATA_EXCHANGE = 1;
 
+    private TextInputEditText editTextLoginSendWind, editTextPasswordSendWind;
+    private Button btnSendData;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,15 +36,26 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     }
 
     private void initViewElements(View windowView){
-        TextInputEditText editTextLoginSendWind = windowView.findViewById(R.id.editTextLoginSendWind);
-        TextInputEditText editTextPasswordSendWind = windowView.findViewById(R.id.editTextPasswordSendWind);
+        editTextLoginSendWind = windowView.findViewById(R.id.editTextLoginSendWind);
+        editTextPasswordSendWind = windowView.findViewById(R.id.editTextPasswordSendWind);
 
-        Button btnSendData = windowView.findViewById(R.id.btnSendData);
+        btnSendData = windowView.findViewById(R.id.btnSendData);
         btnSendData.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getContext(), "btnSendData.click", Toast.LENGTH_SHORT).show();
+        sendData();
+    }
+
+    private void sendData(){
+    }
+
+    private String getUserLogin(){
+        return String.valueOf(editTextLoginSendWind.getText());
+    }
+
+    private String getUserPassword(){
+        return String.valueOf(editTextPasswordSendWind.getText());
     }
 }
