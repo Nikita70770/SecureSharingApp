@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.appmaga.R;
+import com.example.appmaga.User.UserHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class DataExchangeFragment extends DialogFragment implements View.OnClickListener  {
@@ -57,5 +58,9 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
 
     private String getUserPassword(){
         return String.valueOf(editTextPasswordSendWind.getText());
+    }
+
+    private String getHashPassword(){
+        return new UserHelper().getPasswordHash(getUserPassword());
     }
 }

@@ -68,7 +68,6 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
     @Override
     public void onLoginListener(String loginName, String password) {
-//        User savedUser = UserSettings.requestUser(settings);
         UserSettings.requestUser(settings);
         if(UserSettings.getUser() == null){
             Toast.makeText(this, R.string.login_msg_1, Toast.LENGTH_SHORT).show();

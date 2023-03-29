@@ -68,7 +68,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
                         Toast.makeText(getContext(), R.string.register_login_msg_3, Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        User user = new User(getLoginName(), getPassword());
+                        User user = new User(getLoginName(), getHashPassword());
                         registerFragmentListener.onRegisterListener(user);
                     }
                 }
@@ -85,7 +85,10 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     }
 
     public String getPassword() {
-        String password = String.valueOf(editTextPasswordRegForm.getText());
-        return new UserHelper().getPasswordHash(password);
+        return String.valueOf(editTextPasswordRegForm.getText());
+    }
+
+    public String getHashPassword() {
+        return new UserHelper().getPasswordHash(getPassword());
     }
 }
