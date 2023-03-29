@@ -11,9 +11,9 @@
     <string name="nav_open">Open</string>
     <string name="nav_close">Close</string>
 
-    <string name="register_login_msg_1">Пожалуйста, заполните поля Login и Password!</string>
-    <string name="register_login_msg_2">Пожалуйста, заполните поле Login!</string>
-    <string name="register_login_msg_3">Пожалуйста, заполните поле Password!</string>
+    <string name="register_login_msg_1">Пожалуйста, заполните поля Логин и Пароль!</string>
+    <string name="register_login_msg_2">Пожалуйста, заполните поле Логин!</string>
+    <string name="register_login_msg_3">Пожалуйста, заполните поле Пароль!</string>
 
     <string name="register_msg_1">Вы уже зарегистрированы в приложении!</string>
     <string name="register_msg_2">Регистрация прошла успешно!</string>
@@ -36,4 +36,6 @@
 
     <string name="send_user_data">Отправить данные</string>
     <string name="get_user_data">Сохранить данные</string>
+
+    <string name="data_exchange_error">Введённые данные не совпадают с сохранёнными!</string>
 </resources>
