@@ -1,5 +1,6 @@
 package com.example.appmaga.DialogFragments;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -10,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserHelper;
 import com.example.appmaga.User.UserSettings;
@@ -53,6 +55,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     private void sendData(){
         if(checkSendData() == true){
             getDialog().dismiss();
+            openWindowWithMessengers(GsonWork.performSerialization(UserSettings.getUser()));
         }
     }
 
@@ -79,6 +82,14 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
                 else return true;
             }
         }
+    }
+
+    private void openWindowWithMessengers(String data){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_TEXT, data);
+        intent.setType("*/*");
+        startActivity(Intent.createChooser(intent, "Share with friends"));
     }
 
     private String getUserLogin(){
