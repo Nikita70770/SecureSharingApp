@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Fragments.LoginFragment;
 import com.example.appmaga.Fragments.RegistrationFragment;
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
@@ -28,6 +29,8 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
     private SharedPreferences settings;
     private SharedPreferences.Editor editorSettings;
+
+    private FileWork fileWork;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +55,13 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
         else{
             UserSettings.saveUser(editorSettings, user);
             UserSettings.requestUser(settings);
+
+            fileWork = new FileWork(getApplicationContext(), "contacts.txt");
+            fileWork.createNewInternalFile();
+
             hideFragment(registrationFragment);
             closeSystemKeyboard();
+
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
             Toast.makeText(this, R.string.register_msg_2, Toast.LENGTH_SHORT).show();
