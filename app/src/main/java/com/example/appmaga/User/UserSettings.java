@@ -3,24 +3,25 @@ package com.example.appmaga.User;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.appmaga.Gson.GsonWork;
 import com.google.gson.Gson;
 
 public class UserSettings {
     public static final String APP_PREFERENCES = "UserSettings";
     public static final String APP_PREFERENCES_USER_OBJECT = "UserObject";
     public static final int ACCESS_MODE = Context.MODE_PRIVATE;
+
     public static User user;
-    private static final Gson gson = new Gson();
 
     public static void saveUser(SharedPreferences.Editor editorSettings, User user){
-        String jsonUser = gson.toJson(user);
+        String jsonUser = GsonWork.performSerialization(user);
         editorSettings.putString(APP_PREFERENCES_USER_OBJECT, jsonUser);
         editorSettings.apply();
     }
 
     public static void requestUser(SharedPreferences settings){
         String jsonUser = settings.getString(APP_PREFERENCES_USER_OBJECT, null);
-        setUser(gson.fromJson(jsonUser, User.class));
+        setUser((User) GsonWork.performDeserialization(jsonUser, User.class.getSimpleName()));
     }
 
     public static User getUser() {
