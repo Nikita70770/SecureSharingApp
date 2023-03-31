@@ -31,7 +31,6 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
     private SharedPreferences settings;
     private SharedPreferences.Editor editorSettings;
 
-    private final String INTENT_KEY = "FileWorkJson";
     private FileWork fileWork;
 
     @Override
@@ -65,7 +64,6 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
             closeSystemKeyboard();
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            intent.putExtra(INTENT_KEY, GsonWork.performSerialization(fileWork));
             startActivity(intent);
             Toast.makeText(this, R.string.register_msg_2, Toast.LENGTH_SHORT).show();
         }
@@ -91,7 +89,6 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
                 hideFragment(loginFragment);
                 closeSystemKeyboard();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                intent.putExtra(INTENT_KEY, GsonWork.performSerialization(fileWork));
                 startActivity(intent);
                 Toast.makeText(this, R.string.login_msg_3, Toast.LENGTH_SHORT).show();
             }
