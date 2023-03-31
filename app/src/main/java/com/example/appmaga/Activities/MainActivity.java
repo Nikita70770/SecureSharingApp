@@ -5,11 +5,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
+import com.example.appmaga.File.FileWork;
+import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
 import com.google.android.material.navigation.NavigationView;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DialogFragment dataExchangeFragment, addContactFragment;
     private TextView txtLoginUser;
 
+    private final String INTENT_KEY = "FileWorkJson";
+    private FileWork fileWork;
+
     private String loginUser, passwordUser;
 
     @Override
@@ -37,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        fileWork = getObjectFileWork();
         initDataUser();
         initElements();
     }
@@ -100,6 +105,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment.show(getSupportFragmentManager(), "addContactFragment");
                 break;
         }
+    }
+
+    public FileWork getObjectFileWork() {
+        Bundle arguments = getIntent().getExtras();
+        fileWork = (FileWork) GsonWork.performDeserialization(arguments.getString(INTENT_KEY),
+                FileWork.class.getSimpleName());
+        return fileWork;
     }
 
     private void initDataUser(){
