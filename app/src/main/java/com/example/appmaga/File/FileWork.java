@@ -41,7 +41,7 @@ public class FileWork {
     public boolean writeDataToInternalFile(String data){
         if(!createNewInternalFile()){
             try {
-                FileOutputStream fos = context.openFileOutput(pathFile, Context.MODE_PRIVATE);
+                FileOutputStream fos = context.openFileOutput(this.fileName, Context.MODE_PRIVATE);
                 OutputStreamWriter osw = new OutputStreamWriter(fos);
                 osw.write(data);
                 osw.flush();

@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.example.appmaga.File.FileWork;
 import com.example.appmaga.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -19,9 +20,12 @@ public class AddContactFragment extends DialogFragment implements View.OnClickLi
     private TextInputEditText editTextAddContactWind;
     private Button btnSaveData;
 
+    private FileWork fileWork;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fileWork = new FileWork(getContext(), "contacts.txt");
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
     }
 
@@ -49,6 +53,7 @@ public class AddContactFragment extends DialogFragment implements View.OnClickLi
     private void saveData(){
         if(checkGetData() == true){
             getDialog().dismiss();
+            fileWork.writeDataToInternalFile(getContactData());
         }
     }
 
