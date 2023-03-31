@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.appmaga.Gson.GsonWork;
-import com.google.gson.Gson;
 
 public class UserSettings {
     public static final String APP_PREFERENCES = "UserSettings";
