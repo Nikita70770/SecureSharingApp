@@ -16,6 +16,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FileWork {
+    public static final String FILE_NAME = "contacts.txt";
+
     private Context context;
     private String pathFile, fileName;
 

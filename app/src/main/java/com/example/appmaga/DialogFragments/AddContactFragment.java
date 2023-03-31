@@ -22,10 +22,13 @@ public class AddContactFragment extends DialogFragment implements View.OnClickLi
 
     private FileWork fileWork;
 
+    public AddContactFragment(FileWork fileWork){
+        this.fileWork = fileWork;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        fileWork = new FileWork(getContext(), "contacts.txt");
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
     }
 

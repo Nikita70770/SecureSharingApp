@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
+import com.example.appmaga.File.FileWork;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
 import com.google.android.material.navigation.NavigationView;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private DialogFragment dataExchangeFragment, addContactFragment;
     private TextView txtLoginUser;
 
+    private FileWork fileWork;
     private String loginUser, passwordUser;
 
     @Override
@@ -61,7 +63,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.navAddContact:
-                addContactFragment = new AddContactFragment();
+                addContactFragment = new AddContactFragment(getFileWork());
                 showDialogFragment(addContactFragment, AddContactFragment.ID_DIALOG_ADD_CONTACT);
                 return true;
 
@@ -104,5 +106,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void initDataUser(){
         loginUser = UserSettings.getUser().getLogin();
         passwordUser = UserSettings.getUser().getPassword();
+    }
+
+    public FileWork getFileWork() {
+        return new FileWork(getApplicationContext(), FileWork.FILE_NAME);
     }
 }

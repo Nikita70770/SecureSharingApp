@@ -40,7 +40,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
         settings = getSharedPreferences(UserSettings.APP_PREFERENCES, UserSettings.ACCESS_MODE);
         editorSettings = settings.edit();
-        fileWork = new FileWork(getApplicationContext(), "contacts.txt");
+        fileWork = new FileWork(getApplicationContext(), FileWork.FILE_NAME);
 
         if(savedInstanceState == null){
             registrationFragment = new RegistrationFragment();
