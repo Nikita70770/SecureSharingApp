@@ -1,6 +1,7 @@
 package com.example.appmaga.Adapters;
 
 import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -26,17 +27,20 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.chat_list_recyclerview_item, parent, false);
+        return new ChatViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-
+        if(holder instanceof ChatViewHolder){
+            ((ChatViewHolder) holder).txtLoginContact.setText(String.valueOf(contacts.get(position)));
+        }
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return contacts.size();
     }
 
     public class ChatViewHolder extends RecyclerView.ViewHolder{
