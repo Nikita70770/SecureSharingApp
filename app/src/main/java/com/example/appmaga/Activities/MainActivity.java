@@ -110,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         List<String> list = new ArrayList<>(getFileWork().readAllLinesInternalFile());
         if(list.size() != 0){
             txtListChats.setVisibility(View.GONE);
-            ChatsFragment chatsFragment = new ChatsFragment(list);
+            ChatsFragment chatsFragment = ChatsFragment.newInstance(list);
             addFragment(R.id.chatsFragmentContainer, chatsFragment);
         }
     }

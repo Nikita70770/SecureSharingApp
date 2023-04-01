@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,7 +24,18 @@ public class ChatsFragment extends Fragment {
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
 
-    public ChatsFragment(List<String> list){
+    public static ChatsFragment newInstance(List<String> list){
+        ChatsFragment chatsFragment = new ChatsFragment();
+        Bundle args = new Bundle();
+        args.putStringArrayList(ConstantKeysFragment.DATA_CONTACTS_KEY, new ArrayList<>(list));
+        chatsFragment.setArguments(args);
+        return chatsFragment;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        List<String> list = getArguments().getStringArrayList(ConstantKeysFragment.DATA_CONTACTS_KEY);
         this.listContacts = getContacts(list);
     }
 
