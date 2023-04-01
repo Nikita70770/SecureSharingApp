@@ -1,8 +1,10 @@
 package com.example.appmaga.Fragments;
 
+import androidx.fragment.app.Fragment;
+
 import java.util.List;
 
-public class ChatsFragment {
+public class ChatsFragment extends Fragment {
 
     private List<String> listContacts;
 

@@ -62,7 +62,7 @@ public class FileWork {
         List<String> listContactData = new ArrayList<>();
         if(!createNewInternalFile()){
             try {
-                FileInputStream fis = context.openFileInput(pathFile);
+                FileInputStream fis = context.openFileInput(fileName);
                 InputStreamReader isr = new InputStreamReader(fis);
                 BufferedReader bufferedReader = new BufferedReader(isr);
 

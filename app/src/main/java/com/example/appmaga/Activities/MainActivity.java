@@ -2,7 +2,6 @@ package com.example.appmaga.Activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -10,6 +9,7 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.File.FileWork;
+import com.example.appmaga.Fragments.ChatsFragment;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
 import com.google.android.material.navigation.NavigationView;
@@ -20,12 +20,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.DialogFragment;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
+    private FragmentManager fragmentManager = getSupportFragmentManager();
     private DialogFragment dataExchangeFragment, addContactFragment;
     private TextView txtLoginUser;
 
@@ -35,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
 
         initElements();
+        showAllChats();
     }
 
     @Override
@@ -95,6 +102,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment.show(getSupportFragmentManager(), "addContactFragment");
                 break;
         }
+    }
+
+    private void showAllChats(){
+        List<String> list = new ArrayList<>(getFileWork().readAllLinesInternalFile());
+        if(list.size() != 0){
+            ChatsFragment chatsFragment = new ChatsFragment(list);
+            addFragment(R.id.chatsFragmentContainer, chatsFragment);
+        }
+    }
+
+    private void addFragment(int idElement, Fragment fragment){
+        fragmentManager
+                .beginTransaction()
+                .add(idElement, fragment)
+                .commit();
     }
 
     public FileWork getFileWork() {
