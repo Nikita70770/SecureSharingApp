@@ -26,19 +26,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private View headerView;
     private DialogFragment dataExchangeFragment, addContactFragment;
     private TextView txtLoginUser;
-
-    private FileWork fileWork;
-    private String loginUser, passwordUser;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initDataUser();
         initElements();
     }
 
@@ -76,11 +71,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
-        headerView = MainActivity.this.navigationView.getHeaderView(0);
-        txtLoginUser = headerView.findViewById(R.id.txtLoginUser);
+        txtLoginUser = this.navigationView.getHeaderView(0).findViewById(R.id.txtLoginUser);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_item_nav_open, R.string.menu_item_nav_close);
 
-        txtLoginUser.setText(loginUser);
+        txtLoginUser.setText(UserSettings.getUser().getLogin());
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
@@ -101,11 +95,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 fragment.show(getSupportFragmentManager(), "addContactFragment");
                 break;
         }
-    }
-
-    private void initDataUser(){
-        loginUser = UserSettings.getUser().getLogin();
-        passwordUser = UserSettings.getUser().getPassword();
     }
 
     public FileWork getFileWork() {
