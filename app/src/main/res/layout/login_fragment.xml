@@ -19,7 +19,7 @@
         <TextView
             style="@style/headerTextPrimary"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/login_form_title" />
+            android:text="@string/textview_login_title" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputNameLogForm"

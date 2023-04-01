@@ -20,7 +20,7 @@
         <TextView
             style="@style/headerTextPrimary"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/data_exchange" />
+            android:text="@string/textview_data_exchange_title" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputLoginSendWind"
@@ -61,7 +61,7 @@
             style="@style/SendAndGetDataButton"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/send_user_data"/>
+            android:text="@string/btn_send_user_data_text"/>
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

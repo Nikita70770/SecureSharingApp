@@ -23,9 +23,20 @@
             android:layout_height="wrap_content" />
 
         <FrameLayout
-            android:id="@+id/mainFragmentContainer"
+            android:id="@+id/chatsFragmentContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/txtListChats"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:text=""
+                android:gravity="center"
+                android:layout_gravity="center_vertical"
+                android:textSize="@dimen/textSize_2"
+                android:textColor="@color/black">
+            </TextView>
 
         </FrameLayout>
     </LinearLayout>

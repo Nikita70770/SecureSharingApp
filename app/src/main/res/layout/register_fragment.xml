@@ -20,7 +20,7 @@
 
         <TextView
             style="@style/headerTextPrimary"
-            android:text="@string/register_form_title"
+            android:text="@string/textview_register_title"
             android:layout_marginTop="@dimen/loginViewsMargin"/>
 
         <com.google.android.material.textfield.TextInputLayout
@@ -60,7 +60,7 @@
             style="@style/registerButton"
             android:layout_marginTop="@dimen/buttonRegister"
             android:layout_gravity="center"
-            android:text="@string/btn_register_text" />
+            android:text="@string/btn_registration_text" />
 
         <Button
             android:id="@+id/btnSignIn"
