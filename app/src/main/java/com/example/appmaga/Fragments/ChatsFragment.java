@@ -12,10 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmaga.Adapters.ContactsAdapter;
 import com.example.appmaga.Contact.Contact;
-import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class ChatsFragment extends Fragment {
@@ -27,6 +25,10 @@ public class ChatsFragment extends Fragment {
         this.listContacts = getContacts(list);
     }
 
+    private List<Contact> getContacts(List<String> list) {
+        return null;
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -34,7 +36,7 @@ public class ChatsFragment extends Fragment {
         return view;
     }
 
-    private void initContactsAdapter(View view){
+    private void initAdapter(View view){
         chatListRecyclerview = view.findViewById(R.id.chatListRecyclerview);
         adapter = new ContactsAdapter(getContext(), listContacts);
         chatListRecyclerview.setAdapter(adapter);
