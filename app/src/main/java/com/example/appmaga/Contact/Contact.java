@@ -1,17 +1,17 @@
 package com.example.appmaga.Contact;
 
 public class Contact {
-    private String loginContact, passwordContact, randValueContact;
+    private String login, password, randValue;
 
-    public String getLoginContact() {
-        return loginContact;
+    public String getLogin() {
+        return login;
     }
 
-    public String getPasswordContact() {
-        return passwordContact;
+    public String getPassword() {
+        return password;
     }
 
-    public String getRandValueContact() {
-        return randValueContact;
+    public String getRandValue() {
+        return randValue;
     }
 }

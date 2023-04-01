@@ -35,7 +35,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof ChatViewHolder){
-            ((ChatViewHolder) holder).txtLoginContact.setText(String.valueOf(contacts.get(position).getLoginContact()));
+            ((ChatViewHolder) holder).txtLoginContact.setText(String.valueOf(contacts.get(position).getLogin()));
         }
     }
 

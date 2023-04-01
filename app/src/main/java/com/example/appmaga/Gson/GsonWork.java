@@ -1,5 +1,6 @@
 package com.example.appmaga.Gson;
 
+import com.example.appmaga.Contact.Contact;
 import com.example.appmaga.File.FileWork;
 import com.example.appmaga.User.User;
 import com.google.gson.Gson;
@@ -18,6 +19,8 @@ public class GsonWork {
                 return gson.fromJson(data, User.class);
             case "FileWork":
                 return gson.fromJson(data, FileWork.class);
+            case "Contact":
+                return gson.fromJson(data, Contact.class);
             default:
                 return null;
         }
