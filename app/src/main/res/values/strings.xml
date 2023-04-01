@@ -1,9 +1,3 @@
 <resources>
     <string name="app_name">Secure Messaging App</string>
-
-    <!--    Menu items-->
-    <string name="exchange_data">Обменяться данными</string>
-    <string name="add_contact">Добавить контакт</string>
-    <string name="nav_open">Open</string>
-    <string name="nav_close">Close</string>
 </resources>

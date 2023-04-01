@@ -78,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         navigationView = findViewById(R.id.navigationView);
         headerView = MainActivity.this.navigationView.getHeaderView(0);
         txtLoginUser = headerView.findViewById(R.id.txtLoginUser);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.nav_open, R.string.nav_close);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_item_nav_open, R.string.menu_item_nav_close);
 
         txtLoginUser.setText(loginUser);
         drawerLayout.addDrawerListener(actionBarDrawerToggle);

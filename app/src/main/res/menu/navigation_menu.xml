@@ -8,11 +8,11 @@
         app:showAsAction="always"
         android:id="@+id/navExchangeData"
         android:icon="@drawable/ic_data_transfer"
-        android:title="@string/exchange_data" />
+        android:title="@string/menu_item_exchange_data" />
 
     <item
         app:showAsAction="always"
         android:id="@+id/navAddContact"
         android:icon="@drawable/ic_add_user"
-        android:title="@string/add_contact" />
+        android:title="@string/menu_item_add_contact" />
 </menu>

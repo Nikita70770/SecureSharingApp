@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="menu_item_exchange_data">Обменяться данными</string>
+    <string name="menu_item_add_contact">Добавить контакт</string>
+    <string name="menu_item_nav_open">Open</string>
+    <string name="menu_item_nav_close">Close</string>
+</resources>
