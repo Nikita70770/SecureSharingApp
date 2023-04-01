@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appmaga.Contact.Contact;
 import com.example.appmaga.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
@@ -21,7 +22,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     public ContactsAdapter(Context context, List<Contact> list){
         this.context = context;
-        this.contacts = list;
+        this.contacts = new ArrayList<>(list);
     }
 
     @NonNull
@@ -34,7 +35,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof ChatViewHolder){
-            ((ChatViewHolder) holder).txtLoginContact.setText(String.valueOf(contacts.get(position)));
+            ((ChatViewHolder) holder).txtLoginContact.setText(String.valueOf(contacts.get(position).getLoginContact()));
         }
     }
 
