@@ -25,7 +25,7 @@
             android:id="@+id/textInputNameLogForm"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_name_hint">
+            android:hint="@string/hint_login_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextNameLogForm"
@@ -41,7 +41,7 @@
             android:id="@+id/textInputPasswordLogForm"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_password_hint">
+            android:hint="@string/hint_login_password">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/editTextPasswordLogForm"
@@ -64,7 +64,7 @@
             android:id="@+id/btnSignUp"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:text="@string/login_signup_hint"
+            android:text="@string/hint_login_signup"
             android:textAllCaps="false"
             android:textColor="@color/primaryTextColor"
             android:background="@color/midnightExpress" />

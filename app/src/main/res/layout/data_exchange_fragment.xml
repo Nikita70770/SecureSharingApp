@@ -26,7 +26,7 @@
             android:id="@+id/textInputLoginSendWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/your_login_hint"
+            android:hint="@string/hint_your_login"
             android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -43,7 +43,7 @@
             android:id="@+id/textInputPasswordSendWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/your_password_hint"
+            android:hint="@string/hint_your_password"
             android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText

@@ -25,7 +25,7 @@
             android:id="@+id/textInputAddContactWind"
             style="@style/parent"
             android:layout_marginTop="@dimen/loginViewsMargin"
-            android:hint="@string/login_password_contact_hint"
+            android:hint="@string/hint_login_password_contact"
             android:textColorHint="@color/white">
 
             <com.google.android.material.textfield.TextInputEditText
