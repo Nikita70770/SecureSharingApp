@@ -58,14 +58,14 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
         switch(view.getId()){
             case R.id.btnRegister:
                 if(getLoginName().isEmpty() && getPassword().isEmpty()){
-                    Toast.makeText(getContext(), R.string.register_login_msg_1, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.toast_login_password, Toast.LENGTH_SHORT).show();
                 }
                 else{
                     if(getLoginName().isEmpty()){
-                        Toast.makeText(getContext(), R.string.register_login_msg_2, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.toast_login, Toast.LENGTH_SHORT).show();
                     }
                     else if(getPassword().isEmpty()){
-                        Toast.makeText(getContext(), R.string.register_login_msg_3, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), R.string.toast_password, Toast.LENGTH_SHORT).show();
                     }
                     else{
                         User user = new User(getLoginName(), getHashPassword());

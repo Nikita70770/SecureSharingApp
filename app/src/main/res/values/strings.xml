@@ -1,22 +1,6 @@
 <resources>
     <string name="app_name">Secure Messaging App</string>
 
-<!--    Messages-->
-    <string name="register_login_msg_1">Пожалуйста, заполните поля Логин и Пароль!</string>
-    <string name="register_login_msg_2">Пожалуйста, заполните поле Логин!</string>
-    <string name="register_login_msg_3">Пожалуйста, заполните поле Пароль!</string>
-    <string name="register_login_contact">Пожалуйста, заполните поля Логин и Пароль контакта!</string>
-
-    <string name="register_msg_1">Вы уже зарегистрированы в приложении!</string>
-    <string name="register_msg_2">Регистрация прошла успешно!</string>
-
-    <string name="login_msg_1">Вы не зарегистрированы в приложении!</string>
-    <string name="login_msg_2">Введен неверный логин или пароль! Попробуйте заново.</string>
-    <string name="login_msg_3">Авторизация прошла успешно!</string>
-
-    <string name="data_exchange_error">Введённые данные не совпадают с сохранёнными!</string>
-
-
     <!--    Menu items-->
     <string name="exchange_data">Обменяться данными</string>
     <string name="add_contact">Добавить контакт</string>

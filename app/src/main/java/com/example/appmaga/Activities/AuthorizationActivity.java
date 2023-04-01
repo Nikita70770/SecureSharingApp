@@ -52,7 +52,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
     public void onRegisterListener(User user) {
         UserSettings.requestUser(settings);
         if(UserSettings.getUser() != null){
-            Toast.makeText(getApplicationContext(), R.string.register_msg_1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), R.string.toast_registered, Toast.LENGTH_SHORT).show();
         }
         else{
             UserSettings.saveUser(editorSettings, user);
@@ -65,7 +65,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(intent);
-            Toast.makeText(this, R.string.register_msg_2, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_successful_registered, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -79,18 +79,18 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
     public void onLoginListener(String loginName, String password) {
         UserSettings.requestUser(settings);
         if(UserSettings.getUser() == null){
-            Toast.makeText(this, R.string.login_msg_1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.toast_not_registered, Toast.LENGTH_SHORT).show();
         }
         else{
             if(!UserSettings.getUser().getLogin().equals(loginName) || !UserSettings.getUser().getPassword().equals(password)){
-                Toast.makeText(this, R.string.login_msg_2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.toast_wrong_login_or_password, Toast.LENGTH_SHORT).show();
             }
             else{
                 hideFragment(loginFragment);
                 closeSystemKeyboard();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
-                Toast.makeText(this, R.string.login_msg_3, Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.toast_successful_authorization, Toast.LENGTH_SHORT).show();
             }
         }
     }

@@ -61,22 +61,22 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
 
     private boolean checkSendData(){
         if(getUserLogin().isEmpty() && getUserPassword().isEmpty()){
-            Toast.makeText(getContext(), R.string.register_login_msg_1, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.toast_login_password, Toast.LENGTH_SHORT).show();
             return false;
         }
         else{
             if(getUserLogin().isEmpty()){
-                Toast.makeText(getContext(), R.string.register_login_msg_2, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.toast_login, Toast.LENGTH_SHORT).show();
                 return false;
             }
             else if(getUserPassword().isEmpty()){
-                Toast.makeText(getContext(), R.string.register_login_msg_3, Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), R.string.toast_password, Toast.LENGTH_SHORT).show();
                 return false;
             }
             else{
                 if(!UserSettings.getUser().getLogin().equals(getUserLogin()) ||
                         !UserSettings.getUser().getPassword().equals(getHashPassword())){
-                    Toast.makeText(getContext(), R.string.data_exchange_error, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), R.string.toast_wrong_data_exchange, Toast.LENGTH_SHORT).show();
                     return false;
                 }
                 else return true;

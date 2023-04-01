@@ -62,7 +62,7 @@ public class AddContactFragment extends DialogFragment implements View.OnClickLi
 
     private boolean checkGetData(){
         if(getContactData().isEmpty()){
-            Toast.makeText(getContext(), R.string.register_login_contact, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getContext(), R.string.toast_login_password, Toast.LENGTH_SHORT).show();
             return false;
         }
         else{

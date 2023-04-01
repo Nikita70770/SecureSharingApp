@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="toast_login_password">Пожалуйста, заполните поля Логин и Пароль!</string>
+    <string name="toast_login">Пожалуйста, заполните поле Логин!</string>
+    <string name="toast_password">Пожалуйста, заполните поле Пароль!</string>
+
+    <string name="toast_registered">Вы уже зарегистрированы в приложении!</string>
+    <string name="toast_not_registered">Вы не зарегистрированы в приложении!</string>
+    <string name="toast_successful_registered">Регистрация прошла успешно!</string>
+    <string name="toast_successful_authorization">Авторизация прошла успешно!</string>
+
+    <string name="toast_wrong_login_or_password">Введен неверный логин или пароль! Попробуйте заново.</string>
+    <string name="toast_wrong_data_exchange">Введённые данные не совпадают с сохранёнными!</string>
+</resources>
