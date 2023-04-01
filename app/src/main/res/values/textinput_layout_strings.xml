@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hint_login_name">Логин</string>
+    <string name="hint_login_password">Пароль</string>
+    <string name="hint_signup_login">Уже есть аккаунт? Войти</string>
+    <string name="hint_login_signup">Еще нет аккаунта? Зарегистрироваться</string>
+    <string name="hint_your_login">Ваш логин</string>
+    <string name="hint_your_password">Ваш пароль</string>
+    <string name="hint_login_password_contact">Логин и пароль контакта</string>
+</resources>

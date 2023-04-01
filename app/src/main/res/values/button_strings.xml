@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="btn_login_text">Войти</string>
+    <string name="btn_registration_text">Зарегистрироваться</string>
+    <string name="btn_send_user_data_text">Отправить данные</string>
+    <string name="btn_get_user_data_text">Сохранить данные</string>
+</resources>
