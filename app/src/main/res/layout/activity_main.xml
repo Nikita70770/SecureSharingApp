@@ -31,7 +31,7 @@
                 android:id="@+id/txtListChats"
                 android:layout_height="wrap_content"
                 android:layout_width="match_parent"
-                android:text=""
+                android:text="@string/textview_list_chats_text"
                 android:gravity="center"
                 android:layout_gravity="center_vertical"
                 android:textSize="@dimen/textSize_2"
