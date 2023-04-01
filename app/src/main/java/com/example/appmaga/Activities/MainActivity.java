@@ -2,6 +2,7 @@ package com.example.appmaga.Activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private DialogFragment dataExchangeFragment, addContactFragment;
-    private TextView txtLoginUser;
+    private TextView txtLoginUser, txtListChats;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
+        txtListChats = findViewById(R.id.txtListChats);
         txtLoginUser = this.navigationView.getHeaderView(0).findViewById(R.id.txtLoginUser);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_item_nav_open, R.string.menu_item_nav_close);
 
@@ -107,6 +109,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void showAllChats(){
         List<String> list = new ArrayList<>(getFileWork().readAllLinesInternalFile());
         if(list.size() != 0){
+            txtListChats.setVisibility(View.GONE);
             ChatsFragment chatsFragment = new ChatsFragment(list);
             addFragment(R.id.chatsFragmentContainer, chatsFragment);
         }
