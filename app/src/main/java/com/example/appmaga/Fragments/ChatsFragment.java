@@ -12,8 +12,10 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmaga.Adapters.ContactsAdapter;
 import com.example.appmaga.Contact.Contact;
+import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ChatsFragment extends Fragment {
@@ -23,10 +25,6 @@ public class ChatsFragment extends Fragment {
 
     public ChatsFragment(List<String> list){
         this.listContacts = getContacts(list);
-    }
-
-    private List<Contact> getContacts(List<String> list) {
-        return null;
     }
 
     @Override
@@ -41,5 +39,17 @@ public class ChatsFragment extends Fragment {
         adapter = new ContactsAdapter(getContext(), listContacts);
         chatListRecyclerview.setAdapter(adapter);
         chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
+    }
+
+    private List<Contact> getContacts(List<String> list){
+        List<Contact> tempList = null;
+        if(list.size() != 0){
+            tempList = new ArrayList<>();
+            for(int i = 0; i < list.size(); i++){
+                Contact contact = (Contact) GsonWork.performDeserialization(list.get(i), Contact.class.getSimpleName());
+                tempList.add(contact);
+            }
+        }
+        return tempList;
     }
 }
