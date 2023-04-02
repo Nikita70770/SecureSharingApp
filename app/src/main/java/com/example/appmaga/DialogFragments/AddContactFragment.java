@@ -74,12 +74,17 @@ public class AddContactFragment extends DialogFragment implements IAddContactFra
 
     private void saveData(){
         if(checkGetData() == true){
-            getDialog().dismiss();
             fileWork.writeDataToInternalFile(getContactData());
+
             Contact contact = (Contact) GsonWork.performDeserialization(getContactData(), Contact.class.getSimpleName());
             Chap chap = new Chap(UserSettings.getUser(), contact.getLogin(), contact.getPassword(), contact.getRandValue());
             chap.makeChapAuthoWithContact(1);
+            openWindowWithMessengers(chap.getCalcHashSum());
+
             mainActivityListener.getContact(contact);
+            mainActivityListener.sendChap(chap);
+
+            getDialog().dismiss();
         }
     }
 

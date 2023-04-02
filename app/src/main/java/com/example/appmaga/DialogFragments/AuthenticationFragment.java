@@ -6,9 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
+import com.example.appmaga.Authentication.Chap;
+import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -17,8 +20,13 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
     private TextInputEditText editTextHashSumWind;
     private Button btnEstablishConnection;
 
-    public static AuthenticationFragment newInstance(){
+    private Chap chap;
+
+    public static AuthenticationFragment newInstance(Chap chap){
         AuthenticationFragment fragment = new AuthenticationFragment();
+        Bundle args = new Bundle();
+        args.putString("CHAP", GsonWork.performSerialization(chap));
+        fragment.setArguments(args);
         return fragment;
     }
 
@@ -26,6 +34,8 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
+        String jsonChap = getArguments().getString("CHAP");
+        this.chap = (Chap) GsonWork.performDeserialization(jsonChap, Chap.class.getSimpleName());
     }
 
     @Override
@@ -44,6 +54,7 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
 
     @Override
     public void onClick(View view) {
+        Toast.makeText(getContext(), chap.getCalcHashSum(), Toast.LENGTH_SHORT).show();
         getDialog().dismiss();
     }
 }

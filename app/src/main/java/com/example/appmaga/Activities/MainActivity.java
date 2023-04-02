@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.Contact.Contact;
 import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
 
             case R.id.navAddContact:
                 AddContactFragment fragment = AddContactFragment.newInstance();
-                addContactFragmentListener = (IAddContactFragmentListener) fragment;
+                addContactFragmentListener = fragment;
                 addContactFragmentListener.initFileWork(getFileWork());
                 showDialogFragment(fragment, AddContactFragment.ID_DIALOG_ADD_CONTACT);
                 return true;
@@ -138,7 +139,12 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
 
     @Override
     public void getContact(Contact contact) {
-        chatsFragmentListener = (IChatsFragmentListener) chatsFragment;
+        chatsFragmentListener = chatsFragment;
         chatsFragmentListener.sendContact(contact);
+    }
+
+    @Override
+    public void sendChap(Chap chap) {
+        chatsFragmentListener.setChap(chap);
     }
 }
