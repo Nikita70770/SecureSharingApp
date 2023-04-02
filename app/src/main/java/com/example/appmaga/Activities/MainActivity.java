@@ -7,11 +7,14 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
+import com.example.appmaga.Contact.Contact;
 import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Fragments.ChatsFragment;
+import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
+import com.example.appmaga.Interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
 import com.google.android.material.navigation.NavigationView;
@@ -28,7 +31,7 @@ import androidx.fragment.app.FragmentManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements IMainActivityListener, NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -127,5 +130,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public FileWork getFileWork() {
         return new FileWork(getApplicationContext(), FileWork.FILE_NAME);
+    }
+
+    @Override
+    public void getContact(String data) {
+        Contact contact = (Contact) GsonWork.performDeserialization(data, Contact.class.getSimpleName());
     }
 }
