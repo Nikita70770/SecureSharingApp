@@ -21,7 +21,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
 
     public static final int ID_FRAGMENT_DATA_EXCHANGE = 1;
 
-    private TextInputEditText editTextLoginSendWind, editTextPasswordSendWind;
+    private TextInputEditText editTextLoginSendWind, editTextPasswordSendWind, editTextRandValSendWind;
     private Button btnSendData;
 
     public static DataExchangeFragment newInstance(){
@@ -46,6 +46,9 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     private void initViewElements(View windowView){
         editTextLoginSendWind = windowView.findViewById(R.id.editTextLoginSendWind);
         editTextPasswordSendWind = windowView.findViewById(R.id.editTextPasswordSendWind);
+        editTextRandValSendWind = windowView.findViewById(R.id.editTextRandValSendWind);
+
+        editTextRandValSendWind.setText(UserSettings.getUser().getRandN());
 
         btnSendData = windowView.findViewById(R.id.btnSendData);
         btnSendData.setOnClickListener(this);
