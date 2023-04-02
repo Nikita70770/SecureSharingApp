@@ -1,6 +1,7 @@
 package com.example.appmaga.DialogFragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -77,8 +78,17 @@ public class AddContactFragment extends DialogFragment implements IAddContactFra
             fileWork.writeDataToInternalFile(getContactData());
             Contact contact = (Contact) GsonWork.performDeserialization(getContactData(), Contact.class.getSimpleName());
             Chap chap = new Chap(UserSettings.getUser(), contact.getLogin(), contact.getPassword(), contact.getRandValue());
+            chap.makeChapAuthoWithContact(1);
             mainActivityListener.getContact(contact);
         }
+    }
+
+    private void openWindowWithMessengers(String data){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_TEXT, data);
+        intent.setType("*/*");
+        startActivity(Intent.createChooser(intent, "Share with friends"));
     }
 
     private boolean checkGetData(){
