@@ -11,6 +11,7 @@ import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Fragments.ChatsFragment;
+import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
 import com.google.android.material.navigation.NavigationView;
@@ -33,8 +34,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private DialogFragment addContactFragment;
     private TextView txtLoginUser, txtListChats;
+
+    private IAddContactFragmentListener addContactFragmentListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -65,8 +67,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 return true;
 
             case R.id.navAddContact:
-                addContactFragment = new AddContactFragment(getFileWork());
-                showDialogFragment(addContactFragment, AddContactFragment.ID_DIALOG_ADD_CONTACT);
+                AddContactFragment fragment = AddContactFragment.newInstance();
+                addContactFragmentListener = (IAddContactFragmentListener) fragment;
+                addContactFragmentListener.initFileWork(getFileWork());
+                showDialogFragment(fragment, AddContactFragment.ID_DIALOG_ADD_CONTACT);
                 return true;
 
             default:

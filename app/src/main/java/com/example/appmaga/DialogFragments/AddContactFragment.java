@@ -11,19 +11,19 @@ import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.appmaga.File.FileWork;
+import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.R;
 import com.google.android.material.textfield.TextInputEditText;
 
-public class AddContactFragment extends DialogFragment implements View.OnClickListener {
+public class AddContactFragment extends DialogFragment implements IAddContactFragmentListener, View.OnClickListener {
     public static final int ID_DIALOG_ADD_CONTACT = 2;
 
     private TextInputEditText editTextAddContactWind;
     private Button btnSaveData;
-
     private FileWork fileWork;
 
-    public AddContactFragment(FileWork fileWork){
-        this.fileWork = fileWork;
+    public static AddContactFragment newInstance(){
+        return new AddContactFragment();
     }
 
     @Override
@@ -72,5 +72,10 @@ public class AddContactFragment extends DialogFragment implements View.OnClickLi
 
     private String getContactData(){
         return String.valueOf(editTextAddContactWind.getText());
+    }
+
+    @Override
+    public void initFileWork(FileWork object) {
+        this.fileWork = object;
     }
 }
