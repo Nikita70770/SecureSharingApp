@@ -12,12 +12,14 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.Contact.Contact;
 import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;
 import com.example.appmaga.R;
+import com.example.appmaga.User.UserSettings;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class AddContactFragment extends DialogFragment implements IAddContactFragmentListener, View.OnClickListener {
@@ -74,6 +76,7 @@ public class AddContactFragment extends DialogFragment implements IAddContactFra
             getDialog().dismiss();
             fileWork.writeDataToInternalFile(getContactData());
             Contact contact = (Contact) GsonWork.performDeserialization(getContactData(), Contact.class.getSimpleName());
+            Chap chap = new Chap(UserSettings.getUser(), contact.getLogin(), contact.getPassword(), contact.getRandValue());
             mainActivityListener.getContact(contact);
         }
     }
