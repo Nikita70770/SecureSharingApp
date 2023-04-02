@@ -12,7 +12,9 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
+import com.example.appmaga.Contact.Contact;
 import com.example.appmaga.File.FileWork;
+import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;
 import com.example.appmaga.R;
@@ -71,7 +73,8 @@ public class AddContactFragment extends DialogFragment implements IAddContactFra
         if(checkGetData() == true){
             getDialog().dismiss();
             fileWork.writeDataToInternalFile(getContactData());
-            mainActivityListener.getContact(getContactData());
+            Contact contact = (Contact) GsonWork.performDeserialization(getContactData(), Contact.class.getSimpleName());
+            mainActivityListener.getContact(contact);
         }
     }
 

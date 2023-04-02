@@ -137,8 +137,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     }
 
     @Override
-    public void getContact(String data) {
-        Contact contact = (Contact) GsonWork.performDeserialization(data, Contact.class.getSimpleName());
+    public void getContact(Contact contact) {
         chatsFragmentListener = (IChatsFragmentListener) chatsFragment;
         chatsFragmentListener.sendContact(contact);
     }
