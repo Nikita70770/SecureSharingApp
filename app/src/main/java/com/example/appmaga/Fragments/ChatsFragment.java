@@ -1,5 +1,6 @@
 package com.example.appmaga.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -73,6 +74,14 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
         return tempList;
     }
 
+    private void openWindowWithMessengers(String data){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_TEXT, data);
+        intent.setType("*/*");
+        startActivity(Intent.createChooser(intent, "Share with friends"));
+    }
+
     @Override
     public void sendContact(Contact contact) {
         adapter.insertSingleContact(contact);
@@ -85,6 +94,8 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
 
     @Override
     public void onClickItemListener(int position) {
+        chap.makeChapAuthoWithContact(1);
+        openWindowWithMessengers(chap.getCalcHashSum());
         authenticationFragment = AuthenticationFragment.newInstance(chap);
         authenticationFragment.show(getActivity().getSupportFragmentManager(), "authenticationFragment");
     }

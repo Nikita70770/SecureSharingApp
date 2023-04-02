@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.appmaga.Authentication.Chap;
+import com.example.appmaga.Fragments.ConstantKeysFragment;
 import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
 import com.google.android.material.textfield.TextInputEditText;
@@ -25,7 +26,7 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
     public static AuthenticationFragment newInstance(Chap chap){
         AuthenticationFragment fragment = new AuthenticationFragment();
         Bundle args = new Bundle();
-        args.putString("CHAP", GsonWork.performSerialization(chap));
+        args.putString(ConstantKeysFragment.CHAP_PROTOCOL_KEY, GsonWork.performSerialization(chap));
         fragment.setArguments(args);
         return fragment;
     }
@@ -34,7 +35,7 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
-        String jsonChap = getArguments().getString("CHAP");
+        String jsonChap = getArguments().getString(ConstantKeysFragment.CHAP_PROTOCOL_KEY);
         this.chap = (Chap) GsonWork.performDeserialization(jsonChap, Chap.class.getSimpleName());
     }
 
@@ -54,7 +55,6 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        Toast.makeText(getContext(), chap.getCalcHashSum(), Toast.LENGTH_SHORT).show();
         getDialog().dismiss();
     }
 }
