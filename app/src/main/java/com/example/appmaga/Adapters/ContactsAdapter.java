@@ -19,10 +19,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
 
     private Context context;
     private List<Contact> contacts;
+    private IContactsAdapterListener contactsAdapterListener;
 
-    public ContactsAdapter(Context context, List<Contact> list){
+    public ContactsAdapter(Context context, List<Contact> list, IContactsAdapterListener listener){
         this.context = context;
         this.contacts = new ArrayList<>(list);
+        this.contactsAdapterListener = listener;
     }
 
     @NonNull
@@ -50,12 +52,22 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         return contacts.size();
     }
 
-    public class ChatViewHolder extends RecyclerView.ViewHolder{
+    public class ChatViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView txtLoginContact;
 
         public ChatViewHolder(@NonNull View itemView) {
             super(itemView);
             txtLoginContact = itemView.findViewById(R.id.txtLoginContact);
+            itemView.setOnClickListener(this);
         }
+
+        @Override
+        public void onClick(View view) {
+            contactsAdapterListener.onClickItemListener(getAdapterPosition());
+        }
+    }
+
+    public interface IContactsAdapterListener {
+        void onClickItemListener(int position);
     }
 }

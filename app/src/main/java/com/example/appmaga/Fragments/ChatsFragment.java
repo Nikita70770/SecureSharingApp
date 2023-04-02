@@ -4,10 +4,12 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,7 +22,7 @@ import com.example.appmaga.R;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatsFragment extends Fragment implements IChatsFragmentListener {
+public class ChatsFragment extends Fragment implements IChatsFragmentListener, ContactsAdapter.IContactsAdapterListener {
     private List<Contact> listContacts;
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
@@ -50,7 +52,7 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener {
 
     private void initAdapter(View view){
         chatListRecyclerview = view.findViewById(R.id.chatListRecyclerview);
-        adapter = new ContactsAdapter(getContext(), listContacts);
+        adapter = new ContactsAdapter(getContext(), listContacts, this);
         chatListRecyclerview.setAdapter(adapter);
         chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
@@ -70,5 +72,10 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener {
     @Override
     public void sendContact(Contact contact) {
         adapter.insertSingleContact(contact);
+    }
+
+    @Override
+    public void onClickItemListener(int position) {
+        Toast.makeText(getContext(), "index: " + String.valueOf(position), Toast.LENGTH_SHORT).show();
     }
 }
