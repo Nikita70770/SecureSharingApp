@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmaga.Adapters.ContactsAdapter;
 import com.example.appmaga.Contact.Contact;
+import com.example.appmaga.DialogFragments.AuthenticationFragment;
 import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.R;
@@ -26,6 +27,7 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
     private List<Contact> listContacts;
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
+    private AuthenticationFragment authenticationFragment;
 
     public static ChatsFragment newInstance(List<String> list){
         ChatsFragment chatsFragment = new ChatsFragment();
@@ -76,6 +78,7 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
 
     @Override
     public void onClickItemListener(int position) {
-        Toast.makeText(getContext(), "index: " + String.valueOf(position), Toast.LENGTH_SHORT).show();
+        authenticationFragment = AuthenticationFragment.newInstance();
+        authenticationFragment.show(getActivity().getSupportFragmentManager(), "authenticationFragment");
     }
 }
