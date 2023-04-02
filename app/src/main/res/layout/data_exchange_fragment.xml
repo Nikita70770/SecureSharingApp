@@ -56,6 +56,23 @@
 
         </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputRandValSendWind"
+            style="@style/parent"
+            android:layout_marginTop="@dimen/loginViewsMargin"
+            android:hint=""
+            android:textColorHint="@color/white">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextRandValSendWind"
+                style="@style/modifiedEditText"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:inputType="text"
+                android:maxLines="1" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
         <Button
             android:id="@+id/btnSendData"
             style="@style/SendAndGetDataButton"
