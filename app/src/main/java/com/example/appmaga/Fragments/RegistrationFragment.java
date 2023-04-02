@@ -68,7 +68,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
                         Toast.makeText(getContext(), R.string.toast_password, Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        User user = new User(getLoginName(), getHashPassword());
+                        User user = new User(getLoginName(), getHashPassword(), null);
                         registerFragmentListener.onRegisterListener(user);
                     }
                 }
