@@ -39,6 +39,12 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
+    public void insertSingleContact(Contact contact){
+        int insertIndex = this.contacts.size();
+        this.contacts.add(insertIndex, contact);
+        this.notifyItemInserted(insertIndex);
+    }
+
     @Override
     public int getItemCount() {
         return contacts.size();
