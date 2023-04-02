@@ -4,14 +4,17 @@ import android.content.Context;
 import android.util.Log;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,11 +46,11 @@ public class FileWork {
     public boolean writeDataToInternalFile(String data){
         if(!createNewInternalFile()){
             try {
-                FileOutputStream fos = context.openFileOutput(this.fileName, Context.MODE_PRIVATE);
-                OutputStreamWriter osw = new OutputStreamWriter(fos);
-                osw.write(data);
-                osw.flush();
-                osw.close();
+                FileWriter fileWriter = new FileWriter(this.pathFile, true);
+                BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
+                bufferedWriter.write(data + "\n");
+                bufferedWriter.close();
+                fileWriter.close();
             } catch (FileNotFoundException e) {
                 return false;
             } catch (IOException e) {
