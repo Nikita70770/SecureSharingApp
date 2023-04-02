@@ -24,6 +24,10 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     private TextInputEditText editTextLoginSendWind, editTextPasswordSendWind;
     private Button btnSendData;
 
+    public static DataExchangeFragment newInstance(){
+        return new DataExchangeFragment();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

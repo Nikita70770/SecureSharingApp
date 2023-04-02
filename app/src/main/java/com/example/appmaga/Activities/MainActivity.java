@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private DialogFragment dataExchangeFragment, addContactFragment;
+    private DialogFragment addContactFragment;
     private TextView txtLoginUser, txtListChats;
 
     @Override
@@ -61,8 +61,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()){
             case R.id.navExchangeData:
-                dataExchangeFragment = new DataExchangeFragment();
-                showDialogFragment(dataExchangeFragment, DataExchangeFragment.ID_FRAGMENT_DATA_EXCHANGE);
+                showDialogFragment(DataExchangeFragment.newInstance(), DataExchangeFragment.ID_FRAGMENT_DATA_EXCHANGE);
                 return true;
 
             case R.id.navAddContact:
