@@ -14,12 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appmaga.Adapters.ContactsAdapter;
 import com.example.appmaga.Contact.Contact;
 import com.example.appmaga.Gson.GsonWork;
+import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.R;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatsFragment extends Fragment {
+public class ChatsFragment extends Fragment implements IChatsFragmentListener {
     private List<Contact> listContacts;
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
@@ -64,5 +65,10 @@ public class ChatsFragment extends Fragment {
             }
         }
         return tempList;
+    }
+
+    @Override
+    public void sendContact(Contact contact) {
+        adapter.insertSingleContact(contact);
     }
 }

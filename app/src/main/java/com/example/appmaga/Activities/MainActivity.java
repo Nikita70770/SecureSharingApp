@@ -14,6 +14,7 @@ import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Fragments.ChatsFragment;
 import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
+import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.example.appmaga.User.UserSettings;
@@ -39,7 +40,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private TextView txtLoginUser, txtListChats;
 
+    private ChatsFragment chatsFragment;
+
     private IAddContactFragmentListener addContactFragmentListener;
+    private IChatsFragmentListener chatsFragmentListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
@@ -116,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         List<String> list = new ArrayList<>(getFileWork().readAllLinesInternalFile());
         if(list.size() != 0){
             txtListChats.setVisibility(View.GONE);
-            ChatsFragment chatsFragment = ChatsFragment.newInstance(list);
+            chatsFragment = ChatsFragment.newInstance(list);
             addFragment(R.id.chatsFragmentContainer, chatsFragment);
         }
     }
@@ -135,5 +139,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     @Override
     public void getContact(String data) {
         Contact contact = (Contact) GsonWork.performDeserialization(data, Contact.class.getSimpleName());
+        chatsFragmentListener = (IChatsFragmentListener) chatsFragment;
+        chatsFragmentListener.sendContact(contact);
     }
 }
