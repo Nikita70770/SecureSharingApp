@@ -100,7 +100,12 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
 
     @Override
     public void sendContact(Contact contact) {
-        adapter.insertSingleContact(contact);
+        listContacts = new ArrayList<>();
+        listContacts.add(contact);
+        chatListRecyclerview.setAdapter(new ContactsAdapter(getContext(), this.listContacts, this));
+        txtListChats.setVisibility(View.GONE);
+        chatListRecyclerview.setVisibility(View.VISIBLE);
+        chatListRecyclerview.invalidate();
     }
 
     @Override
