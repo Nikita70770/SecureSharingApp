@@ -37,7 +37,9 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if(holder instanceof ChatViewHolder){
-            ((ChatViewHolder) holder).txtLoginContact.setText(String.valueOf(contacts.get(position).getLogin()));
+            Contact contact = contacts.get(position);
+            ((ChatViewHolder) holder).setContact(contact);
+            ((ChatViewHolder) holder).txtLoginContact.setText(String.valueOf(contact.getLogin()));
         }
     }
 
@@ -53,6 +55,7 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
     }
 
     public class ChatViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+        Contact contact;
         TextView txtLoginContact;
 
         public ChatViewHolder(@NonNull View itemView) {
@@ -61,13 +64,21 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
             itemView.setOnClickListener(this);
         }
 
+        public Contact getContact() {
+            return contact;
+        }
+
+        public void setContact(Contact contact) {
+            this.contact = contact;
+        }
+
         @Override
         public void onClick(View view) {
-            contactsAdapterListener.onClickItemListener(getAdapterPosition());
+            contactsAdapterListener.onClickItemListener(getContact());
         }
     }
 
     public interface IContactsAdapterListener {
-        void onClickItemListener(int position);
+        void onClickItemListener(Contact contact);
     }
 }

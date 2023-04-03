@@ -93,7 +93,10 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
     }
 
     @Override
-    public void onClickItemListener(int position) {
+    public void onClickItemListener(Contact contact) {
+        if(chap == null){
+            chap = new Chap(contact.getLogin(), contact.getPassword(), contact.getRandValue());
+        }
         chap.makeChapAuthoWithContact(1);
         openWindowWithMessengers(chap.getCalcHashSum());
         authenticationFragment = AuthenticationFragment.newInstance(chap);
