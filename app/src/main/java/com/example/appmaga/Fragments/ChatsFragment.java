@@ -65,8 +65,16 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
 
     private void initAdapter(View view){
         chatListRecyclerview = view.findViewById(R.id.chatListRecyclerview);
-        adapter = new ContactsAdapter(getContext(), listContacts, this);
-        chatListRecyclerview.setAdapter(adapter);
+        txtListChats = view.findViewById(R.id.txtListChats);
+        if(this.listContacts == null){
+            chatListRecyclerview.setVisibility(View.GONE);
+        }
+        else {
+            txtListChats.setVisibility(View.GONE);
+            chatListRecyclerview.setVisibility(View.VISIBLE);
+            adapter = new ContactsAdapter(getContext(), listContacts, this);
+            chatListRecyclerview.setAdapter(adapter);
+        }
         chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
