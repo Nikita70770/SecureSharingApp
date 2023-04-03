@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private TextView txtLoginUser, txtListChats;
+    private TextView txtLoginUser;
 
     private ChatsFragment chatsFragment;
 
@@ -90,7 +90,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         drawerLayout = findViewById(R.id.drawerLayout);
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
-        txtListChats = findViewById(R.id.txtListChats);
         txtLoginUser = this.navigationView.getHeaderView(0).findViewById(R.id.txtLoginUser);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_item_nav_open, R.string.menu_item_nav_close);
 
@@ -120,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     private void showAllChats(){
         List<String> list = new ArrayList<>(getFileWork().readAllLinesInternalFile());
         if(list.size() != 0){
-            txtListChats.setVisibility(View.GONE);
             chatsFragment = ChatsFragment.newInstance(list);
             addFragment(R.id.chatsFragmentContainer, chatsFragment);
         }

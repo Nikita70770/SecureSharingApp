@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 
 import androidx.annotation.Nullable;
@@ -27,6 +28,7 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
     private List<Contact> listContacts;
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
+    private TextView txtListChats;
     private AuthenticationFragment authenticationFragment;
     private Chap chap;
 

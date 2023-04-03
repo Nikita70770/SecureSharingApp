@@ -11,4 +11,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/txtListChats"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="250dp"
+        android:gravity="center_horizontal"
+        android:text="@string/textview_list_chats_text"
+        android:textColor="@color/black"
+        android:textSize="@dimen/textSize_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"></TextView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
