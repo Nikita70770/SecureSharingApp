@@ -21,12 +21,22 @@ public class Chap {
         this.randValContact = randValContact;
     }
 
-    public void makeChapAuthoWithContact(int numStep){
+    public boolean makeChapAuthoWithContact(int numStep){
+        String hashSum;
         switch (numStep){
             case 1:
-                String hashSum = ChapHelper.getHash(userPassword + randValContact);
+                hashSum = ChapHelper.getHash(getUserPassword() + getRandValContact());
                 setCalcHashSum(hashSum);
-                break;
+                return true;
+            case 2:
+                setResValueUser(getCalcHashSum());
+                hashSum = ChapHelper.getHash(getPasswordContact() + getRandUserN());
+                setResValueContact(hashSum);
+                return true;
+            case 3:
+                return getResValueUser().equals(getResValueContact()) ? true : false;
+            default:
+                return false;
         }
     }
 
