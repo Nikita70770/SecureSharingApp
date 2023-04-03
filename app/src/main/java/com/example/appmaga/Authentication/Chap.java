@@ -3,15 +3,17 @@ package com.example.appmaga.Authentication;
 import android.content.Context;
 
 import com.example.appmaga.User.User;
+import com.example.appmaga.User.UserSettings;
 
 public class Chap {
+    private User user = UserSettings.getUser();
     private String userPassword, randUserN;
     private String loginContact, passwordContact, randValContact;
 
     private String calcHashSum;
     private String resValueUser, resValueContact;
 
-    public Chap(User user, String loginContact, String passwordContact, String randValContact){
+    public Chap(String loginContact, String passwordContact, String randValContact){
         this.userPassword = user.getPassword();
         this.randUserN = user.getRandN();
         this.loginContact = loginContact;
