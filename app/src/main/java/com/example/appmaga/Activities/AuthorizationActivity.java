@@ -26,7 +26,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
     private RegistrationFragment registrationFragment;
     private LoginFragment loginFragment;
-    private final FragmentManager fragmentManager = getSupportFragmentManager();
+    private FragmentManager fragmentManager = getSupportFragmentManager();
 
     private SharedPreferences settings;
     private SharedPreferences.Editor editorSettings;
@@ -59,8 +59,6 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
             UserSettings.requestUser(settings);
 
             fileWork.createNewInternalFile();
-
-            hideFragment(registrationFragment);
             closeSystemKeyboard();
 
             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
@@ -86,7 +84,6 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
                 Toast.makeText(this, R.string.toast_wrong_login_or_password, Toast.LENGTH_SHORT).show();
             }
             else{
-                hideFragment(loginFragment);
                 closeSystemKeyboard();
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
@@ -120,13 +117,6 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
         fragmentManager
                 .beginTransaction()
                 .replace(idElement, fragment)
-                .commit();
-    }
-
-    private void hideFragment(Fragment  fragment){
-        fragmentManager
-                .beginTransaction()
-                .hide(fragment)
                 .commit();
     }
 }
