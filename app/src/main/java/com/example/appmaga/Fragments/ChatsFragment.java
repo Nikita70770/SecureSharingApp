@@ -103,9 +103,10 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
         if(chap == null){
             chap = new Chap(contact.getLogin(), contact.getPassword(), contact.getRandValue());
         }
-        chap.makeChapAuthoWithContact(1);
-        openWindowWithMessengers(chap.getCalcHashSum());
-        authenticationFragment = AuthenticationFragment.newInstance(chap);
-        authenticationFragment.show(getActivity().getSupportFragmentManager(), "authenticationFragment");
+        if(chap.makeChapAuthoWithContact(1) == true){
+            openWindowWithMessengers(chap.getCalcHashSum());
+            authenticationFragment = AuthenticationFragment.newInstance(chap);
+            authenticationFragment.show(getActivity().getSupportFragmentManager(), "authenticationFragment");
+        }
     }
 }
