@@ -12,6 +12,7 @@ import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Fragments.ChatsFragment;
+import com.example.appmaga.Fragments.MainFragment;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;
@@ -150,5 +151,10 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     @Override
     public void sendChap(Chap chap) {
         chatsFragmentListener.setChap(chap);
+    }
+
+    @Override
+    public void showFragment() {
+        addFragment(R.id.chatsFragmentContainer, MainFragment.newInstance());
     }
 }
