@@ -11,4 +11,7 @@
 
     <string name="toast_wrong_login_or_password">Введен неверный логин или пароль! Попробуйте заново.</string>
     <string name="toast_wrong_data_exchange">Введённые данные не совпадают с сохранёнными!</string>
+
+    <string name="toast_successful_connection">Соединение с %1$s установлено!</string>
+    <string name="toast_failed_connection">Соединение с %1$s установлено!</string>
 </resources>
