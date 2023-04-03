@@ -22,6 +22,10 @@ public class MainFragment extends Fragment {
     private EditText editText;
     private Button btnSendMessage;
 
+    public static MainFragment newInstance(){
+        return new MainFragment();
+    }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){

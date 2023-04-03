@@ -144,7 +144,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
 
     @Override
     public void getContact(Contact contact) {
-        chatsFragmentListener = chatsFragment;
         chatsFragmentListener.sendContact(contact);
     }
 
