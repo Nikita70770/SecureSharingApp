@@ -2,7 +2,6 @@ package com.example.appmaga.Activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
@@ -13,7 +12,6 @@ import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Fragments.ChatsFragment;
-import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;
@@ -52,7 +50,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         setContentView(R.layout.activity_main);
 
         initElements();
-        showAllChats();
     }
 
     @Override
@@ -102,6 +99,8 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
 
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initChatsFragment();
     }
 
     private void showDialogFragment(DialogFragment fragment, int fragmentId){
@@ -116,18 +115,26 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         }
     }
 
-    private void showAllChats(){
-        List<String> list = new ArrayList<>(getFileWork().readAllLinesInternalFile());
-        if(list.size() != 0){
-            chatsFragment = ChatsFragment.newInstance(list);
-            addFragment(R.id.chatsFragmentContainer, chatsFragment);
+    private void initChatsFragment(){
+        List<String> list = new ArrayList<>(getAllChats());
+        if(list.size() == 0){
+            chatsFragment = ChatsFragment.newInstance();
         }
+        else{
+            chatsFragment = ChatsFragment.newInstance(list);
+        }
+        chatsFragmentListener = chatsFragment;
+        addFragment(R.id.chatsFragmentContainer, chatsFragment);
+    }
+
+    private List<String> getAllChats(){
+        return new ArrayList<>(getFileWork().readAllLinesInternalFile());
     }
 
     private void addFragment(int idElement, Fragment fragment){
         fragmentManager
                 .beginTransaction()
-                .add(idElement, fragment)
+                .replace(idElement, fragment)
                 .commit();
     }
 
