@@ -23,9 +23,7 @@ import com.example.appmaga.User.User;
 import com.example.appmaga.User.UserSettings;
 
 public class AuthorizationActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
-
     private RegistrationFragment registrationFragment;
-    private LoginFragment loginFragment;
     private FragmentManager fragmentManager = getSupportFragmentManager();
 
     private SharedPreferences settings;
@@ -43,7 +41,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
         fileWork = new FileWork(getApplicationContext(), FileWork.FILE_NAME);
 
         if(savedInstanceState == null){
-            registrationFragment = new RegistrationFragment();
+            registrationFragment = RegistrationFragment.newInstance();
             addFragment(R.id.formFragmentContainer, registrationFragment);
         }
     }
@@ -69,8 +67,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
 
     @Override
     public void onRegisterSignInListener() {
-        loginFragment = new LoginFragment();
-        replaceFragment(R.id.formFragmentContainer, loginFragment);
+        replaceFragment(R.id.formFragmentContainer, LoginFragment.newInstance());
     }
 
     @Override

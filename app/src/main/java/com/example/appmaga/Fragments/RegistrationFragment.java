@@ -25,6 +25,10 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
     private IRegisterFragmentListener registerFragmentListener;
 
+    public static RegistrationFragment newInstance() {
+        return new RegistrationFragment();
+    }
+
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
         View view = LayoutInflater.from(getContext()).inflate(R.layout.register_fragment, container, false);
