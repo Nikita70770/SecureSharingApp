@@ -1,5 +1,6 @@
 package com.example.appmaga.Activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -43,8 +44,16 @@ public class CommunicationUserActivity extends AppCompatActivity implements View
         btnSendMessage.setOnClickListener(this);
     }
 
+    private void sendMessage(String message){
+        final Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setType("*/*");
+        startActivity(Intent.createChooser(intent, "Share with friends"));
+    }
+
     @Override
     public void onClick(View v) {
-        //
+        sendMessage(editText.getText().toString());
     }
 }
