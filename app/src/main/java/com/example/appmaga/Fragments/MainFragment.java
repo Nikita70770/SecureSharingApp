@@ -3,7 +3,6 @@ package com.example.appmaga.Fragments;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,7 +28,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.main_fragment, container, false);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.activity_communication_user, container, false);
         editText = view.findViewById(R.id.editText);
         CustomKeyboard keyboard = (CustomKeyboard) view.findViewById(R.id.keyboard);
 
