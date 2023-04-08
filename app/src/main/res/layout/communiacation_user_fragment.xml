@@ -23,7 +23,7 @@
         android:id="@+id/textInputMessage"
         style="@style/parent"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="150dp"
         android:hint="Сообщение"
         android:textColorHint="@color/white"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,28 +31,15 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/editTextInputMessage"
-            style="@style/modifiedEditText"
+            style="@style/messageEditText"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="200dp"
+            android:gravity="top"
+            android:inputType="text|textMultiLine"
             android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:inputType="text|textMultiLine" />
+            android:textColorHint="@color/white" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-<!--    <EditText-->
-<!--        android:id="@+id/editText"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="150dp"-->
-<!--        android:layout_marginStart="10dp"-->
-<!--        android:layout_marginTop="200dp"-->
-<!--        android:gravity="top"-->
-<!--        android:hint="Сообщение"-->
-<!--        android:textColorHint="@color/white"-->
-<!--        android:textIsSelectable="true"-->
-<!--        android:inputType="text|textMultiLine"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
         android:id="@+id/btnSend"
