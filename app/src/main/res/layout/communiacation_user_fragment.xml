@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="0dp"
-    android:background="@color/dark_grey"
+    android:background="@color/midnightExpress"
     tools:context="com.example.appmaga.Fragments.MainFragment">
 
     <Button
@@ -19,19 +19,40 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/editText"
-        android:layout_width="match_parent"
-        android:layout_height="150dp"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputMessage"
+        style="@style/parent"
         android:layout_marginStart="10dp"
         android:layout_marginTop="200dp"
-        android:gravity="top"
         android:hint="Сообщение"
         android:textColorHint="@color/white"
-        android:textIsSelectable="true"
-        android:inputType="text|textMultiLine"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/editTextInputMessage"
+            style="@style/modifiedEditText"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:inputType="text|textMultiLine" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+<!--    <EditText-->
+<!--        android:id="@+id/editText"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="150dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="200dp"-->
+<!--        android:gravity="top"-->
+<!--        android:hint="Сообщение"-->
+<!--        android:textColorHint="@color/white"-->
+<!--        android:textIsSelectable="true"-->
+<!--        android:inputType="text|textMultiLine"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <Button
         android:id="@+id/btnSend"
@@ -41,7 +62,7 @@
         android:layout_marginEnd="4dp"
         android:text="Отправить"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputMessage" />
 
     <Button
         android:id="@+id/btnClear"
@@ -51,7 +72,7 @@
         android:layout_marginTop="42dp"
         android:text="Очистить"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText" />
+        app:layout_constraintTop_toBottomOf="@+id/textInputMessage" />
 
     <com.example.appmaga.Keyboard.CustomKeyboard
         android:id="@+id/keyboard"

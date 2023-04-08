@@ -136,6 +136,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         fragmentManager
                 .beginTransaction()
                 .replace(idElement, fragment)
+                .addToBackStack(null)
                 .commit();
     }
 

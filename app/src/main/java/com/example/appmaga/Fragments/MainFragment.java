@@ -11,6 +11,7 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.Keyboard.CustomKeyboard;
@@ -18,7 +19,7 @@ import com.example.appmaga.R;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
-    private EditText editText;
+    private EditText editTextInputMessage;
     private Button btnSendMessage;
     private CustomKeyboard keyboard;
 
@@ -35,17 +36,29 @@ public class MainFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
+    }
+
     private void initViewElements(View view){
-        editText = view.findViewById(R.id.editText);
+        editTextInputMessage = view.findViewById(R.id.editTextInputMessage);
         btnSendMessage = view.findViewById(R.id.btnSend);
         keyboard = (CustomKeyboard) view.findViewById(R.id.keyboard);
 
         // prevent system keyboard from appearing when EditText is tapped
-        editText.setRawInputType(InputType.TYPE_CLASS_TEXT);
-        editText.setShowSoftInputOnFocus(false);
+        editTextInputMessage.setRawInputType(InputType.TYPE_CLASS_TEXT);
+        editTextInputMessage.setShowSoftInputOnFocus(false);
 
         // pass the InputConnection from the EditText to the keyboard
-        InputConnection ic = editText.onCreateInputConnection(new EditorInfo());
+        InputConnection ic = editTextInputMessage.onCreateInputConnection(new EditorInfo());
         keyboard.setInputConnection(ic);
     }
 
@@ -59,6 +72,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        sendMessage(editText.getText().toString());
+        sendMessage(editTextInputMessage.getText().toString());
     }
 }
