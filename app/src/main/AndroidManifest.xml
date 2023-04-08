@@ -25,11 +25,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".Activities.CommunicationUserActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"
-            android:exported="false">
-        </activity>
     </application>
 
 </manifest>
