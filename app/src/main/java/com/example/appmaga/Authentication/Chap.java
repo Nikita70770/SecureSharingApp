@@ -4,6 +4,7 @@ import android.content.Context;
 
 import com.example.appmaga.User.User;
 import com.example.appmaga.User.UserSettings;
+import com.example.appmaga.helpers.MathHelper;
 
 public class Chap {
     private User user = UserSettings.getUser();
@@ -25,12 +26,12 @@ public class Chap {
         String hashSum;
         switch (numStep){
             case 1:
-                hashSum = ChapHelper.getHash(getUserPassword() + getRandValContact());
+                hashSum = MathHelper.getHash(getUserPassword() + getRandValContact());
                 setCalcHashSum(hashSum);
                 return true;
             case 2:
                 setResValueUser(getCalcHashSum());
-                hashSum = ChapHelper.getHash(getPasswordContact() + getRandUserN());
+                hashSum = MathHelper.getHash(getPasswordContact() + getRandUserN());
                 setResValueContact(hashSum);
                 return true;
             case 3:

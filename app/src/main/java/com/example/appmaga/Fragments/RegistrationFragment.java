@@ -10,7 +10,6 @@ import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
-import com.example.appmaga.Authentication.ChapHelper;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.User.User;
@@ -73,7 +72,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
                         Toast.makeText(getContext(), R.string.toast_password, Toast.LENGTH_SHORT).show();
                     }
                     else{
-                        User user = new User(getLoginName(), getHashPassword(), ChapHelper.getRandomN());
+                        User user = new User(getLoginName(), getHashPassword());
                         registerFragmentListener.onRegisterListener(user);
                     }
                 }

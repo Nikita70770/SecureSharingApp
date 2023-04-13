@@ -1,12 +1,14 @@
 package com.example.appmaga.User;
 
+import com.example.appmaga.helpers.MathHelper;
+
 public class User {
     private String login, password, randN;
 
-    public User(String login, String password, String value){
+    public User(String login, String password){
         this.login = login;
         this.password = password;
-        this.randN = value;
+        this.randN = String.valueOf(MathHelper.getRandomN(0, 1000000));
     }
 
     public String getLogin() {

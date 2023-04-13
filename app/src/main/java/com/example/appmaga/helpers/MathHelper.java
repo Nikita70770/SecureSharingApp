@@ -6,10 +6,10 @@ import java.security.NoSuchAlgorithmException;
 
 public class MathHelper {
 
-    private final String NAME_ALGORITHM = "MD5";
-    private final String CHARSET_NAME = "UTF-8";
+    private static final String NAME_ALGORITHM = "MD5";
+    private static final String CHARSET_NAME = "UTF-8";
 
-    public String getHash(String value){
+    public static String getHash(String value){
         MessageDigest messageDigest = null;
         StringBuffer hexString = null;
         try {
@@ -30,7 +30,7 @@ public class MathHelper {
         return hexString.toString();
     }
 
-    public int getRandomN(int min, int max){
+    public static int getRandomN(int min, int max){
         int randValue = (int) (Math.random() * ((max - min) + 1) + min);
         return randValue;
     }
