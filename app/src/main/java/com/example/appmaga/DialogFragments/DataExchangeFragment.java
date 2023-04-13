@@ -13,8 +13,8 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
-import com.example.appmaga.User.UserHelper;
 import com.example.appmaga.User.UserSettings;
+import com.example.appmaga.helpers.MathHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class DataExchangeFragment extends DialogFragment implements View.OnClickListener  {
@@ -108,6 +108,6 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     }
 
     private String getHashPassword(){
-        return new UserHelper().getPasswordHash(getUserPassword());
+        return new MathHelper().getHash(getUserPassword());
     }
 }

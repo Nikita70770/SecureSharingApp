@@ -14,7 +14,7 @@ import com.example.appmaga.Authentication.ChapHelper;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.User.User;
-import com.example.appmaga.User.UserHelper;
+import com.example.appmaga.helpers.MathHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class RegistrationFragment extends Fragment implements View.OnClickListener {
@@ -94,6 +94,6 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     }
 
     public String getHashPassword() {
-        return new UserHelper().getPasswordHash(getPassword());
+        return new MathHelper().getHash(getPassword());
     }
 }
