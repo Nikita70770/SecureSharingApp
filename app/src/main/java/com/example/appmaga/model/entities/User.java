@@ -1,4 +1,4 @@
-package com.example.appmaga.User;
+package com.example.appmaga.model.entities;
 
 import com.example.appmaga.helpers.MathHelper;
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.example.appmaga.Gson.GsonWork;
+import com.example.appmaga.model.entities.User;
 
 public class UserSettings {
     public static final String APP_PREFERENCES = "UserSettings";

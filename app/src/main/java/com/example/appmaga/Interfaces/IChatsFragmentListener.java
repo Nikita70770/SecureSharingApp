@@ -1,7 +1,7 @@
 package com.example.appmaga.Interfaces;
 
 import com.example.appmaga.Authentication.Chap;
-import com.example.appmaga.Contact.Contact;
+import com.example.appmaga.model.entities.Contact;
 
 public interface IChatsFragmentListener {
     void sendContact(Contact contact);

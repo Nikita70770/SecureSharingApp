@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.appmaga.Adapters.ContactsAdapter;
 import com.example.appmaga.Authentication.Chap;
-import com.example.appmaga.Contact.Contact;
+import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.DialogFragments.AuthenticationFragment;
 import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;

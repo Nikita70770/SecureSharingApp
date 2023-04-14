@@ -1,8 +1,6 @@
 package com.example.appmaga.Authentication;
 
-import android.content.Context;
-
-import com.example.appmaga.User.User;
+import com.example.appmaga.model.entities.User;
 import com.example.appmaga.User.UserSettings;
 import com.example.appmaga.helpers.MathHelper;
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appmaga.Contact.Contact;
+import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.R;
 
 import java.util.ArrayList;

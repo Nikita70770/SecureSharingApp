@@ -1,9 +1,9 @@
 package com.example.appmaga.Gson;
 
 import com.example.appmaga.Authentication.Chap;
-import com.example.appmaga.Contact.Contact;
+import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.File.FileWork;
-import com.example.appmaga.User.User;
+import com.example.appmaga.model.entities.User;
 import com.google.gson.Gson;
 
 public class GsonWork {

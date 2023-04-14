@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
-import com.example.appmaga.User.User;
+import com.example.appmaga.model.entities.User;
 import com.example.appmaga.helpers.MathHelper;
 import com.google.android.material.textfield.TextInputEditText;
 

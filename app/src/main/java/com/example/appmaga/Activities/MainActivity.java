@@ -7,7 +7,7 @@ import android.widget.TextView;
 import androidx.appcompat.widget.Toolbar;
 
 import com.example.appmaga.Authentication.Chap;
-import com.example.appmaga.Contact.Contact;
+import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.DialogFragments.AddContactFragment;
 import com.example.appmaga.DialogFragments.DataExchangeFragment;
 import com.example.appmaga.File.FileWork;

@@ -1,4 +1,4 @@
-package com.example.appmaga.Contact;
+package com.example.appmaga.model.entities;
 
 public class Contact {
     private String login, password, randValue;

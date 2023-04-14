@@ -15,11 +15,10 @@ import android.widget.Toast;
 import com.example.appmaga.File.FileWork;
 import com.example.appmaga.Fragments.LoginFragment;
 import com.example.appmaga.Fragments.RegistrationFragment;
-import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
-import com.example.appmaga.User.User;
+import com.example.appmaga.model.entities.User;
 import com.example.appmaga.User.UserSettings;
 
 public class AuthorizationActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
