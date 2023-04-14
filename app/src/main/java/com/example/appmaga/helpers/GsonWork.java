@@ -1,4 +1,4 @@
-package com.example.appmaga.Gson;
+package com.example.appmaga.helpers;
 
 import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.model.entities.Contact;

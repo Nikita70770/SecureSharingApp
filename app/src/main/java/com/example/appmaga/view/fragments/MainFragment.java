@@ -1,4 +1,4 @@
-package com.example.appmaga.Fragments;
+package com.example.appmaga.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;

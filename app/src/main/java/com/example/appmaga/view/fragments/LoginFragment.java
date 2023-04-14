@@ -1,4 +1,4 @@
-package com.example.appmaga.Fragments;
+package com.example.appmaga.view.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -14,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.R;
-import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.viewmodels.LoginViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -89,9 +87,5 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private String getPassword() {
         return String.valueOf(editTextPasswordLogForm.getText());
-    }
-
-    private String getHashPassword(){
-        return new MathHelper().getHash(getPassword());
     }
 }

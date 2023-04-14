@@ -7,7 +7,7 @@
     android:id="@+id/drawerLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.MainActivity"
+    tools:context=".view.activities.MainActivity"
     tools:ignore="HardcodedText">
 
     <LinearLayout

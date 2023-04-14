@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     style="@style/loginParent"
-    tools:context="com.example.appmaga.Activities.AuthorizationActivity">
+    tools:context="com.example.appmaga.view.activities.AuthorizationActivity">
     <ScrollView
         style="@style/parent">
         <RelativeLayout

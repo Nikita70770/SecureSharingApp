@@ -1,4 +1,4 @@
-package com.example.appmaga.Activities;
+package com.example.appmaga.view.activities;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -8,11 +8,11 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
-import com.example.appmaga.DialogFragments.AddContactFragment;
-import com.example.appmaga.DialogFragments.DataExchangeFragment;
+import com.example.appmaga.view.dialog_fragments.AddContactFragment;
+import com.example.appmaga.view.dialog_fragments.DataExchangeFragment;
 import com.example.appmaga.File.FileWork;
-import com.example.appmaga.Fragments.ChatsFragment;
-import com.example.appmaga.Fragments.MainFragment;
+import com.example.appmaga.view.fragments.ChatsFragment;
+import com.example.appmaga.view.fragments.MainFragment;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;

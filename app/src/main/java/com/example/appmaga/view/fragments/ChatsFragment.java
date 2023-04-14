@@ -1,4 +1,4 @@
-package com.example.appmaga.Fragments;
+package com.example.appmaga.view.fragments;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,11 +13,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appmaga.Adapters.ContactsAdapter;
+import com.example.appmaga.view.adapters.ContactsAdapter;
 import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
-import com.example.appmaga.DialogFragments.AuthenticationFragment;
-import com.example.appmaga.Gson.GsonWork;
+import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
+import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.R;
 

@@ -3,7 +3,7 @@ package com.example.appmaga.model.preferences;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import com.example.appmaga.Gson.GsonWork;
+import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.model.entities.User;
 
 public class PreferencesStorage {

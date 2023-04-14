@@ -1,4 +1,4 @@
-package com.example.appmaga.DialogFragments;
+package com.example.appmaga.view.dialog_fragments;
 
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
@@ -15,7 +15,7 @@ import androidx.fragment.app.DialogFragment;
 import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.File.FileWork;
-import com.example.appmaga.Gson.GsonWork;
+import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;
 import com.example.appmaga.R;

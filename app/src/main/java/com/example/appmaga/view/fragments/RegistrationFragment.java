@@ -1,4 +1,4 @@
-package com.example.appmaga.Fragments;
+package com.example.appmaga.view.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.model.entities.User;
-import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.viewmodels.RegistrationViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 

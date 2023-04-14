@@ -1,4 +1,4 @@
-package com.example.appmaga.Adapters;
+package com.example.appmaga.view.adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.example.appmaga.DialogFragments;
+package com.example.appmaga.view.dialog_fragments;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.appmaga.Gson.GsonWork;
+import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.R;
 import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.helpers.MathHelper;
