@@ -75,7 +75,7 @@ public class AddContactFragment extends DialogFragment implements IAddContactFra
             fileWork.writeDataToInternalFile(getContactData());
 
             Contact contact = (Contact) GsonWork.performDeserialization(getContactData(), Contact.class.getSimpleName());
-            Chap chap = new Chap(contact.getLogin(), contact.getPassword(), contact.getRandValue());
+            Chap chap = new Chap(getContext(), contact.getLogin(), contact.getPassword(), contact.getRandValue());
 
             mainActivityListener.getContact(contact);
             mainActivityListener.sendChap(chap);

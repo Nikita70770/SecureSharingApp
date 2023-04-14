@@ -1,18 +1,21 @@
 package com.example.appmaga.Authentication;
 
+import android.content.Context;
+
 import com.example.appmaga.model.entities.User;
-import com.example.appmaga.User.UserSettings;
+import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.helpers.MathHelper;
 
 public class Chap {
-    private User user = UserSettings.getUser();
+    private User user;
     private String userPassword, randUserN;
     private String loginContact, passwordContact, randValContact;
 
     private String calcHashSum;
     private String resValueUser, resValueContact;
 
-    public Chap(String loginContact, String passwordContact, String randValContact){
+    public Chap(Context context, String loginContact, String passwordContact, String randValContact){
+        this.user = PreferencesStorage.init(context).getUser();
         this.userPassword = user.getPassword();
         this.randUserN = user.getRandN();
         this.loginContact = loginContact;

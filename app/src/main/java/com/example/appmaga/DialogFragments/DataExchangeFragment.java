@@ -13,7 +13,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.appmaga.Gson.GsonWork;
 import com.example.appmaga.R;
-import com.example.appmaga.User.UserSettings;
+import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.helpers.MathHelper;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -23,6 +23,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
 
     private TextInputEditText editTextLoginSendWind, editTextPasswordSendWind, editTextRandValSendWind;
     private Button btnSendData;
+    private PreferencesStorage preferencesStorage;
 
     public static DataExchangeFragment newInstance(){
         return new DataExchangeFragment();
@@ -31,6 +32,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        preferencesStorage = PreferencesStorage.init(getContext());
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
     }
 
@@ -48,7 +50,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
         editTextPasswordSendWind = windowView.findViewById(R.id.editTextPasswordSendWind);
         editTextRandValSendWind = windowView.findViewById(R.id.editTextRandValSendWind);
 
-        editTextRandValSendWind.setText(UserSettings.getUser().getRandN());
+        editTextRandValSendWind.setText(preferencesStorage.getUser().getRandN());
 
         btnSendData = windowView.findViewById(R.id.btnSendData);
         btnSendData.setOnClickListener(this);
@@ -62,7 +64,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     private void sendData(){
         if(checkSendData() == true){
             getDialog().dismiss();
-            openWindowWithMessengers(GsonWork.performSerialization(UserSettings.getUser()));
+            openWindowWithMessengers(GsonWork.performSerialization(preferencesStorage.getUser()));
         }
     }
 
@@ -81,8 +83,8 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
                 return false;
             }
             else{
-                if(!UserSettings.getUser().getLogin().equals(getUserLogin()) ||
-                        !UserSettings.getUser().getPassword().equals(getHashPassword())){
+                if(!preferencesStorage.getUser().getLogin().equals(getUserLogin()) ||
+                        !preferencesStorage.getUser().getPassword().equals(getHashPassword())){
                     Toast.makeText(getContext(), R.string.toast_wrong_data_exchange, Toast.LENGTH_SHORT).show();
                     return false;
                 }

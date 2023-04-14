@@ -17,7 +17,7 @@ import com.example.appmaga.Interfaces.IAddContactFragmentListener;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.Interfaces.IMainActivityListener;
 import com.example.appmaga.R;
-import com.example.appmaga.User.UserSettings;
+import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.annotation.NonNull;
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         txtLoginUser = this.navigationView.getHeaderView(0).findViewById(R.id.txtLoginUser);
         actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_item_nav_open, R.string.menu_item_nav_close);
 
-        txtLoginUser.setText(UserSettings.getUser().getLogin());
+        txtLoginUser.setText(PreferencesStorage.init(getBaseContext()).getUser().getLogin());
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
