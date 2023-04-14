@@ -23,6 +23,7 @@ import com.example.appmaga.model.preferences.PreferencesStorage;
 public class AuthorizationActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
     private RegistrationFragment registrationFragment;
     private FragmentManager fragmentManager = getSupportFragmentManager();
+    private Intent intent;
     private PreferencesStorage preferencesStorage;
 
     private FileWork fileWork;
@@ -32,6 +33,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        intent = new Intent(getApplicationContext(), MainActivity.class);
         preferencesStorage = PreferencesStorage.init(getBaseContext());
         fileWork = new FileWork(getApplicationContext(), FileWork.FILE_NAME);
 
@@ -42,21 +44,8 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
     }
 
     @Override
-    public void onRegisterListener(User user) {
-        User savedUser = preferencesStorage.getUser();
-        if(savedUser != null){
-            Toast.makeText(getApplicationContext(), R.string.toast_registered, Toast.LENGTH_SHORT).show();
-        }
-        else{
-            preferencesStorage.saveUser(user);
-
-            fileWork.createNewInternalFile();
-            closeSystemKeyboard();
-
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            Toast.makeText(this, R.string.toast_successful_registered, Toast.LENGTH_SHORT).show();
-        }
+    public void onRegisterListener() {
+        startActivity(intent);
     }
 
     @Override
