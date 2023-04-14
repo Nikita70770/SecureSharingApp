@@ -8,11 +8,14 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.helpers.MathHelper;
+import com.example.appmaga.viewmodels.LoginViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class LoginFragment extends Fragment implements View.OnClickListener {
@@ -22,9 +25,17 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     private Button btnLogin, btnSignUp;
 
     private ILoginFragmentListener loginFragmentListener;
+    private LoginViewModel viewModel;
 
     public static LoginFragment newInstance() {
         return new LoginFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(LoginViewModel.class);
+        viewModel.init();
     }
 
     @Override
@@ -61,19 +72,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.btnLogin:
-                if(getLoginName().isEmpty() && getPassword().isEmpty()){
-                    Toast.makeText(getContext(), R.string.toast_login_password, Toast.LENGTH_SHORT).show();
-                }
-                else{
-                    if(getLoginName().isEmpty()){
-                        Toast.makeText(getContext(), R.string.toast_login, Toast.LENGTH_SHORT).show();
-                    }
-                    else if(getPassword().isEmpty()){
-                        Toast.makeText(getContext(), R.string.toast_password, Toast.LENGTH_SHORT).show();
-                    }
-                    else{
-                        loginFragmentListener.onLoginListener(getLoginName(), getHashPassword());
-                    }
+                if(viewModel.checkData(getLoginName(), getPassword()) == true){
+                    loginFragmentListener.onLoginListener();
                 }
                 break;
 
