@@ -7,7 +7,7 @@ public class User {
 
     public User(String login, String password){
         this.login = login;
-        this.password = password;
+        this.password = MathHelper.getHash(password);
         this.randN = String.valueOf(MathHelper.getRandomN(0, 1000000));
     }
 

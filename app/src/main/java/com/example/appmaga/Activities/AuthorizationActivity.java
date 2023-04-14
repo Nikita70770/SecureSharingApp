@@ -7,6 +7,7 @@ import androidx.fragment.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
@@ -17,6 +18,7 @@ import com.example.appmaga.Fragments.RegistrationFragment;
 import com.example.appmaga.Interfaces.ILoginFragmentListener;
 import com.example.appmaga.Interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
+import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.model.preferences.PreferencesStorage;
 
@@ -65,7 +67,7 @@ public class AuthorizationActivity extends AppCompatActivity implements IRegiste
             }
             else{
                 closeSystemKeyboard();
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                intent = new Intent(getApplicationContext(), MainActivity.class);
                 startActivity(intent);
                 Toast.makeText(this, R.string.toast_successful_authorization, Toast.LENGTH_SHORT).show();
             }
