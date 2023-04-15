@@ -8,18 +8,19 @@ import androidx.lifecycle.AndroidViewModel;
 
 import com.example.appmaga.R;
 import com.example.appmaga.model.entities.User;
-import com.example.appmaga.model.preferences.PreferencesStorage;
+import com.example.appmaga.model.repository.DataRepository;
 
 public class RegistrationViewModel extends AndroidViewModel {
 
-    private PreferencesStorage preferencesStorage;
+    private DataRepository repository;
 
     public RegistrationViewModel(@NonNull Application application) {
         super(application);
     }
 
     public void init(){
-        this.preferencesStorage = PreferencesStorage.init(getApplication());
+        this.repository = new DataRepository(getApplication());
+        this.repository.setPreferencesInstance();
     }
 
     public boolean checkData(String login, String password){
@@ -50,10 +51,10 @@ public class RegistrationViewModel extends AndroidViewModel {
     }
 
     public void saveUser(User user){
-        preferencesStorage.saveUser(user);
+        repository.saveUser(user);
     }
 
     public User getUser(){
-        return preferencesStorage.getUser();
+        return repository.getUser();
     }
 }

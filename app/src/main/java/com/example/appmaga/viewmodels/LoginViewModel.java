@@ -10,17 +10,19 @@ import com.example.appmaga.R;
 import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.model.preferences.PreferencesStorage;
+import com.example.appmaga.model.repository.DataRepository;
 
 public class LoginViewModel extends AndroidViewModel {
 
-    private PreferencesStorage preferencesStorage;
+    private DataRepository repository;
 
     public LoginViewModel(@NonNull Application application) {
         super(application);
     }
 
     public void init(){
-        preferencesStorage = PreferencesStorage.init(getApplication());
+        repository = new DataRepository(getApplication());
+        repository.setPreferencesInstance();
     }
 
     public boolean checkData(String login, String password){
@@ -57,7 +59,7 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     public User getUser(){
-        return preferencesStorage.getUser();
+        return repository.getUser();
     }
 
     private String getHashPassword(String password){

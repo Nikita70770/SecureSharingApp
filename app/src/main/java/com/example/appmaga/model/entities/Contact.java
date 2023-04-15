@@ -15,10 +15,10 @@ public class Contact {
 
     private String randValue;
 
-    public Contact(String login, String password, String randN){
+    public Contact(String login, String password, String randValue){
         this.login = login;
         this.password = password;
-        this.randValue = randN;
+        this.randValue = randValue;
     }
 
     public void setId(long id) {
