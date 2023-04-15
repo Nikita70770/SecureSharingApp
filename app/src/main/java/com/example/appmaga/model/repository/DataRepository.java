@@ -1,6 +1,9 @@
 package com.example.appmaga.model.repository;
 
 import android.content.Context;
+import android.os.AsyncTask;
+
+import androidx.loader.content.AsyncTaskLoader;
 
 import com.example.appmaga.model.dao.ContactDAO;
 import com.example.appmaga.model.db.AppDatabase;
@@ -37,10 +40,24 @@ public class DataRepository {
     }
 
     public void addContact(Contact contact){
-        contactDAO.addContact(contact);
+        new AddContactTask(contactDAO).doInBackground(contact);
     }
 
     public List<Contact> getAllContacts(){
         return contactDAO.getAllContacts();
+    }
+
+    private class AddContactTask extends AsyncTask<Contact, Void, Void> {
+        private ContactDAO contactDAO;
+
+        public AddContactTask(ContactDAO dao){
+            this.contactDAO = dao;
+        }
+
+        @Override
+        protected Void doInBackground(Contact... contacts) {
+            contactDAO.addContact(contacts[0]);
+            return null;
+        }
     }
 }
