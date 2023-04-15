@@ -19,9 +19,7 @@ public class DataRepository {
     private PreferencesStorage storage;
     private ContactDAO contactDAO;
 
-    public DataRepository(ContactDAO dao){
-        this.contactDAO = dao;
-    }
+    public DataRepository(ContactDAO dao){ this.contactDAO = dao; }
 
     public DataRepository(Context context){
         this.context = context;
@@ -40,7 +38,7 @@ public class DataRepository {
     }
 
     public void addContact(Contact contact){
-        new AddContactTask(contactDAO).doInBackground(contact);
+        new AddContactTask(contactDAO).execute(contact);
     }
 
     public List<Contact> getAllContacts(){

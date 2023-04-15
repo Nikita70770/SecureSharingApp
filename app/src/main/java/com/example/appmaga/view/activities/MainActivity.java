@@ -42,7 +42,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
 
     private ChatsFragment chatsFragment;
 
-    private IAddContactFragmentListener addContactFragmentListener;
     private IChatsFragmentListener chatsFragmentListener;
 
     @Override
@@ -73,10 +72,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
                 return true;
 
             case R.id.navAddContact:
-                AddContactFragment fragment = AddContactFragment.newInstance();
-                addContactFragmentListener = fragment;
-                addContactFragmentListener.initFileWork(getFileWork());
-                showDialogFragment(fragment, AddContactFragment.ID_DIALOG_ADD_CONTACT);
+                showDialogFragment(AddContactFragment.newInstance(), AddContactFragment.ID_DIALOG_ADD_CONTACT);
                 return true;
 
             default:
@@ -89,19 +85,17 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         toolbar = findViewById(R.id.toolbar);
         navigationView = findViewById(R.id.navigationView);
         txtLoginUser = this.navigationView.getHeaderView(0).findViewById(R.id.txtLoginUser);
-        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_item_nav_open, R.string.menu_item_nav_close);
 
         txtLoginUser.setText(PreferencesStorage.init(getBaseContext()).getUser().getLogin());
-        drawerLayout.addDrawerListener(actionBarDrawerToggle);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, R.string.menu_item_nav_open, R.string.menu_item_nav_close);
         actionBarDrawerToggle.syncState();
+        drawerLayout.addDrawerListener(actionBarDrawerToggle);
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
         navigationView.setItemIconTintList(null);
         navigationView.setNavigationItemSelectedListener(this);
-
-        initChatsFragment();
     }
 
     private void showDialogFragment(DialogFragment fragment, int fragmentId){

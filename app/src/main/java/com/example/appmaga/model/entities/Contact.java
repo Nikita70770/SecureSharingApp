@@ -8,11 +8,8 @@ public class Contact {
 
     @PrimaryKey(autoGenerate = true)
     private long id;
-
     private String login;
-
     private String password;
-
     private String randValue;
 
     public Contact(String login, String password, String randValue){

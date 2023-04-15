@@ -17,7 +17,7 @@ public class Chap {
     public Chap(Context context, String loginContact, String passwordContact, String randValContact){
         this.user = PreferencesStorage.init(context).getUser();
         this.userPassword = user.getPassword();
-        this.randUserN = user.getRandN();
+        this.randUserN = user.getRandValue();
         this.loginContact = loginContact;
         this.passwordContact = passwordContact;
         this.randValContact = randValContact;

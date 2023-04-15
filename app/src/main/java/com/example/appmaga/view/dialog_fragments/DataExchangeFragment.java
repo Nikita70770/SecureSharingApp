@@ -50,7 +50,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
         editTextPasswordSendWind = windowView.findViewById(R.id.editTextPasswordSendWind);
         editTextRandValSendWind = windowView.findViewById(R.id.editTextRandValSendWind);
 
-        editTextRandValSendWind.setText(preferencesStorage.getUser().getRandN());
+        editTextRandValSendWind.setText(preferencesStorage.getUser().getRandValue());
 
         btnSendData = windowView.findViewById(R.id.btnSendData);
         btnSendData.setOnClickListener(this);
