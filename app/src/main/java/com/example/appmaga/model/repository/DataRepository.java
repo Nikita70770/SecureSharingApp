@@ -14,16 +14,14 @@ public class DataRepository {
 
     private Context context;
     private PreferencesStorage storage;
-    private AppDatabase database;
-    private ContactDAO dao;
+    private ContactDAO contactDAO;
+
+    public DataRepository(ContactDAO dao){
+        this.contactDAO = dao;
+    }
 
     public DataRepository(Context context){
         this.context = context;
-    }
-
-    public void setDatabaseInstance(){
-        this.database = AppDatabase.getInstance(context);
-        this.dao = database.contactDAO();
     }
 
     public void setPreferencesInstance(){
@@ -39,10 +37,10 @@ public class DataRepository {
     }
 
     public void addContact(Contact contact){
-        dao.addContact(contact);
+        contactDAO.addContact(contact);
     }
 
     public List<Contact> getAllContacts(){
-        return dao.getAllContacts();
+        return contactDAO.getAllContacts();
     }
 }

@@ -19,7 +19,7 @@ public class RegistrationViewModel extends AndroidViewModel {
     }
 
     public void init(){
-        this.repository = new DataRepository(getApplication());
+        this.repository = new DataRepository(getApplication().getBaseContext());
         this.repository.setPreferencesInstance();
     }
 

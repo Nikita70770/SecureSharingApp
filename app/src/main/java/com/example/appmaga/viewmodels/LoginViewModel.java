@@ -21,7 +21,7 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     public void init(){
-        repository = new DataRepository(getApplication());
+        repository = new DataRepository(getApplication().getBaseContext());
         repository.setPreferencesInstance();
     }
 
