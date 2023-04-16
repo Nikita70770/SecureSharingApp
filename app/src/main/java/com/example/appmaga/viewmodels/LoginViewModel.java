@@ -63,6 +63,6 @@ public class LoginViewModel extends AndroidViewModel {
     }
 
     private String getHashPassword(String password){
-        return new MathHelper().getHash(password);
+        return MathHelper.getHash(password);
     }
 }

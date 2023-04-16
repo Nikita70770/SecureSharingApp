@@ -110,6 +110,6 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     }
 
     private String getHashPassword(){
-        return new MathHelper().getHash(getUserPassword());
+        return MathHelper.getHash(getUserPassword());
     }
 }
