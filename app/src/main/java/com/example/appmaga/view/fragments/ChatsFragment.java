@@ -14,20 +14,18 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.view.adapters.ContactsAdapter;
 import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
-import com.example.appmaga.helpers.GsonWork;
-import com.example.appmaga.interfaces.IChatsFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.viewmodels.ChatsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class ChatsFragment extends Fragment implements IChatsFragmentListener, ContactsAdapter.IContactsAdapterListener {
-    private List<Contact> listContacts;
+public class ChatsFragment extends Fragment implements ContactsAdapter.IContactsAdapterListener {
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
     private TextView txtListChats;
@@ -63,39 +61,12 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
         chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
-    private List<Contact> getContacts(List<String> list){
-        List<Contact> tempList = null;
-        if(list.size() != 0){
-            tempList = new ArrayList<>();
-            for(int i = 0; i < list.size(); i++){
-                Contact contact = (Contact) GsonWork.performDeserialization(list.get(i), Contact.class.getSimpleName());
-                tempList.add(contact);
-            }
-        }
-        return tempList;
-    }
-
     private void openWindowWithMessengers(String data){
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Intent.EXTRA_TEXT, data);
         intent.setType("*/*");
         startActivity(Intent.createChooser(intent, "Share with friends"));
-    }
-
-    @Override
-    public void sendContact(Contact contact) {
-        listContacts = new ArrayList<>();
-        listContacts.add(contact);
-        chatListRecyclerview.setAdapter(new ContactsAdapter(this));
-        txtListChats.setVisibility(View.GONE);
-        chatListRecyclerview.setVisibility(View.VISIBLE);
-        chatListRecyclerview.invalidate();
-    }
-
-    @Override
-    public void setChap(Chap chap) {
-        this.chap = chap;
     }
 
     @Override

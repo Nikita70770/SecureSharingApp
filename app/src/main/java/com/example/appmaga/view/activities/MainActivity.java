@@ -10,7 +10,6 @@ import com.example.appmaga.view.dialog_fragments.AddContactFragment;
 import com.example.appmaga.view.dialog_fragments.DataExchangeFragment;
 import com.example.appmaga.view.fragments.ChatsFragment;
 import com.example.appmaga.view.fragments.MainFragment;
-import com.example.appmaga.interfaces.IChatsFragmentListener;
 import com.example.appmaga.interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.example.appmaga.model.preferences.PreferencesStorage;
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     private TextView txtLoginUser;
 
     private FragmentManager fragmentManager = getSupportFragmentManager();
-    private IChatsFragmentListener chatsFragmentListener;
 
     @Override
     public void onCreate(Bundle savedInstanceState){
