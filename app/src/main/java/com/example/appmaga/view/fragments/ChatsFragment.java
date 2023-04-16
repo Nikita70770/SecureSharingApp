@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -30,6 +31,12 @@ public class ChatsFragment extends Fragment implements ContactsAdapter.IContacts
     private ChatsViewModel viewModel;
     private AuthenticationFragment authenticationFragment;
     private Chap chap;
+    private Observer<List<Contact>> observer = new Observer<List<Contact>>() {
+        @Override
+        public void onChanged(List<Contact> contacts) {
+            setDataAdapter(contacts);
+        }
+    };
 
     public static ChatsFragment newInstance(){
         return new ChatsFragment();
@@ -40,6 +47,7 @@ public class ChatsFragment extends Fragment implements ContactsAdapter.IContacts
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(this).get(ChatsViewModel.class);
         viewModel.init();
+        viewModel.getAllContacts().observe(this, observer);
     }
 
     @Override
