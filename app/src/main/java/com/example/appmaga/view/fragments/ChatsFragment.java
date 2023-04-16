@@ -20,6 +20,9 @@ import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
 import com.example.appmaga.R;
 import com.example.appmaga.viewmodels.ChatsViewModel;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ChatsFragment extends Fragment implements ContactsAdapter.IContactsAdapterListener {
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
@@ -54,6 +57,19 @@ public class ChatsFragment extends Fragment implements ContactsAdapter.IContacts
         adapter = new ContactsAdapter(this);
         chatListRecyclerview.setAdapter(adapter);
         chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
+    }
+
+    private void setDataAdapter(List<Contact> data){
+        if(!data.isEmpty()){
+            txtListChats.setVisibility(View.GONE);
+            chatListRecyclerview.setVisibility(View.VISIBLE);
+
+            adapter.setData(data);
+            adapter.notifyDataSetChanged();
+        }else{
+            txtListChats.setVisibility(View.VISIBLE);
+            adapter.setData(new ArrayList<>());
+        }
     }
 
     private void openWindowWithMessengers(String data){
