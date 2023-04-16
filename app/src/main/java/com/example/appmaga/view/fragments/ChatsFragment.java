@@ -86,7 +86,7 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
         else {
             txtListChats.setVisibility(View.GONE);
             chatListRecyclerview.setVisibility(View.VISIBLE);
-            adapter = new ContactsAdapter(getContext(), listContacts, this);
+            adapter = new ContactsAdapter(this);
             chatListRecyclerview.setAdapter(adapter);
         }
         chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
@@ -116,7 +116,7 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
     public void sendContact(Contact contact) {
         listContacts = new ArrayList<>();
         listContacts.add(contact);
-        chatListRecyclerview.setAdapter(new ContactsAdapter(getContext(), this.listContacts, this));
+        chatListRecyclerview.setAdapter(new ContactsAdapter(this));
         txtListChats.setVisibility(View.GONE);
         chatListRecyclerview.setVisibility(View.VISIBLE);
         chatListRecyclerview.invalidate();

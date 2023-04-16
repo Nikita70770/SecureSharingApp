@@ -1,6 +1,5 @@
 package com.example.appmaga.view.adapters;
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,13 +16,10 @@ import java.util.List;
 
 public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
-    private Context context;
     private List<Contact> contacts;
     private IContactsAdapterListener contactsAdapterListener;
 
-    public ContactsAdapter(Context context, List<Contact> list, IContactsAdapterListener listener){
-        this.context = context;
-        this.contacts = new ArrayList<>(list);
+    public ContactsAdapter(IContactsAdapterListener listener){
         this.contactsAdapterListener = listener;
     }
 
@@ -43,14 +39,13 @@ public class ContactsAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolde
         }
     }
 
-    public void insertSingleContact(Contact contact){
-        int insertIndex = this.contacts.size();
-        this.contacts.add(insertIndex, contact);
-        this.notifyItemInserted(insertIndex);
+    public void setData(List<Contact> newData){
+        contacts = new ArrayList<>(newData);
     }
 
     @Override
     public int getItemCount() {
+        if(contacts == null) return 0;
         return contacts.size();
     }
 
