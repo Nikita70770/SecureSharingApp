@@ -14,6 +14,8 @@ import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.appmaga.model.entities.User;
+import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.view.adapters.ContactsAdapter;
 import com.example.appmaga.encryption.authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
@@ -29,8 +31,7 @@ public class ChatsFragment extends Fragment implements ContactsAdapter.IContacts
     private ContactsAdapter adapter;
     private TextView txtListChats;
     private ChatsViewModel viewModel;
-    private AuthenticationFragment authenticationFragment;
-    private Chap chap;
+
     private Observer<List<Contact>> observer = new Observer<List<Contact>>() {
         @Override
         public void onChanged(List<Contact> contacts) {
@@ -90,13 +91,12 @@ public class ChatsFragment extends Fragment implements ContactsAdapter.IContacts
 
     @Override
     public void onClickItemListener(Contact contact) {
-        if(chap == null){
-            chap = new Chap(getContext(), contact.getLogin(), contact.getPassword(), contact.getRandValue());
-        }
-        if(chap.makeChapAuthoWithContact(1) == true){
-            openWindowWithMessengers(chap.getCalcHashSum());
-            authenticationFragment = AuthenticationFragment.newInstance(chap);
-            authenticationFragment.show(getActivity().getSupportFragmentManager(), "authenticationFragment");
-        }
+        User user = PreferencesStorage.init(getContext()).getUser();
+        Chap chap = new Chap(user, contact);
+        chap.makeChapAuthoWithContact(1);
+
+        openWindowWithMessengers(chap.getCalcHashSum());
+        AuthenticationFragment.newInstance(chap).
+                show(getActivity().getSupportFragmentManager(), "authenticationFragment");
     }
 }

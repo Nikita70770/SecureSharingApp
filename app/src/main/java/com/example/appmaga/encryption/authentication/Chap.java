@@ -2,64 +2,43 @@ package com.example.appmaga.encryption.authentication;
 
 import android.content.Context;
 
+import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.helpers.MathHelper;
 
 public class Chap {
     private User user;
-    private String userPassword, randUserN;
-    private String loginContact, passwordContact, randValContact;
-
+    private Contact contact;
     private String calcHashSum;
     private String resValueUser, resValueContact;
+    private boolean resultAuthentication;
 
-    public Chap(Context context, String loginContact, String passwordContact, String randValContact){
-        this.user = PreferencesStorage.init(context).getUser();
-        this.userPassword = user.getPassword();
-        this.randUserN = user.getRandValue();
-        this.loginContact = loginContact;
-        this.passwordContact = passwordContact;
-        this.randValContact = randValContact;
+    public Chap(User user, Contact contact){
+        this.user = user;
+        this.contact = contact;
     }
 
-    public boolean makeChapAuthoWithContact(int numStep){
+    public void makeChapAuthoWithContact(int numStep){
         String hashSum;
         switch (numStep){
             case 1:
-                hashSum = MathHelper.getHash(getUserPassword() + getRandValContact());
+                hashSum = MathHelper.getHash(user.getPassword() + contact.getRandValue());
                 setCalcHashSum(hashSum);
-                return true;
+                break;
             case 2:
                 setResValueUser(getCalcHashSum());
-                hashSum = MathHelper.getHash(getPasswordContact() + getRandUserN());
+                hashSum = MathHelper.getHash(contact.getPassword() + user.getRandValue());
                 setResValueContact(hashSum);
-                return true;
+                break;
             case 3:
-                return getResValueUser().equals(getResValueContact()) ? true : false;
-            default:
-                return false;
+                boolean result = getResValueUser().equals(getResValueContact()) ? true : false;
+                setResultAuthentication(result);
         }
     }
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public String getRandUserN() {
-        return randUserN;
-    }
-
-    public String getLoginContact() {
-        return loginContact;
-    }
-
-    public String getPasswordContact() {
-        return passwordContact;
-    }
-
-    public String getRandValContact() {
-        return randValContact;
+    public Contact getContact() {
+        return contact;
     }
 
     public String getCalcHashSum() {
@@ -84,5 +63,13 @@ public class Chap {
 
     public void setResValueContact(String resValueContact) {
         this.resValueContact = resValueContact;
+    }
+
+    public void setResultAuthentication(boolean resultAuthentication) {
+        this.resultAuthentication = resultAuthentication;
+    }
+
+    public boolean isResultAuthentication() {
+        return resultAuthentication;
     }
 }

@@ -68,16 +68,19 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
 
     @Override
     public void onClick(View view) {
-        String toastMessage;
-        if(chap.makeChapAuthoWithContact(2) == true){
-            if(chap.makeChapAuthoWithContact(3) == true){
-                toastMessage = getString(R.string.toast_successful_connection, chap.getLoginContact());
-                Toast.makeText(getContext(), toastMessage, Toast.LENGTH_SHORT).show();
-            }
-            else {
-                toastMessage = getString(R.string.toast_failed_connection, chap.getLoginContact());
-                Toast.makeText(getContext(), toastMessage, Toast.LENGTH_SHORT).show();
-            }
+        String message, loginContact;
+        chap.makeChapAuthoWithContact(2);
+        chap.makeChapAuthoWithContact(3);
+
+        if(chap.isResultAuthentication() == true){
+            loginContact = chap.getContact().getLogin();
+            message = getString(R.string.toast_successful_connection, loginContact);
+            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
+        }
+        else{
+            loginContact = chap.getContact().getLogin();
+            message = getString(R.string.toast_failed_connection, loginContact);
+            Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();
         }
         getDialog().dismiss();
         mainActivityListener.showFragment();
