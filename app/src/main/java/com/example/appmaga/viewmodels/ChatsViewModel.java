@@ -4,6 +4,7 @@ import android.app.Application;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
+import androidx.lifecycle.LiveData;
 
 import com.example.appmaga.model.dao.ContactDAO;
 import com.example.appmaga.model.db.AppDatabase;
@@ -25,7 +26,7 @@ public class ChatsViewModel extends AndroidViewModel {
         this.repository = new DataRepository(contactDAO);
     }
 
-    public List<Contact> getAllContacts(){
+    public LiveData<List<Contact>> getAllContacts(){
         return repository.getAllContacts();
     }
 }

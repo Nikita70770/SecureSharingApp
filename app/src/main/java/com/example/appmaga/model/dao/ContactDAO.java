@@ -1,5 +1,6 @@
 package com.example.appmaga.model.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -15,5 +16,5 @@ public interface ContactDAO {
     void addContact(Contact contact);
 
     @Query("SELECT * FROM contacts")
-    List<Contact> getAllContacts();
+    LiveData<List<Contact>> getAllContacts();
 }

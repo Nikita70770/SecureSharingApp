@@ -3,6 +3,7 @@ package com.example.appmaga.model.repository;
 import android.content.Context;
 import android.os.AsyncTask;
 
+import androidx.lifecycle.LiveData;
 import androidx.loader.content.AsyncTaskLoader;
 
 import com.example.appmaga.model.dao.ContactDAO;
@@ -41,7 +42,7 @@ public class DataRepository {
         new AddContactTask(contactDAO).execute(contact);
     }
 
-    public List<Contact> getAllContacts(){
+    public LiveData<List<Contact>> getAllContacts(){
         return contactDAO.getAllContacts();
     }
 

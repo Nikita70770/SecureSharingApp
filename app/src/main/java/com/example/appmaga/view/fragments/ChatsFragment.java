@@ -7,23 +7,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.view.adapters.ContactsAdapter;
 import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
 import com.example.appmaga.R;
 import com.example.appmaga.viewmodels.ChatsViewModel;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class ChatsFragment extends Fragment implements ContactsAdapter.IContactsAdapterListener {
     private RecyclerView chatListRecyclerview;
