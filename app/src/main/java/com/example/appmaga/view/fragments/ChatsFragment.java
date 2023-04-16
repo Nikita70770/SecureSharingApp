@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,6 +21,7 @@ import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
 import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.Interfaces.IChatsFragmentListener;
 import com.example.appmaga.R;
+import com.example.appmaga.viewmodels.ChatsViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,6 +31,7 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
     private RecyclerView chatListRecyclerview;
     private ContactsAdapter adapter;
     private TextView txtListChats;
+    private ChatsViewModel viewModel;
     private AuthenticationFragment authenticationFragment;
     private Chap chap;
 
@@ -53,6 +56,8 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
         super.onCreate(savedInstanceState);
         List<String> list = getArguments().getStringArrayList(ConstantKeysFragment.DATA_CONTACTS_KEY);
         this.listContacts = getContacts(list);
+        viewModel = new ViewModelProvider(this).get(ChatsViewModel.class);
+        viewModel.init();
     }
 
     @Override
@@ -61,6 +66,15 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
         View view = inflater.inflate(R.layout.chat_list_fragment, container, false);
         initAdapter(view);
         return view;
+    }
+
+    private void initViewElements(View view){
+        chatListRecyclerview = view.findViewById(R.id.chatListRecyclerview);
+        txtListChats = view.findViewById(R.id.txtListChats);
+
+//        adapter = new ContactsAdapter(this);
+        chatListRecyclerview.setAdapter(adapter);
+        chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
     private void initAdapter(View view){
