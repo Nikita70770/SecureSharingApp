@@ -1,4 +1,4 @@
-package com.example.appmaga.Authentication;
+package com.example.appmaga.encryption.authentication;
 
 import android.content.Context;
 

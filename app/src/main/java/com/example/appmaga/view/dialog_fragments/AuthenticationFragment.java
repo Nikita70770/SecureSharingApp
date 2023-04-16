@@ -12,7 +12,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
-import com.example.appmaga.Authentication.Chap;
+import com.example.appmaga.encryption.authentication.Chap;
 import com.example.appmaga.view.fragments.ConstantKeysFragment;
 import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.interfaces.IMainActivityListener;

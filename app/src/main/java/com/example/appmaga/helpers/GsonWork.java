@@ -1,8 +1,7 @@
 package com.example.appmaga.helpers;
 
-import com.example.appmaga.Authentication.Chap;
+import com.example.appmaga.encryption.authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
-import com.example.appmaga.File.FileWork;
 import com.example.appmaga.model.entities.User;
 import com.google.gson.Gson;
 
@@ -18,8 +17,6 @@ public class GsonWork {
         switch (className){
             case "User":
                 return gson.fromJson(data, User.class);
-            case "FileWork":
-                return gson.fromJson(data, FileWork.class);
             case "Contact":
                 return gson.fromJson(data, Contact.class);
             case "Chap":
