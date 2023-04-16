@@ -19,7 +19,7 @@ import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
 import com.example.appmaga.helpers.GsonWork;
-import com.example.appmaga.Interfaces.IChatsFragmentListener;
+import com.example.appmaga.interfaces.IChatsFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.viewmodels.ChatsViewModel;
 
@@ -64,7 +64,8 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.chat_list_fragment, container, false);
-        initAdapter(view);
+//        initAdapter(view);
+        initViewElements(view);
         return view;
     }
 
@@ -72,25 +73,25 @@ public class ChatsFragment extends Fragment implements IChatsFragmentListener, C
         chatListRecyclerview = view.findViewById(R.id.chatListRecyclerview);
         txtListChats = view.findViewById(R.id.txtListChats);
 
-//        adapter = new ContactsAdapter(this);
+        adapter = new ContactsAdapter(this);
         chatListRecyclerview.setAdapter(adapter);
         chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
     }
 
-    private void initAdapter(View view){
-        chatListRecyclerview = view.findViewById(R.id.chatListRecyclerview);
-        txtListChats = view.findViewById(R.id.txtListChats);
-        if(this.listContacts == null){
-            chatListRecyclerview.setVisibility(View.GONE);
-        }
-        else {
-            txtListChats.setVisibility(View.GONE);
-            chatListRecyclerview.setVisibility(View.VISIBLE);
-            adapter = new ContactsAdapter(this);
-            chatListRecyclerview.setAdapter(adapter);
-        }
-        chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
-    }
+//    private void initAdapter(View view){
+//        chatListRecyclerview = view.findViewById(R.id.chatListRecyclerview);
+//        txtListChats = view.findViewById(R.id.txtListChats);
+//        if(this.listContacts == null){
+//            chatListRecyclerview.setVisibility(View.GONE);
+//        }
+//        else {
+//            txtListChats.setVisibility(View.GONE);
+//            chatListRecyclerview.setVisibility(View.VISIBLE);
+//            adapter = new ContactsAdapter(this);
+//            chatListRecyclerview.setAdapter(adapter);
+//        }
+//        chatListRecyclerview.setLayoutManager(new LinearLayoutManager(this.getContext()));
+//    }
 
     private List<Contact> getContacts(List<String> list){
         List<Contact> tempList = null;

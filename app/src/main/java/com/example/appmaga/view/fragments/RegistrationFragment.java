@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.appmaga.Interfaces.IRegisterFragmentListener;
+import com.example.appmaga.interfaces.IRegisterFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.viewmodels.RegistrationViewModel;

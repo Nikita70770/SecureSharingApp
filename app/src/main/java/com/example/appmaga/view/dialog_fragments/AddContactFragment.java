@@ -1,6 +1,5 @@
 package com.example.appmaga.view.dialog_fragments;
 
-import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,13 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.helpers.GsonWork;
-import com.example.appmaga.Interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.example.appmaga.viewmodels.AddContactViewModel;
 import com.google.android.material.textfield.TextInputEditText;

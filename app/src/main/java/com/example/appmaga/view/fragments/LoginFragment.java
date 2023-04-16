@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.appmaga.Interfaces.ILoginFragmentListener;
+import com.example.appmaga.interfaces.ILoginFragmentListener;
 import com.example.appmaga.R;
 import com.example.appmaga.viewmodels.LoginViewModel;
 import com.google.android.material.textfield.TextInputEditText;

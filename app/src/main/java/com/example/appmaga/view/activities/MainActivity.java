@@ -6,16 +6,12 @@ import android.widget.TextView;
 
 import androidx.appcompat.widget.Toolbar;
 
-import com.example.appmaga.Authentication.Chap;
-import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.view.dialog_fragments.AddContactFragment;
 import com.example.appmaga.view.dialog_fragments.DataExchangeFragment;
-import com.example.appmaga.File.FileWork;
 import com.example.appmaga.view.fragments.ChatsFragment;
 import com.example.appmaga.view.fragments.MainFragment;
-import com.example.appmaga.Interfaces.IAddContactFragmentListener;
-import com.example.appmaga.Interfaces.IChatsFragmentListener;
-import com.example.appmaga.Interfaces.IMainActivityListener;
+import com.example.appmaga.interfaces.IChatsFragmentListener;
+import com.example.appmaga.interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.google.android.material.navigation.NavigationView;
@@ -29,19 +25,14 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class MainActivity extends AppCompatActivity implements IMainActivityListener, NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
     private ActionBarDrawerToggle actionBarDrawerToggle;
-    private FragmentManager fragmentManager = getSupportFragmentManager();
     private TextView txtLoginUser;
 
-    private ChatsFragment chatsFragment;
-
+    private FragmentManager fragmentManager = getSupportFragmentManager();
     private IChatsFragmentListener chatsFragmentListener;
 
     @Override
@@ -50,6 +41,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
         setContentView(R.layout.activity_main);
 
         initElements();
+        initChatsFragment();
     }
 
     @Override
@@ -111,19 +103,7 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
     }
 
     private void initChatsFragment(){
-        List<String> list = new ArrayList<>(getAllChats());
-        if(list.size() == 0){
-            chatsFragment = ChatsFragment.newInstance();
-        }
-        else{
-            chatsFragment = ChatsFragment.newInstance(list);
-        }
-        chatsFragmentListener = chatsFragment;
-        addFragment(R.id.chatsFragmentContainer, chatsFragment);
-    }
-
-    private List<String> getAllChats(){
-        return new ArrayList<>(getFileWork().readAllLinesInternalFile());
+        addFragment(R.id.chatsFragmentContainer, ChatsFragment.newInstance());
     }
 
     private void addFragment(int idElement, Fragment fragment){
@@ -132,20 +112,6 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
                 .replace(idElement, fragment)
                 .addToBackStack(null)
                 .commit();
-    }
-
-    public FileWork getFileWork() {
-        return new FileWork(getApplicationContext(), FileWork.FILE_NAME);
-    }
-
-    @Override
-    public void getContact(Contact contact) {
-        chatsFragmentListener.sendContact(contact);
-    }
-
-    @Override
-    public void sendChap(Chap chap) {
-        chatsFragmentListener.setChap(chap);
     }
 
     @Override

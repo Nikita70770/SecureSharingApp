@@ -1,6 +1,4 @@
-package com.example.appmaga.Interfaces;
-
-import com.example.appmaga.model.entities.User;
+package com.example.appmaga.interfaces;
 
 public interface IRegisterFragmentListener {
     void onRegisterListener();

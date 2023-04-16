@@ -15,7 +15,7 @@ import androidx.fragment.app.DialogFragment;
 import com.example.appmaga.Authentication.Chap;
 import com.example.appmaga.view.fragments.ConstantKeysFragment;
 import com.example.appmaga.helpers.GsonWork;
-import com.example.appmaga.Interfaces.IMainActivityListener;
+import com.example.appmaga.interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.google.android.material.textfield.TextInputEditText;
 

@@ -1,4 +1,4 @@
-package com.example.appmaga.Interfaces;
+package com.example.appmaga.interfaces;
 
 import com.example.appmaga.File.FileWork;
 
