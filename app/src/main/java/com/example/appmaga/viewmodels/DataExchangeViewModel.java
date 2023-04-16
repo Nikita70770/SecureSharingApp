@@ -21,6 +21,7 @@ public class DataExchangeViewModel extends AndroidViewModel {
 
     public void init(){
         this.repository = new DataRepository(getApplication().getBaseContext());
+        repository.setPreferencesInstance();
     }
 
     public User getUser(){
