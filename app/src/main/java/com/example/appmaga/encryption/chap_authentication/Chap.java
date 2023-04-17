@@ -1,10 +1,7 @@
-package com.example.appmaga.encryption.authentication;
-
-import android.content.Context;
+package com.example.appmaga.encryption.chap_authentication;
 
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;
-import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.helpers.MathHelper;
 
 public class Chap {

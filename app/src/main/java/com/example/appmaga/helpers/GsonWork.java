@@ -1,6 +1,6 @@
 package com.example.appmaga.helpers;
 
-import com.example.appmaga.encryption.authentication.Chap;
+import com.example.appmaga.encryption.chap_authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;
 import com.google.gson.Gson;
