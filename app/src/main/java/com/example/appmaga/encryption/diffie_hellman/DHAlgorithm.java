@@ -20,6 +20,10 @@ public class DHAlgorithm {
         return paramP;
     }
 
+    public void setSecretKey() {
+        this.secretKey = MathHelper.getRandomN(0, 10100);
+    }
+
     public int getSecretKey() {
         return secretKey;
     }
