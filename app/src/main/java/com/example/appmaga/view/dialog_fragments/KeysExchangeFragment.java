@@ -1,5 +1,6 @@
 package com.example.appmaga.view.dialog_fragments;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -61,8 +62,16 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
         }
     }
 
-    private int getValues(){
-        return Integer.parseInt(String.valueOf(editTextValues.getText()));
+    private void openWindowWithMessengers(String data){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_TEXT, data);
+        intent.setType("*/*");
+        startActivity(Intent.createChooser(intent, "Share with friends"));
+    }
+
+    private String getValues(){
+        return String.valueOf(editTextValues.getText());
     }
 
     private int getValuePublicKey(){
