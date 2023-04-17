@@ -9,8 +9,10 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import androidx.fragment.app.DialogFragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.viewmodels.KeysExchangeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class KeysExchangeFragment extends DialogFragment implements View.OnClickListener{
@@ -18,9 +20,15 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
     private TextInputEditText editTextValues, editTextValuePublicKey;
     private Button btnSendValues, btnSaveValues, btnCalcSecretKey;
 
+    private KeysExchangeViewModel viewModel;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        viewModel = new ViewModelProvider(requireParentFragment()).get(KeysExchangeViewModel.class);
+        viewModel.init();
+
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
     }
 
