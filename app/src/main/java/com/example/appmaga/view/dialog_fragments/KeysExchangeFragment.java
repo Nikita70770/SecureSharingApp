@@ -60,4 +60,12 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
                 break;
         }
     }
+
+    private int getValues(){
+        return Integer.parseInt(String.valueOf(editTextValues.getText()));
+    }
+
+    private int getValuePublicKey(){
+        return Integer.parseInt(String.valueOf(editTextValuePublicKey.getText()));
+    }
 }
