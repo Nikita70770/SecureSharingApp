@@ -1,14 +1,20 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!--dimes for design 3-->
     <dimen name="headerTextSize">22sp</dimen>
+    <dimen name="newsMoreTextSize">12sp</dimen>
     <dimen name="textSize_1">22sp</dimen>
     <dimen name="textSize_2">18sp</dimen>
     <dimen name="textSize_3">16sp</dimen>
+    <dimen name="textSize_4">12sp</dimen>
+
     <dimen name="design_navigation_icon_size" tools:override="true">32dp</dimen>
-    <dimen name="newsMoreTextSize">12sp</dimen>
     <dimen name="fragmentContainer">15dp</dimen>
     <dimen name="loginCardRadius">20dp</dimen>
     <dimen name="loginViewsMargin">20dp</dimen>
     <dimen name="buttonRegister">20dp</dimen>
     <dimen name="signup_text_margin_top">10dp</dimen>
+    <dimen name="header_text_primary">20dp</dimen>
+    <dimen name="text_input_values">10dp</dimen>
+    <dimen name="btn_send_values">10dp</dimen>
+    <dimen name="btn_save_values">10dp</dimen>
 </resources>

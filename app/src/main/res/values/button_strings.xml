@@ -5,4 +5,7 @@
     <string name="btn_send_user_data_text">Отправить данные</string>
     <string name="btn_get_user_data_text">Сохранить данные</string>
     <string name="btn_authentication_text">Установить соединение</string>
+    <string name="btn_send_data">Отправить данные</string>
+    <string name="btn_save_data">Сохранить данные</string>
+    <string name="btn_calc_secret_key">Вычислить секретный ключ </string>
 </resources>

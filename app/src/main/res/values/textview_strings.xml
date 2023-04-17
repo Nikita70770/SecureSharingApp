@@ -6,4 +6,5 @@
     <string name="textview_adding_contact_title">Добавление контакта</string>
     <string name="textview_list_chats_text">Здесь будет выводиться список чатов</string>
     <string name="textview_authentication_text">Аутентификация</string>
+    <string name="textview_keys_exchange_title">Обмен ключами</string>
 </resources>

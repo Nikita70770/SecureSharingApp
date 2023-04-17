@@ -82,6 +82,20 @@
         <item name="android:textStyle">normal</item>
     </style>
 
+    <style name="SendPublicKey" parent="viewParent">
+        <item name="android:background">@drawable/button_exchange_keys</item>
+        <item name="android:textColor">@color/smokyWhite</item>
+        <item name="android:textSize">@dimen/textSize_4</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="CalcSecretKeyButton" parent="viewParent">
+        <item name="android:background">@drawable/button_calc_secret_key</item>
+        <item name="android:textSize">@dimen/textSize_4</item>
+        <item name="android:textColor">@color/smokyWhite</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
     <style name="customPopupMenuStyle" parent="@android:style/Widget.PopupMenu">
         <item name = "android:listPreferredItemHeightSmall">60dp</item>
     </style>

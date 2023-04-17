@@ -8,4 +8,6 @@
     <string name="hint_your_password">Ваш пароль</string>
     <string name="hint_login_password_contact">Логин и пароль контакта</string>
     <string name="hint_hash_sum">Хэш суммы</string>
+    <string name="hint_values">Вставьте значения P и G и значение открытого ключа</string>
+    <string name="hint_value_public_key">Вставьте значение открытого ключа контакта</string>
 </resources>
