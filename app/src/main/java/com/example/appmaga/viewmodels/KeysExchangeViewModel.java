@@ -22,6 +22,7 @@ public class KeysExchangeViewModel extends AndroidViewModel {
 
     public void init(){
         repository = new DataRepository(getApplication().getBaseContext());
+        repository.setPreferencesInstance();
     }
 
     private void openWindowWithMessengers(Context context, String data){
@@ -34,8 +35,8 @@ public class KeysExchangeViewModel extends AndroidViewModel {
 
     public void sendData(Context context){
         if(algorithm != null) { algorithm = null; }
-
         setAlgorithm();
+
         algorithm.setSecretKey();
         algorithm.calcPublicKeyUser();
         String jsonDHAlgorithm = GsonWork.performSerialization(getAlgorithm());
@@ -48,6 +49,10 @@ public class KeysExchangeViewModel extends AndroidViewModel {
 
         setAlgorithm(data);
         algorithm.setSecretKey();
+    }
+
+    public void calcGeneralSecretKey(){
+        algorithm.calcGeneralSecretKey(algorithm.getPublicKeyContact());
     }
 
     public void setAlgorithm() {
