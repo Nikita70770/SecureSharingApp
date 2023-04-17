@@ -10,12 +10,12 @@
     tools:context="com.example.appmaga.view.fragments.MainFragment">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/btnSetKey"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
-        android:text="Установить ключи"
+        android:text="@string/btn_set_key"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -42,7 +42,7 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:id="@+id/btnSend"
+        android:id="@+id/btnSendMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="42dp"
@@ -65,12 +65,9 @@
         android:id="@+id/keyboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="280dp"
-        android:layout_marginBottom="50dp"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnSend">
-    </com.example.appmaga.encryption.keyboard.CustomKeyboard>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"></com.example.appmaga.encryption.keyboard.CustomKeyboard>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

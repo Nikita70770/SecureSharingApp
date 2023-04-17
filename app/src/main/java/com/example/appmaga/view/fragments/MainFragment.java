@@ -50,7 +50,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private void initViewElements(View view){
         editTextInputMessage = view.findViewById(R.id.editTextInputMessage);
-        btnSendMessage = view.findViewById(R.id.btnSend);
+        btnSendMessage = view.findViewById(R.id.btnSendMessage);
         keyboard = (CustomKeyboard) view.findViewById(R.id.keyboard);
 
         // prevent system keyboard from appearing when EditText is tapped
