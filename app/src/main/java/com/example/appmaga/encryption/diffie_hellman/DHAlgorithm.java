@@ -5,7 +5,8 @@ import com.example.appmaga.helpers.MathHelper;
 public class DHAlgorithm {
 
     private int paramG, paramP;
-    private int secretKey, publicKeyContact, generalSecretKey;
+    private int publicKeyContact;
+    private transient int secretKey, generalSecretKey;
 
     public DHAlgorithm(){
         this.paramG = MathHelper.getRandomN(1, 10);

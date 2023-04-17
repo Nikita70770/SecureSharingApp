@@ -34,4 +34,12 @@ public class MathHelper {
         int randValue = (int) (Math.random() * ((max - min) + 1) + min);
         return randValue;
     }
+
+    public static long calcPublicKey(int valG, int secretKey, int valP){
+        return (int) Math.pow(valG, secretKey) % (valP);
+    }
+
+    public static int calcGeneralSecretKey(int publicKeyContact, int secretKey, int valP){
+        return (int) Math.pow(publicKeyContact, secretKey) % (valP);
+    }
 }
