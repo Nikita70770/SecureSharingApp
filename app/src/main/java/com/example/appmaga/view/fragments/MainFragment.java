@@ -14,7 +14,7 @@ import android.widget.EditText;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import com.example.appmaga.Keyboard.CustomKeyboard;
+import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
 
 public class MainFragment extends Fragment implements View.OnClickListener {

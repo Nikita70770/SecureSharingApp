@@ -1,4 +1,4 @@
-package com.example.appmaga.Keyboard;
+package com.example.appmaga.encryption.keyboard;
 
 import android.content.Context;
 import android.text.TextUtils;
