@@ -53,6 +53,7 @@ public class KeysExchangeViewModel extends AndroidViewModel {
 
     public void calcGeneralSecretKey(){
         algorithm.calcGeneralSecretKey(algorithm.getPublicKeyContact());
+        repository.saveGeneralSecretKey(algorithm.getGeneralSecretKey());
     }
 
     public void setAlgorithm() {

@@ -12,6 +12,7 @@ public class PreferencesStorage {
 
     private static final String APP_PREFERENCES = "UserStorage";
     private static final String APP_PREFERENCES_USER_OBJECT = "UserObject";
+    private static final String APP_PREFERENCES_KEY_VALUE = "GeneralKey";
     private static final int ACCESS_MODE_PRIVATE = Context.MODE_PRIVATE;
 
     public static PreferencesStorage init(Context context){
@@ -23,6 +24,11 @@ public class PreferencesStorage {
     public void saveUser(User user) {
         String jsonUser = GsonWork.performSerialization(user);
         editor.putString(APP_PREFERENCES_USER_OBJECT, jsonUser);
+        editor.apply();
+    }
+
+    public void saveGeneralSecretKey(int key){
+        editor.putInt(APP_PREFERENCES_KEY_VALUE, key);
         editor.apply();
     }
 

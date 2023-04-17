@@ -33,6 +33,9 @@ public class DataRepository {
     public void saveUser(User user){
         storage.saveUser(user);
     }
+    public void saveGeneralSecretKey(int key){
+        storage.saveGeneralSecretKey(key);
+    }
 
     public User getUser(){
         return storage.getUser();
