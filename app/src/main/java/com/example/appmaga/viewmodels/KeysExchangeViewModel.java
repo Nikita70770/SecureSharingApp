@@ -42,11 +42,22 @@ public class KeysExchangeViewModel extends AndroidViewModel {
         openWindowWithMessengers(context, jsonDHAlgorithm);
     }
 
+    public void saveData(String data){
+        if(algorithm != null) { algorithm = null; }
+
+        setAlgorithm(data);
+        algorithm.setSecretKey();
+    }
+
     public DHAlgorithm getAlgorithm() {
         return algorithm;
     }
 
     public void setAlgorithm() {
-        this.algorithm = new DHAlgorithm();
+        algorithm = new DHAlgorithm();
+    }
+
+    public void setAlgorithm(String data) {
+        algorithm = (DHAlgorithm) GsonWork.performDeserialization(data, DHAlgorithm.class.getSimpleName());
     }
 }
