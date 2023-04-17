@@ -44,13 +44,15 @@ public class MathHelper {
         return resPow;
     }
 
-    public static BigInteger calcPublicKey(int valG, int secretKey, int valP){
+    public static int calcPublicKey(int valG, int secretKey, int valP){
         BigInteger resPow = pow(valG, secretKey);
         BigInteger publicKey = resPow.mod(BigInteger.valueOf(valP));
-        return publicKey;
+        return publicKey.intValue();
     }
 
     public static int calcGeneralSecretKey(int publicKeyContact, int secretKey, int valP){
-        return (int) Math.pow(publicKeyContact, secretKey) % (valP);
+        BigInteger resPow = pow(publicKeyContact, secretKey);
+        BigInteger generalSecretKey = resPow.mod(BigInteger.valueOf(valP));
+        return generalSecretKey.intValue();
     }
 }

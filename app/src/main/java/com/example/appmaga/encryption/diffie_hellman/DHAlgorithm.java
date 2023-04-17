@@ -9,8 +9,7 @@ import java.math.BigInteger;
 public class DHAlgorithm {
 
     private int paramG, paramP;
-    private int publicKeyContact;
-    private transient int secretKey, generalSecretKey;
+    private int secretKey;
 
     public DHAlgorithm(){
         this.paramG = MathHelper.getRandomN(1, 10);
@@ -33,15 +32,11 @@ public class DHAlgorithm {
         return secretKey;
     }
 
-    public BigInteger calcPublicKeyUser(){
+    public int calcPublicKeyUser(){
         return MathHelper.calcPublicKey(getParamG(), getSecretKey(), getParamP());
     }
 
-    public int getPublicKeyContact() {
-        return publicKeyContact;
-    }
-
-    public int getGeneralSecretKey() {
-        return generalSecretKey;
+    public int calcGeneralSecretKey(int publicKeyContact){
+        return MathHelper.calcGeneralSecretKey(publicKeyContact, getSecretKey(), getParamP());
     }
 }
