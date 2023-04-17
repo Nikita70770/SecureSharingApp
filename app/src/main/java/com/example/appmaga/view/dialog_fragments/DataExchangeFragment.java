@@ -46,10 +46,10 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState){
-        View dataExchangeView = inflater.inflate(R.layout.data_exchange_fragment, null);
+        View view = inflater.inflate(R.layout.data_exchange_fragment, null);
         getDialog().getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
-        initViewElements(dataExchangeView);
-        return dataExchangeView;
+        initViewElements(view);
+        return view;
     }
 
     private void initViewElements(View windowView){

@@ -1,6 +1,7 @@
 package com.example.appmaga.viewmodels;
 
 import android.app.Application;
+import android.content.Context;
 import android.content.Intent;
 
 import androidx.annotation.NonNull;
@@ -23,22 +24,22 @@ public class KeysExchangeViewModel extends AndroidViewModel {
         repository = new DataRepository(getApplication().getBaseContext());
     }
 
-    private void openWindowWithMessengers(String data){
+    private void openWindowWithMessengers(Context context, String data){
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Intent.EXTRA_TEXT, data);
         intent.setType("*/*");
-        getApplication().startActivity(Intent.createChooser(intent, "Share with friends"));
+        context.startActivity(Intent.createChooser(intent, "Share with friends"));
     }
 
-    public void sendData(){
+    public void sendData(Context context){
         if(algorithm != null) { algorithm = null; }
 
         setAlgorithm();
         algorithm.setSecretKey();
-        String jsonDHAlgorithm = GsonWork.performSerialization(DHAlgorithm.class);
+        String jsonDHAlgorithm = GsonWork.performSerialization(getAlgorithm());
 
-        openWindowWithMessengers(jsonDHAlgorithm);
+        openWindowWithMessengers(context, jsonDHAlgorithm);
     }
 
     public DHAlgorithm getAlgorithm() {

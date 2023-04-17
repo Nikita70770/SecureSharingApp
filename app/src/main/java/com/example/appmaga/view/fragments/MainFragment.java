@@ -16,11 +16,12 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
+import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
 
     private EditText editTextInputMessage;
-    private Button btnSendMessage;
+    private Button btnSetKey, btnSendMessage;
     private CustomKeyboard keyboard;
 
     public static MainFragment newInstance(){
@@ -50,12 +51,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
     private void initViewElements(View view){
         editTextInputMessage = view.findViewById(R.id.editTextInputMessage);
+        btnSetKey = view.findViewById(R.id.btnSetKey);
         btnSendMessage = view.findViewById(R.id.btnSendMessage);
         keyboard = (CustomKeyboard) view.findViewById(R.id.keyboard);
 
         // prevent system keyboard from appearing when EditText is tapped
         editTextInputMessage.setRawInputType(InputType.TYPE_CLASS_TEXT);
         editTextInputMessage.setShowSoftInputOnFocus(false);
+
+        btnSetKey.setOnClickListener(this);
+        btnSendMessage.setOnClickListener(this);
 
         // pass the InputConnection from the EditText to the keyboard
         InputConnection ic = editTextInputMessage.onCreateInputConnection(new EditorInfo());
@@ -71,7 +76,16 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     }
 
     @Override
-    public void onClick(View v) {
-        sendMessage(editTextInputMessage.getText().toString());
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.btnSetKey:
+                KeysExchangeFragment.newInstance().show(getActivity().getSupportFragmentManager(),
+                        "keysExchangeFragment");
+                break;
+
+            case R.id.btnSendMessage:
+                sendMessage(editTextInputMessage.getText().toString());
+                break;
+        }
     }
 }

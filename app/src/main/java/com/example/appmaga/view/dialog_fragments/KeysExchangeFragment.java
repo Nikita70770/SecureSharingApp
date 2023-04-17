@@ -1,6 +1,5 @@
 package com.example.appmaga.view.dialog_fragments;
 
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -22,11 +21,15 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
 
     private KeysExchangeViewModel viewModel;
 
+    public static KeysExchangeFragment newInstance(){
+        return new KeysExchangeFragment();
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        viewModel = new ViewModelProvider(requireParentFragment()).get(KeysExchangeViewModel.class);
+        viewModel = new ViewModelProvider(requireActivity()).get(KeysExchangeViewModel.class);
         viewModel.init();
 
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
@@ -57,7 +60,7 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSendValues:
-                viewModel.sendData();
+                viewModel.sendData(getContext());
                 break;
 
             case R.id.btnSaveValues:
