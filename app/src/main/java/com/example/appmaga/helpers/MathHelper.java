@@ -1,6 +1,9 @@
 package com.example.appmaga.helpers;
 
+import android.util.Log;
+
 import java.io.UnsupportedEncodingException;
+import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
@@ -35,8 +38,16 @@ public class MathHelper {
         return randValue;
     }
 
-    public static long calcPublicKey(int valG, int secretKey, int valP){
-        return (int) Math.pow(valG, secretKey) % (valP);
+    private static BigInteger pow(int value, int powValue){
+        BigInteger val = new BigInteger(String.valueOf(value));
+        BigInteger resPow = val.pow(powValue);
+        return resPow;
+    }
+
+    public static BigInteger calcPublicKey(int valG, int secretKey, int valP){
+        BigInteger resPow = pow(valG, secretKey);
+        BigInteger publicKey = resPow.mod(BigInteger.valueOf(valP));
+        return publicKey;
     }
 
     public static int calcGeneralSecretKey(int publicKeyContact, int secretKey, int valP){

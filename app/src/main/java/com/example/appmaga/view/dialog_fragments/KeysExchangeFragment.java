@@ -64,7 +64,7 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
                 break;
 
             case R.id.btnSaveValues:
-                //
+                viewModel.setAlgorithm(getValues());
                 break;
 
             case R.id.btnCalcSecretKey:

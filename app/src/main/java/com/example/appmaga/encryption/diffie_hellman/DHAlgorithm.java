@@ -1,6 +1,10 @@
 package com.example.appmaga.encryption.diffie_hellman;
 
+import android.util.Log;
+
 import com.example.appmaga.helpers.MathHelper;
+
+import java.math.BigInteger;
 
 public class DHAlgorithm {
 
@@ -27,6 +31,10 @@ public class DHAlgorithm {
 
     public int getSecretKey() {
         return secretKey;
+    }
+
+    public BigInteger calcPublicKeyUser(){
+        return MathHelper.calcPublicKey(getParamG(), getSecretKey(), getParamP());
     }
 
     public int getPublicKeyContact() {
