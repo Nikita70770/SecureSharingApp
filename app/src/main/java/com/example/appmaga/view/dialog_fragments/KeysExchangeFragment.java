@@ -57,7 +57,7 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSendValues:
-                //
+                viewModel.sendData();
                 break;
 
             case R.id.btnSaveValues:

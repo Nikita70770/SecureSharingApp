@@ -34,6 +34,9 @@ public class KeysExchangeViewModel extends AndroidViewModel {
     public void sendData(){
         if(algorithm != null) { algorithm = null; }
         setAlgorithm();
+
+        String jsonDHAlgorithm = GsonWork.performSerialization(DHAlgorithm.class);
+        openWindowWithMessengers(jsonDHAlgorithm);
     }
 
     public DHAlgorithm getAlgorithm() {
@@ -42,5 +45,6 @@ public class KeysExchangeViewModel extends AndroidViewModel {
 
     public void setAlgorithm() {
         this.algorithm = new DHAlgorithm();
+        algorithm.setSecretKey();
     }
 }
