@@ -1,6 +1,7 @@
 package com.example.appmaga.helpers;
 
 import com.example.appmaga.encryption.chap_authentication.Chap;
+import com.example.appmaga.encryption.diffie_hellman.DHAlgorithm;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;
 import com.google.gson.Gson;
@@ -21,6 +22,8 @@ public class GsonWork {
                 return gson.fromJson(data, Contact.class);
             case "Chap":
                 return gson.fromJson(data, Chap.class);
+            case "DHAlgorithm":
+                return gson.fromJson(data, DHAlgorithm.class);
             default:
                 return null;
         }

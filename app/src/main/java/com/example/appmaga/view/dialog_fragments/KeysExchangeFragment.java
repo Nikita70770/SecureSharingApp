@@ -70,14 +70,6 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
         }
     }
 
-    private void openWindowWithMessengers(String data){
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(Intent.EXTRA_TEXT, data);
-        intent.setType("*/*");
-        startActivity(Intent.createChooser(intent, "Share with friends"));
-    }
-
     private String getValues(){
         return String.valueOf(editTextValues.getText());
     }
