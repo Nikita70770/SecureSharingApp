@@ -64,6 +64,7 @@
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/textInputValuePublicKey"
             style="@style/parent"
+            android:layout_marginTop="@dimen/text_input_value_public_key"
             android:hint="@string/hint_value_public_key"
             android:textColorHint="@color/white">
 
