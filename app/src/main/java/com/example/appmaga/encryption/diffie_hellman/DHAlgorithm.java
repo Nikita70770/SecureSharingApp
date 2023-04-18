@@ -5,8 +5,8 @@ import com.example.appmaga.helpers.MathHelper;
 public class DHAlgorithm {
 
     private int paramG, paramP;
-    private int publicKeyUser, publicKeyContact;
-    private transient int secretKey, generalSecretKey;
+    private int publicKeyUser;
+    private transient int secretKey, valueKey, publicKeyContact, generalSecretKey;
 
     public DHAlgorithm(){
         this.paramG = MathHelper.getRandomN(1, 10);
@@ -30,24 +30,37 @@ public class DHAlgorithm {
     }
 
     public void calcPublicKeyUser(){
-        publicKeyUser = MathHelper.calcPublicKey(getParamG(), getSecretKey(), getParamP());
+        publicKeyUser = MathHelper.calcPublicKey(
+                getParamG(),
+                getSecretKey(),
+                getParamP()
+        );
     }
 
     public int getPublicKeyUser() {
         return publicKeyUser;
     }
 
-    public int getPublicKeyContact() {
-        return publicKeyContact;
-    }
-
     public void setPublicKeyContact(int publicKeyContact) {
         this.publicKeyContact = publicKeyContact;
     }
 
+    public int getPublicKeyContact() {
+        return publicKeyContact;
+    }
+
+    public int getValueKey() {
+        return valueKey;
+    }
+
+    public void setValueKey(int valueKey) {
+        if(valueKey == -1){ this.valueKey = getPublicKeyContact(); }
+        else { this.valueKey = valueKey; }
+    }
+
     public void calcGeneralSecretKey(){
         generalSecretKey = MathHelper.calcGeneralSecretKey(
-                getPublicKeyContact(),
+                getValueKey(),
                 getSecretKey(),
                 getParamP()
         );

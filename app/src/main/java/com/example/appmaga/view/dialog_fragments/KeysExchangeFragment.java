@@ -30,7 +30,7 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
         super.onCreate(savedInstanceState);
 
         viewModel = new ViewModelProvider(requireActivity()).get(KeysExchangeViewModel.class);
-        viewModel.init();
+        viewModel.init(getContext());
 
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
     }
@@ -60,8 +60,10 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSendValues:
+                editTextValues.setEnabled(false);
                 btnSaveValues.setEnabled(false);
-                viewModel.sendData(getContext());
+
+                viewModel.sendData();
                 break;
 
             case R.id.btnSaveValues:
@@ -69,14 +71,17 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
                 editTextValuePublicKey.setEnabled(false);
 
                 viewModel.saveData(getValues());
+                editTextValues.setText("");
                 break;
 
             case R.id.btnCalcSecretKey:
+                editTextValues.setEnabled(true);
                 btnSaveValues.setEnabled(true);
                 btnSendValues.setEnabled(true);
                 editTextValuePublicKey.setEnabled(true);
 
-                viewModel.calcGeneralSecretKey();
+                viewModel.calcGeneralSecretKey(getValuePublicKey());
+                getDialog().dismiss();
                 break;
         }
     }
@@ -86,6 +91,7 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
     }
 
     private int getValuePublicKey(){
-        return Integer.parseInt(String.valueOf(editTextValuePublicKey.getText()));
+        String value = String.valueOf(editTextValuePublicKey.getText());
+        return value.isEmpty() ? -1 : Integer.parseInt(value);
     }
 }

@@ -1,7 +1,5 @@
 package com.example.appmaga.helpers;
 
-import android.util.Log;
-
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
