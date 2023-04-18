@@ -24,13 +24,12 @@ public class Chap {
                 setCalcHashSum(hashSum);
                 break;
             case 2:
-                setResValueUser(getCalcHashSum());
                 hashSum = MathHelper.getHash(contact.getPassword() + user.getRandValue());
                 setResValueContact(hashSum);
-                break;
-            case 3:
+
                 boolean result = getResValueUser().equals(getResValueContact()) ? true : false;
                 setResultAuthentication(result);
+                break;
         }
     }
 
@@ -38,18 +37,14 @@ public class Chap {
         return contact;
     }
 
-    public String getCalcHashSum() {
-        return calcHashSum;
-    }
-
     public void setCalcHashSum(String calcHashSum) {
         this.calcHashSum = calcHashSum;
     }
+    public String getCalcHashSum() { return calcHashSum; }
 
     public String getResValueUser() {
         return resValueUser;
     }
-
     public void setResValueUser(String resValueUser) {
         this.resValueUser = resValueUser;
     }
@@ -57,7 +52,6 @@ public class Chap {
     public String getResValueContact() {
         return resValueContact;
     }
-
     public void setResValueContact(String resValueContact) {
         this.resValueContact = resValueContact;
     }
@@ -65,7 +59,6 @@ public class Chap {
     public void setResultAuthentication(boolean resultAuthentication) {
         this.resultAuthentication = resultAuthentication;
     }
-
     public boolean isResultAuthentication() {
         return resultAuthentication;
     }
