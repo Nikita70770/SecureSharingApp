@@ -39,20 +39,21 @@ public class KeysExchangeViewModel extends AndroidViewModel {
 
         algorithm.setSecretKey();
         algorithm.calcPublicKeyUser();
-        String jsonDHAlgorithm = GsonWork.performSerialization(getAlgorithm());
 
+        String jsonDHAlgorithm = GsonWork.performSerialization(getAlgorithm());
         openWindowWithMessengers(context, jsonDHAlgorithm);
     }
 
     public void saveData(String data){
         if(algorithm != null) { algorithm = null; }
-
         setAlgorithm(data);
+
         algorithm.setSecretKey();
+        algorithm.calcPublicKeyUser();
     }
 
     public void calcGeneralSecretKey(){
-        algorithm.calcGeneralSecretKey(algorithm.getPublicKeyContact());
+        algorithm.calcGeneralSecretKey();
         repository.saveGeneralSecretKey(algorithm.getGeneralSecretKey());
     }
 
