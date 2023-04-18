@@ -28,8 +28,13 @@ public class PreferencesStorage {
     }
 
     public void saveGeneralSecretKey(int key){
+        if(getGeneralSecretKey() != -1){ preferences.edit().remove(APP_PREFERENCES_KEY_VALUE).commit(); }
         editor.putInt(APP_PREFERENCES_KEY_VALUE, key);
         editor.apply();
+    }
+
+    public int getGeneralSecretKey(){
+        return preferences.getInt(APP_PREFERENCES_KEY_VALUE, -1);
     }
 
     public User getUser() {

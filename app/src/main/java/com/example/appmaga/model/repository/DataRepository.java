@@ -33,12 +33,16 @@ public class DataRepository {
     public void saveUser(User user){
         storage.saveUser(user);
     }
+    public User getUser(){
+        return storage.getUser();
+    }
+
+
     public void saveGeneralSecretKey(int key){
         storage.saveGeneralSecretKey(key);
     }
-
-    public User getUser(){
-        return storage.getUser();
+    public int getGeneralSecretKey(){
+        return storage.getGeneralSecretKey();
     }
 
     public void addContact(Contact contact){
