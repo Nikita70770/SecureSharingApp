@@ -60,15 +60,23 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSendValues:
+                btnSaveValues.setEnabled(false);
                 viewModel.sendData(getContext());
                 break;
 
             case R.id.btnSaveValues:
+                btnSendValues.setEnabled(false);
+                editTextValuePublicKey.setEnabled(false);
+
                 viewModel.saveData(getValues());
                 break;
 
             case R.id.btnCalcSecretKey:
+                btnSaveValues.setEnabled(true);
+                btnSendValues.setEnabled(true);
+                editTextValuePublicKey.setEnabled(true);
 
+                viewModel.calcGeneralSecretKey();
                 break;
         }
     }
