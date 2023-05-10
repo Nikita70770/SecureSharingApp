@@ -18,14 +18,14 @@ import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 
-public class MainFragment extends Fragment implements View.OnClickListener {
+public class CommunicationFragment extends Fragment implements View.OnClickListener {
 
     private EditText editTextInputMessage;
     private Button btnSetKey, btnSendMessage;
     private CustomKeyboard keyboard;
 
-    public static MainFragment newInstance(){
-        return new MainFragment();
+    public static CommunicationFragment newInstance(){
+        return new CommunicationFragment();
     }
 
     @Override

@@ -13,7 +13,7 @@ import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.appmaga.encryption.chap_authentication.Chap;
-import com.example.appmaga.view.fragments.ConstantKeysFragment;
+import com.example.appmaga.helpers.constants.ConstantKeysFragment;
 import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.interfaces.IMainActivityListener;
 import com.example.appmaga.R;

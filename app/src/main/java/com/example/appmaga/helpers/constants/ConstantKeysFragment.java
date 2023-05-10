@@ -1,4 +1,4 @@
-package com.example.appmaga.view.fragments;
+package com.example.appmaga.helpers.constants;
 
 public class ConstantKeysFragment {
     public static final String DATA_CONTACTS_KEY = "DataContacts";
