@@ -38,5 +38,13 @@ public class MersenneTwister64bit {
         this.mtIndex = 0;
         this.mt = new long[N];
         this.magic = new long[]{ 0x0L, MASK_A };
+        initializeGenerator(seed);
+    }
+
+    private void initializeGenerator(int seed){
+        mt[0] = seed;
+        for(mtIndex = 1; mtIndex < N; mtIndex++){
+            mt[mtIndex] = (F * (mt[mtIndex - 1] ^ (mt[mtIndex - 1] >> (W - 2))) + mtIndex);
+        }
     }
 }
