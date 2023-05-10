@@ -24,6 +24,10 @@ public class CommunicationViewModel extends AndroidViewModel {
         super(application);
     }
 
+    public int getGeneralSecretKey(){
+        return repository.getGeneralSecretKey();
+    }
+
     public void openWindowWithMessengers(String message){
         final Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

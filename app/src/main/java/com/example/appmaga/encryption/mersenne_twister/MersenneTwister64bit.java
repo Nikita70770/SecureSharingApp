@@ -78,4 +78,12 @@ public class MersenneTwister64bit {
 
         return Math.abs(y);
     }
+
+    public long[] generateNumbers(int len){
+        long[] data = new long[len];
+        for(int i = 0; i < len; i++){
+            data[i] = generateNumber();
+        }
+        return data;
+    }
 }

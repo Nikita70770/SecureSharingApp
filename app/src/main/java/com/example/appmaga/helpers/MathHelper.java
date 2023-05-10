@@ -55,7 +55,7 @@ public class MathHelper {
         return generalSecretKey.intValue();
     }
 
-    public String getLargeBinSequence(long[] data){
+    public static String getLargeBinSequence(long[] data){
         String binNum, binSequence = "";
         int lenBinNum;
         for(long num : data){

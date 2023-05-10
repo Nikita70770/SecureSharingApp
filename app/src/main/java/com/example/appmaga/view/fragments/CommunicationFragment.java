@@ -1,6 +1,5 @@
 package com.example.appmaga.view.fragments;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.LayoutInflater;
@@ -14,14 +13,12 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
-import com.example.appmaga.viewmodels.KeysExchangeViewModel;
 
 public class CommunicationFragment extends Fragment implements View.OnClickListener {
 
