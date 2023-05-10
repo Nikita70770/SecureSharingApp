@@ -76,6 +76,6 @@ public class MersenneTwister64bit {
         y ^= (y << T) & MASK_C;
         y ^= y >>> L;
 
-        return y;
+        return Math.abs(y);
     }
 }

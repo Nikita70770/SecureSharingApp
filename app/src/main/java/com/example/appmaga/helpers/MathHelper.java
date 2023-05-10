@@ -9,6 +9,7 @@ public class MathHelper {
 
     private static final String NAME_ALGORITHM = "MD5";
     private static final String CHARSET_NAME = "UTF-8";
+    private static final int MAX_SEQUENCE_LENGTH = 64;
 
     public static String getHash(String value){
         MessageDigest messageDigest = null;
@@ -52,5 +53,21 @@ public class MathHelper {
         BigInteger resPow = pow(publicKeyContact, secretKey);
         BigInteger generalSecretKey = resPow.mod(BigInteger.valueOf(valP));
         return generalSecretKey.intValue();
+    }
+
+    public String getLargeBinSequence(long[] data){
+        String binNum, binSequence = "";
+        int lenBinNum;
+        for(long num : data){
+            binNum = Long.toBinaryString(num);
+            lenBinNum = binNum.length();
+            if(lenBinNum < MAX_SEQUENCE_LENGTH){
+                for(int i = lenBinNum; i < MAX_SEQUENCE_LENGTH; i++) {
+                    binNum = "0" + binNum;
+                }
+            }
+            binSequence += binNum;
+        }
+        return binSequence;
     }
 }

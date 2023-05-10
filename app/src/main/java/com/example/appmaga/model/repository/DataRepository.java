@@ -4,10 +4,8 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.loader.content.AsyncTaskLoader;
 
 import com.example.appmaga.model.dao.ContactDAO;
-import com.example.appmaga.model.db.AppDatabase;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.model.preferences.PreferencesStorage;

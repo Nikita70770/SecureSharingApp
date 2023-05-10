@@ -33,7 +33,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState){
         View view = LayoutInflater.from(getContext()).inflate(R.layout.communiacation_user_fragment, container, false);
         initViewElements(view);
-        btnSendMessage.setOnClickListener(this);
         return view;
     }
 
