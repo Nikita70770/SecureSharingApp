@@ -11,12 +11,17 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
+import com.example.appmaga.viewmodels.CommunicationViewModel;
+import com.example.appmaga.viewmodels.KeysExchangeViewModel;
 
 public class CommunicationFragment extends Fragment implements View.OnClickListener {
 
@@ -24,8 +29,17 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
     private Button btnSetKey, btnSendMessage;
     private CustomKeyboard keyboard;
 
+    private CommunicationViewModel viewModel;
+
     public static CommunicationFragment newInstance(){
         return new CommunicationFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(requireActivity()).get(CommunicationViewModel.class);
+        viewModel.init();
     }
 
     @Override
@@ -66,14 +80,6 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
         keyboard.setInputConnection(ic);
     }
 
-    private void sendMessage(String message){
-        final Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
-        intent.setType("*/*");
-        startActivity(Intent.createChooser(intent, "Share with friends"));
-    }
-
     @Override
     public void onClick(View view) {
         switch (view.getId()){
@@ -83,7 +89,8 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
                 break;
 
             case R.id.btnSendMessage:
-                sendMessage(editTextInputMessage.getText().toString());
+                String message = editTextInputMessage.getText().toString();
+                viewModel.openWindowWithMessengers(message);
                 break;
         }
     }

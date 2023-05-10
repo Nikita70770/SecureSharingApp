@@ -24,7 +24,7 @@ public class CommunicationViewModel extends AndroidViewModel {
         super(application);
     }
 
-    private void openWindowWithMessengers(String message){
+    public void openWindowWithMessengers(String message){
         final Intent intent = new Intent(Intent.ACTION_SEND);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(Intent.EXTRA_TEXT, message);
