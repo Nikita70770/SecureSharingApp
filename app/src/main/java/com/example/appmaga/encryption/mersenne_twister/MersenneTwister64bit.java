@@ -30,6 +30,13 @@ public class MersenneTwister64bit {
     // Множитель инициализации, используемый для заполнения последовательности состояний
     private final long F = 6364136223846793005L;
 
-    private int[] mt;
+    private long[] mt;
+    private final long magic[];
     private int mtIndex;
+
+    public MersenneTwister64bit(int seed){
+        this.mtIndex = 0;
+        this.mt = new long[N];
+        this.magic = new long[]{ 0x0L, MASK_A };
+    }
 }
