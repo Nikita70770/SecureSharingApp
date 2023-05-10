@@ -47,4 +47,35 @@ public class MersenneTwister64bit {
             mt[mtIndex] = (F * (mt[mtIndex - 1] ^ (mt[mtIndex - 1] >> (W - 2))) + mtIndex);
         }
     }
+
+    public long generateNumber(){
+        int i;
+        long y;
+
+        if(mtIndex >= N){
+            for(i = 0; i < diffNM; i++){
+                y = (mt[i] & UPPER_MASK) | (mt[i + 1] & LOWER_MASK);
+                mt[i] = mt[i + M] ^ (y >>> 1) ^ magic[(int)(y & 0x1L)];
+            }
+
+            for(;i < (N - 1); i++){
+                y = (mt[i] & UPPER_MASK) | (mt[i + 1] & LOWER_MASK);
+                mt[i] = mt[i + (M - N)] ^ (y >>> 1) ^ magic[(int)(y & 0x1L)];
+            }
+
+            y = (mt[N - 1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
+            mt[N - 1] = mt[M - 1] ^ (y >>> 1) ^ magic[(int)(y & 0x1L)];
+
+            mtIndex = 0;
+        }
+
+        y = mt[mtIndex++];
+
+        y ^= (y >>> U) & MASK_D;
+        y ^= (y << S) & MASK_B;
+        y ^= (y << T) & MASK_C;
+        y ^= y >>> L;
+
+        return y;
+    }
 }
