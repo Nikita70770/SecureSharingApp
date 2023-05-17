@@ -14,4 +14,6 @@
 
     <string name="toast_successful_connection">Соединение с %1$s установлено!</string>
     <string name="toast_failed_connection">Соединение с %1$s не установлено!</string>
+
+    <string name="toast_successful_calc_secret_key">Секретный ключ успешно сформирован!</string>
 </resources>

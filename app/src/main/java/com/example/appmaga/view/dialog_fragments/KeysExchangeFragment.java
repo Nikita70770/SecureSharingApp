@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -82,6 +83,8 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
 
                 viewModel.calcGeneralSecretKey(getValuePublicKey());
                 getDialog().dismiss();
+
+                Toast.makeText(this.getContext(), R.string.toast_successful_calc_secret_key, Toast.LENGTH_SHORT).show();
                 break;
         }
     }
