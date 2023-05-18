@@ -35,12 +35,13 @@ public class CustomKeyboard extends LinearLayout implements View.OnClickListener
     private Button btnSpecialCharacters, btnSpace;
     private ImageButton btnDelete, btnEnter;
 
-    private SparseArray<String> keyValues = new SparseArray<>();
-
-    private List<String> listCodes = new ArrayList<>();
+    private SparseArray<String> keyValues;
+    private List<String> listCodes;
+    private String[] keyboardLayouts;
 
     // Our communication link to the EditText
     private InputConnection inputConnection;
+    private String keyboardLayout;
 
     public CustomKeyboard(Context context) {
         this(context, null, 0);
@@ -52,6 +53,10 @@ public class CustomKeyboard extends LinearLayout implements View.OnClickListener
 
     public CustomKeyboard(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+        this.listCodes = new ArrayList<>();
+        this.keyValues  = new SparseArray<>();
+        this.keyboardLayouts = new String[] {"russian", "english"};
+        this.keyboardLayout = keyboardLayouts[0];
         init(context, attrs);
     }
 
@@ -116,5 +121,13 @@ public class CustomKeyboard extends LinearLayout implements View.OnClickListener
 
     private int getKeyCode(String id){
         return Integer.parseInt(id.substring(id.length()-3, id.length()));
+    }
+
+    public String getKeyboardLayout() {
+        return keyboardLayout;
+    }
+
+    public void setKeyboardLayout(String keyboardLayout) {
+        this.keyboardLayout = keyboardLayout;
     }
 }

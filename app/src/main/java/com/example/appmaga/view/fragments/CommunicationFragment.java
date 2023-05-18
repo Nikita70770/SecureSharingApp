@@ -63,7 +63,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
         editTextInputMessage = view.findViewById(R.id.editTextInputMessage);
         btnSetKey = view.findViewById(R.id.btnSetKey);
         btnSendMessage = view.findViewById(R.id.btnSendMessage);
-        keyboard = (CustomKeyboard) view.findViewById(R.id.keyboard);
+//        keyboard = (CustomKeyboard) view.findViewById(R.id.keyboard);
 
         // prevent system keyboard from appearing when EditText is tapped
         editTextInputMessage.setRawInputType(InputType.TYPE_CLASS_TEXT);

@@ -61,13 +61,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputMessage" />
 
-    <com.example.appmaga.encryption.keyboard.CustomKeyboard
-        android:id="@+id/keyboard"
+    <FrameLayout
+        android:id="@+id/formFragmentContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"></com.example.appmaga.encryption.keyboard.CustomKeyboard>
+        app:layout_constraintStart_toStartOf="parent"></FrameLayout>
+
+<!--    <com.example.appmaga.encryption.keyboard.CustomKeyboard-->
+<!--        android:id="@+id/keyboard"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:orientation="vertical"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent">-->
+<!--    </com.example.appmaga.encryption.keyboard.CustomKeyboard>-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>
