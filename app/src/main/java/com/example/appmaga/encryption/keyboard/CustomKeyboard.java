@@ -3,7 +3,6 @@ package com.example.appmaga.encryption.keyboard;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -67,7 +66,7 @@ public class CustomKeyboard extends LinearLayout implements View.OnClickListener
     }
 
     private void init(Context context, AttributeSet attrs) {
-        View view = LayoutInflater.from(context).inflate(R.layout.custom_keyboard, this, true);
+        View view = LayoutInflater.from(context).inflate(R.layout.rus_layout_keyboard, this, true);
         for(int i = 0; i < BUTTONS_IDS.length; i++){
             int id = BUTTONS_IDS[i];
             Button btn = view.findViewById(id);
