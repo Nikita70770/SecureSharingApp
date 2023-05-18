@@ -16,7 +16,7 @@ import com.example.appmaga.R;
 import java.util.Arrays;
 import java.util.List;
 
-public class RusLayoutKeyboardFragment extends Fragment {
+public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickListener {
 
     private List<String> rusLayout = Arrays.asList(
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
@@ -48,5 +48,32 @@ public class RusLayoutKeyboardFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.rus_layout_keyboard, container, false);
         return view;
+    }
+
+    private void initViewElements(View view){
+        for(int i = 0; i < BUTTONS_IDS.length; i++){
+            int id = BUTTONS_IDS[i];
+            Button btn = view.findViewById(id);
+            btn.setOnClickListener(this);
+            keyValues.put(id, rusLayout.get(i));
+        }
+
+        btnSpecialCharacters = view.findViewById(R.id.button_special_characters);
+        btnSpace = view.findViewById(R.id.button_space);
+        btnDelete = view.findViewById(R.id.button_delete);
+        btnEnter = view.findViewById(R.id.button_enter);
+
+        btnSpecialCharacters.setOnClickListener(this);
+        btnSpace.setOnClickListener(this);
+        btnDelete.setOnClickListener(this);
+        btnEnter.setOnClickListener(this);
+
+        keyValues.put(R.id.button_space, " ");
+        keyValues.put(R.id.button_enter, "\n");
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }
