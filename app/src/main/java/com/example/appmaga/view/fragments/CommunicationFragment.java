@@ -81,7 +81,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
 
         // pass the InputConnection from the EditText to the keyboard
         InputConnection ic = editTextInputMessage.onCreateInputConnection(new EditorInfo());
-        keyboard.setInputConnection(ic);
+//        keyboard.setInputConnection(ic);
     }
 
     @Override
