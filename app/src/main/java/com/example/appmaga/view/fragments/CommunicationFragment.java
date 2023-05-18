@@ -26,10 +26,12 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
 
     private EditText editTextInputMessage;
     private Button btnSetKey, btnSendMessage;
-    private CustomKeyboard keyboard;
+    private RusLayoutKeyboardFragment rusLayoutKeyboard;
+    private EngLayoutKeyboardFragment engLayoutKeyboard;
 
     private FragmentManager fragmentManager;
     private CommunicationViewModel viewModel;
+    private String[] keyboardLayouts;
 
     public static CommunicationFragment newInstance(){
         return new CommunicationFragment();
@@ -40,7 +42,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
         super.onCreate(savedInstanceState);
         if(savedInstanceState == null){
             fragmentManager = ((MainActivity)getActivity()).getSupportFragmentManager();
-            replaceFragment(RusLayoutKeyboardFragment.newInstance());
+            keyboardLayouts = new String[]{ "rus", "eng" };
         }
         viewModel = new ViewModelProvider(requireActivity()).get(CommunicationViewModel.class);
         viewModel.init();
@@ -66,11 +68,25 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
         ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 
+    private void setLayoutKeyboard(String layout){
+        // pass the InputConnection from the EditText to the keyboard
+        InputConnection ic = editTextInputMessage.onCreateInputConnection(new EditorInfo());
+
+        if(layout.equals(keyboardLayouts[0])){
+            rusLayoutKeyboard = RusLayoutKeyboardFragment.newInstance();
+            rusLayoutKeyboard.setInputConnection(ic);
+            replaceFragment(rusLayoutKeyboard);
+        }else{
+            engLayoutKeyboard = EngLayoutKeyboardFragment.newInstance();
+            engLayoutKeyboard.setInputConnection(ic);
+            replaceFragment(engLayoutKeyboard);
+        }
+    }
+
     private void initViewElements(View view){
         editTextInputMessage = view.findViewById(R.id.editTextInputMessage);
         btnSetKey = view.findViewById(R.id.btnSetKey);
         btnSendMessage = view.findViewById(R.id.btnSendMessage);
-//        keyboard = (CustomKeyboard) view.findViewById(R.id.keyboard);
 
         // prevent system keyboard from appearing when EditText is tapped
         editTextInputMessage.setRawInputType(InputType.TYPE_CLASS_TEXT);
@@ -79,9 +95,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
         btnSetKey.setOnClickListener(this);
         btnSendMessage.setOnClickListener(this);
 
-        // pass the InputConnection from the EditText to the keyboard
-        InputConnection ic = editTextInputMessage.onCreateInputConnection(new EditorInfo());
-//        keyboard.setInputConnection(ic);
+        setLayoutKeyboard(keyboardLayouts[0]);
     }
 
     @Override

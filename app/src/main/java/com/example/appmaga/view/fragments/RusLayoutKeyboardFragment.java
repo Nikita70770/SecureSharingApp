@@ -10,10 +10,12 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.R;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -42,6 +44,15 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
 
     public static RusLayoutKeyboardFragment newInstance(){
         return new RusLayoutKeyboardFragment();
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(savedInstanceState == null){
+            keyValues  = new SparseArray<>();
+            listCodes = new ArrayList<>();
+        }
     }
 
     @Override
