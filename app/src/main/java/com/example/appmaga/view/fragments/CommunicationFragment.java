@@ -13,10 +13,12 @@ import android.widget.EditText;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
+import com.example.appmaga.view.activities.MainActivity;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
@@ -26,6 +28,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
     private Button btnSetKey, btnSendMessage;
     private CustomKeyboard keyboard;
 
+    private FragmentManager fragmentManager;
     private CommunicationViewModel viewModel;
 
     public static CommunicationFragment newInstance(){
@@ -35,6 +38,10 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(savedInstanceState == null){
+            fragmentManager = ((MainActivity)getActivity()).getSupportFragmentManager();
+            replaceFragment(EngLayoutKeyboardFragment.newInstance());
+        }
         viewModel = new ViewModelProvider(requireActivity()).get(CommunicationViewModel.class);
         viewModel.init();
     }
@@ -90,5 +97,12 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
                 viewModel.openWindowWithMessengers(message);
                 break;
         }
+    }
+
+    private void replaceFragment(Fragment fragment){
+        fragmentManager
+                .beginTransaction()
+                .replace(R.id.keyboardFragmentContainer, fragment)
+                .commit();
     }
 }
