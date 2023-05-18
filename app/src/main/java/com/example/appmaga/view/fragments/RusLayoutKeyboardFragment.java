@@ -1,6 +1,7 @@
 package com.example.appmaga.view.fragments;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,7 +48,12 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.rus_layout_keyboard, container, false);
+        initViewElements(view);
         return view;
+    }
+
+    public void setInputConnection(InputConnection inputConnection) {
+        this.inputConnection = inputConnection;
     }
 
     private void initViewElements(View view){
@@ -74,6 +80,31 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
 
     @Override
     public void onClick(View v) {
+        // do nothing if the InputConnection has not been set yet
+        if (inputConnection == null) return;
 
+        switch (v.getId()){
+            case R.id.button_delete:
+                if(listCodes.size() > 0) listCodes.remove(listCodes.size()-1);
+
+                CharSequence selectedText = inputConnection.getSelectedText(0);
+                if (TextUtils.isEmpty(selectedText)) {
+                    // no selection, so delete previous character
+                    inputConnection.deleteSurroundingText(1, 0);
+                }
+                else {
+                    // delete the selection
+                    inputConnection.commitText("", 1);
+                }
+                break;
+
+            case R.id.button_special_characters:
+                break;
+
+            default:
+                String value = keyValues.get(v.getId());
+                inputConnection.commitText(value, 1);
+                break;
+        }
     }
 }
