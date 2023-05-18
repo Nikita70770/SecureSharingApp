@@ -59,6 +59,9 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         editTextNameLogForm = view.findViewById(R.id.editTextNameLogForm);
         editTextPasswordLogForm = view.findViewById(R.id.editTextPasswordLogForm);
 
+        // Потом убрать
+        editTextNameLogForm.setText(viewModel.getUser().getLogin());
+
         btnLogin = view.findViewById(R.id.btnLogin);
         btnSignUp = view.findViewById(R.id.btnSignUp);
 
