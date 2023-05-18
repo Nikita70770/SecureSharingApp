@@ -40,7 +40,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
         super.onCreate(savedInstanceState);
         if(savedInstanceState == null){
             fragmentManager = ((MainActivity)getActivity()).getSupportFragmentManager();
-            replaceFragment(EngLayoutKeyboardFragment.newInstance());
+            replaceFragment(RusLayoutKeyboardFragment.newInstance());
         }
         viewModel = new ViewModelProvider(requireActivity()).get(CommunicationViewModel.class);
         viewModel.init();
