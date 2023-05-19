@@ -10,13 +10,11 @@ import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
 import com.example.appmaga.interfaces.IKeyboardListener;
 import com.example.appmaga.view.activities.MainActivity;
@@ -39,7 +37,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState == null){
             fragmentManager = ((MainActivity)getActivity()).getSupportFragmentManager();
