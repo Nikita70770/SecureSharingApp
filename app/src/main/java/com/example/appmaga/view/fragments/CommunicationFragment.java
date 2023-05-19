@@ -17,11 +17,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
 import com.example.appmaga.interfaces.ISwipeLeftListener;
+import com.example.appmaga.interfaces.ISwipeRightListener;
 import com.example.appmaga.view.activities.MainActivity;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
-public class CommunicationFragment extends Fragment implements View.OnClickListener, ISwipeLeftListener {
+public class CommunicationFragment extends Fragment implements View.OnClickListener, ISwipeLeftListener, ISwipeRightListener {
 
     private EditText editTextInputMessage;
     private Button btnSetKey, btnSendMessage;
