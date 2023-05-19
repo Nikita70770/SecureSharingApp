@@ -9,7 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.appmaga.view.dialog_fragments.AddContactFragment;
 import com.example.appmaga.view.dialog_fragments.DataExchangeFragment;
 import com.example.appmaga.view.fragments.ChatsFragment;
-import com.example.appmaga.view.fragments.CommunicationFragment;
 import com.example.appmaga.interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.example.appmaga.model.preferences.PreferencesStorage;
@@ -24,7 +23,7 @@ import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
-public class MainActivity extends AppCompatActivity implements IMainActivityListener, NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     private DrawerLayout drawerLayout;
     private Toolbar toolbar;
     private NavigationView navigationView;
@@ -110,10 +109,5 @@ public class MainActivity extends AppCompatActivity implements IMainActivityList
                 .replace(idElement, fragment)
                 .addToBackStack(null)
                 .commit();
-    }
-
-    @Override
-    public void showFragment() {
-        addFragment(R.id.chatsFragmentContainer, CommunicationFragment.newInstance());
     }
 }

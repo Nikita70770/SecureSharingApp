@@ -1,6 +1,6 @@
 package com.example.appmaga.view.dialog_fragments;
 
-import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,14 +9,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.appmaga.encryption.chap_authentication.Chap;
 import com.example.appmaga.helpers.constants.ConstantKeysFragment;
 import com.example.appmaga.helpers.GsonWork;
-import com.example.appmaga.interfaces.IMainActivityListener;
 import com.example.appmaga.R;
+import com.example.appmaga.view.activities.CommunicationActivity;
 import com.google.android.material.textfield.TextInputEditText;
 
 public class AuthenticationFragment extends DialogFragment implements View.OnClickListener {
@@ -24,7 +23,6 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
     private TextInputEditText editTextHashSumWind;
     private Button btnEstablishConnection;
 
-    private IMainActivityListener mainActivityListener;
     private Chap chap;
 
     public static AuthenticationFragment newInstance(Chap chap){
@@ -41,15 +39,6 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
         String jsonChap = getArguments().getString(ConstantKeysFragment.CHAP_PROTOCOL_KEY);
         this.chap = (Chap) GsonWork.performDeserialization(jsonChap, Chap.class.getSimpleName());
-    }
-
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        if(context instanceof IMainActivityListener){
-            mainActivityListener = (IMainActivityListener) context;
-        }else throw new RuntimeException(context.toString()
-                + " must implement IMainActivityListener");;
     }
 
     @Override
@@ -75,7 +64,8 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
         if(chap.isResultAuthentication() == true){
             loginContact = chap.getContact().getLogin();
             message = getString(R.string.toast_successful_connection, loginContact);
-            mainActivityListener.showFragment();
+            Intent intent = new Intent(getActivity(), CommunicationActivity.class);
+            startActivity(intent);
         }
         else{
             loginContact = chap.getContact().getLogin();

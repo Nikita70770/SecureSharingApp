@@ -1,28 +1,26 @@
-package com.example.appmaga.view.fragments;
+package com.example.appmaga.view.activities;
 
 import android.os.Bundle;
 import android.text.InputType;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
-import com.example.appmaga.interfaces.ISwipeLeftListener;
-import com.example.appmaga.interfaces.ISwipeRightListener;
-import com.example.appmaga.view.activities.MainActivity;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
+import com.example.appmaga.view.fragments.EngLayoutKeyboardFragment;
+import com.example.appmaga.view.fragments.RusLayoutKeyboardFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
-public class CommunicationFragment extends Fragment implements View.OnClickListener, ISwipeLeftListener, ISwipeRightListener {
+public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener{
 
     private EditText editTextInputMessage;
     private Button btnSetKey, btnSendMessage;
@@ -33,39 +31,20 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
     private CommunicationViewModel viewModel;
     private String[] keyboardLayouts;
 
-    public static CommunicationFragment newInstance(){
-        return new CommunicationFragment();
-    }
-
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.communiacation_user_fragment);
+
         if(savedInstanceState == null){
-            fragmentManager = ((MainActivity)getActivity()).getSupportFragmentManager();
+            fragmentManager = getSupportFragmentManager();
             keyboardLayouts = new String[]{ "rus", "eng" };
         }
-        viewModel = new ViewModelProvider(requireActivity()).get(CommunicationViewModel.class);
+
+        initElements();
+
+        viewModel = new ViewModelProvider(this).get(CommunicationViewModel.class);
         viewModel.init();
-    }
-
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState){
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.communiacation_user_fragment, container, false);
-        initViewElements(view);
-        return view;
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().hide();
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        ((AppCompatActivity) getActivity()).getSupportActionBar().show();
     }
 
     private void setLayoutKeyboard(String layout){
@@ -83,10 +62,10 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
         }
     }
 
-    private void initViewElements(View view){
-        editTextInputMessage = view.findViewById(R.id.editTextInputMessage);
-        btnSetKey = (Button) view.findViewById(R.id.btnSetKey);
-        btnSendMessage = view.findViewById(R.id.btnSendMessage);
+    private void initElements(){
+        editTextInputMessage = findViewById(R.id.editTextInputMessage);
+        btnSetKey = (Button) findViewById(R.id.btnSetKey);
+        btnSendMessage = findViewById(R.id.btnSendMessage);
 
         // prevent system keyboard from appearing when EditText is tapped
         editTextInputMessage.setRawInputType(InputType.TYPE_CLASS_TEXT);
@@ -102,7 +81,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSetKey:
-                KeysExchangeFragment.newInstance().show(getActivity().getSupportFragmentManager(),
+                KeysExchangeFragment.newInstance().show(getSupportFragmentManager(),
                         "keysExchangeFragment");
                 break;
 
@@ -118,15 +97,5 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
                 .beginTransaction()
                 .replace(R.id.keyboardFragmentContainer, fragment)
                 .commit();
-    }
-
-    @Override
-    public void swipeLeftListener() {
-
-    }
-
-    @Override
-    public void swipeRightListener() {
-
     }
 }
