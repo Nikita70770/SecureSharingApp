@@ -16,12 +16,12 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
-import com.example.appmaga.interfaces.IKeyboardListener;
+import com.example.appmaga.interfaces.ISwipeLeftListener;
 import com.example.appmaga.view.activities.MainActivity;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
-public class CommunicationFragment extends Fragment implements View.OnClickListener, IKeyboardListener {
+public class CommunicationFragment extends Fragment implements View.OnClickListener, ISwipeLeftListener {
 
     private EditText editTextInputMessage;
     private Button btnSetKey, btnSendMessage;
@@ -84,7 +84,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
 
     private void initViewElements(View view){
         editTextInputMessage = view.findViewById(R.id.editTextInputMessage);
-        btnSetKey = view.findViewById(R.id.btnSetKey);
+        btnSetKey = (Button) view.findViewById(R.id.btnSetKey);
         btnSendMessage = view.findViewById(R.id.btnSendMessage);
 
         // prevent system keyboard from appearing when EditText is tapped
