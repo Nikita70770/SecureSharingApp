@@ -18,11 +18,12 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.encryption.keyboard.CustomKeyboard;
 import com.example.appmaga.R;
+import com.example.appmaga.interfaces.IKeyboardListener;
 import com.example.appmaga.view.activities.MainActivity;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
-public class CommunicationFragment extends Fragment implements View.OnClickListener {
+public class CommunicationFragment extends Fragment implements View.OnClickListener, IKeyboardListener {
 
     private EditText editTextInputMessage;
     private Button btnSetKey, btnSendMessage;
@@ -76,7 +77,7 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
             rusLayoutKeyboard = RusLayoutKeyboardFragment.newInstance();
             rusLayoutKeyboard.setInputConnection(ic);
             replaceFragment(rusLayoutKeyboard);
-        }else{
+        }else if(layout.equals(keyboardLayouts[1])){
             engLayoutKeyboard = EngLayoutKeyboardFragment.newInstance();
             engLayoutKeyboard.setInputConnection(ic);
             replaceFragment(engLayoutKeyboard);
@@ -118,5 +119,15 @@ public class CommunicationFragment extends Fragment implements View.OnClickListe
                 .beginTransaction()
                 .replace(R.id.keyboardFragmentContainer, fragment)
                 .commit();
+    }
+
+    @Override
+    public void swipeLeftListener() {
+
+    }
+
+    @Override
+    public void swipeRightListener() {
+
     }
 }
