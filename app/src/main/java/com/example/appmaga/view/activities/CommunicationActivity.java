@@ -15,12 +15,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.interfaces.IKeyboardListener;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.view.fragments.EngLayoutKeyboardFragment;
 import com.example.appmaga.view.fragments.RusLayoutKeyboardFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
-public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener{
+public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener,
+        IKeyboardListener {
 
     private EditText editTextInputMessage;
     private Button btnSetKey, btnSendMessage;
@@ -97,5 +99,15 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 .beginTransaction()
                 .replace(R.id.keyboardFragmentContainer, fragment)
                 .commit();
+    }
+
+    @Override
+    public void swipeLeftListener() {
+
+    }
+
+    @Override
+    public void swipeRightListener() {
+
     }
 }

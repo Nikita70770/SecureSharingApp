@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.R;
 import com.example.appmaga.encryption.keyboard.OnSwipeTouchListener;
+import com.example.appmaga.interfaces.IKeyboardListener;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -47,7 +48,10 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
             R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_10, R.id.button_11, R.id.button_12, R.id.button_13,
             R.id.button_14, R.id.button_15, R.id.button_16, R.id.button_17, R.id.button_18, R.id.button_19, R.id.button_20,
             R.id.button_21, R.id.button_22, R.id.button_23, R.id.button_24, R.id.button_25, R.id.button_26, R.id.button_27,
-            R.id.button_28, R.id.button_29, R.id.button_30, R.id.button_31, R.id.button_32};
+            R.id.button_28, R.id.button_29, R.id.button_30, R.id.button_31, R.id.button_32
+    };
+
+    private IKeyboardListener keyboardListener;
 
     public static RusLayoutKeyboardFragment newInstance(){
         return new RusLayoutKeyboardFragment();
@@ -65,6 +69,10 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
+        if(context instanceof IKeyboardListener){
+            keyboardListener = (IKeyboardListener) keyboardListener;
+        }else new RuntimeException(context.toString()
+                + " must implement IKeyboardListener");
     }
 
     @Override
