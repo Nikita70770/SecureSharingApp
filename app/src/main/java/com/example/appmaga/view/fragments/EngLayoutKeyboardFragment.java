@@ -29,12 +29,12 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
     private OnSwipeTouchListener swipeTouchListener = new OnSwipeTouchListener(getContext()){
         @Override
         public void onSwipeLeft() {
-            super.onSwipeLeft();
+            keyboardListener.swipeLeftListener(getString(R.string.russian_keyboard_layout));
         }
 
         @Override
         public void onSwipeRight() {
-            super.onSwipeRight();
+            keyboardListener.swipeLeftListener(getString(R.string.russian_keyboard_layout));
         }
     };
 
