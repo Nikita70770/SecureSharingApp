@@ -153,6 +153,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
+        <ImageButton
+            android:id="@+id/button_caps_lock"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="12dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_caps_lock1"/>
         <Button
             android:id="@+id/button_22"
             android:layout_width="0dp"
@@ -216,13 +225,6 @@
             android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
             android:src="@drawable/ic_backspace_white_24dp" />
-        <!--            <Button-->
-        <!--                android:id="@+id/button_delete"-->
-        <!--                android:layout_width="0dp"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_weight="1"-->
-        <!--                android:text=""-->
-        <!--                android:background="@drawable/ic_backspace_white_24dp"/>-->
 
     </LinearLayout>
 
