@@ -136,49 +136,49 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <Button
-            android:id="@+id/button_59"
+            android:id="@+id/button_52"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="/\"/>
         <Button
-            android:id="@+id/button_52"
+            android:id="@+id/button_53"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="z"/>
         <Button
-            android:id="@+id/button_53"
+            android:id="@+id/button_54"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="x"/>
         <Button
-            android:id="@+id/button_54"
+            android:id="@+id/button_55"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="c"/>
         <Button
-            android:id="@+id/button_55"
+            android:id="@+id/button_56"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="v"/>
         <Button
-            android:id="@+id/button_56"
+            android:id="@+id/button_57"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="b"/>
         <Button
-            android:id="@+id/button_57"
+            android:id="@+id/button_58"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="n"/>
         <Button
-            android:id="@+id/button_58"
+            android:id="@+id/button_59"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -213,7 +213,7 @@
             android:layout_weight="1"
             android:text="!#1"/>
         <Button
-            android:id="@+id/button_31"
+            android:id="@+id/button_60"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -225,7 +225,7 @@
             android:layout_weight="3"
             android:text="English"/>
         <Button
-            android:id="@+id/button_32"
+            android:id="@+id/button_61"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -241,6 +241,3 @@
             android:src="@drawable/ic_keyboard_return_white_24dp" />
     </LinearLayout>
 </LinearLayout>
-<!--<merge xmlns:android="http://schemas.android.com/apk/res/android">-->
-<!--    -->
-<!--</merge>-->
