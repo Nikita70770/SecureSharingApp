@@ -1,5 +1,6 @@
 package com.example.appmaga.view.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import com.example.appmaga.R;
 import com.example.appmaga.encryption.keyboard.OnSwipeTouchListener;
 import com.example.appmaga.interfaces.IKeyboardListener;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,10 +39,10 @@ public class EngLayoutKeyboardFragment extends Fragment {
 
     private SparseArray<String> keyValues;
     private List<String> listCodes;
-    private List<String> rusLayout = Arrays.asList(
-            "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
-            "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э",
-            "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ",", ".");
+    private List<String> engLayout = Arrays.asList(
+            "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
+            "a", "s", "d", "f", "g", "h", "j", "k", "l",
+            "z", "x", "c", "v", "b", "n", "m", ",", ".");
 
     private final int[] BUTTONS_IDS = {
             R.id.button_33, R.id.button_34, R.id.button_35, R.id.button_36, R.id.button_37, R.id.button_38,
@@ -61,9 +63,33 @@ public class EngLayoutKeyboardFragment extends Fragment {
     }
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(savedInstanceState == null){
+            keyValues  = new SparseArray<>();
+            listCodes = new ArrayList<>();
+        }
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof IKeyboardListener){
+            keyboardListener = (IKeyboardListener) context;
+        }else new RuntimeException(context.toString()
+                + " must implement IKeyboardListener");
+    }
+
+    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = LayoutInflater.from(getContext()).inflate(R.layout.eng_layout_keyboard, container, false);
+        initViewElements(view);
         return view;
     }
+
+    private void initViewElements(View view) {
+    }
+
+
 }
