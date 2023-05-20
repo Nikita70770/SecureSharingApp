@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
 
@@ -30,10 +31,14 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     private InputConnection inputConnection;
     private OnSwipeTouchListener swipeTouchListener = new OnSwipeTouchListener(getContext()){
         @Override
-        public void onSwipeLeft() {}
+        public void onSwipeLeft() {
+            keyboardListener.swipeLeftListener(getString(R.string.english_keyboard_layout));
+        }
 
         @Override
-        public void onSwipeRight() {}
+        public void onSwipeRight() {
+            keyboardListener.swipeRightListener(getString(R.string.english_keyboard_layout));
+        }
     };
 
     private SparseArray<String> keyValues;
@@ -70,7 +75,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     public void onAttach(Context context) {
         super.onAttach(context);
         if(context instanceof IKeyboardListener){
-            keyboardListener = (IKeyboardListener) keyboardListener;
+            keyboardListener = (IKeyboardListener) context;
         }else new RuntimeException(context.toString()
                 + " must implement IKeyboardListener");
     }

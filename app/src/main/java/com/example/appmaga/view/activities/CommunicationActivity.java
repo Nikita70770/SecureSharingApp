@@ -80,10 +80,14 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void swipeLeftListener() {}
+    public void swipeLeftListener(String layout) {
+        setLayoutKeyboard(layout);
+    }
 
     @Override
-    public void swipeRightListener() {}
+    public void swipeRightListener(String layout) {
+        setLayoutKeyboard(layout);
+    }
 
     @Override
     public void onClick(View view) {
