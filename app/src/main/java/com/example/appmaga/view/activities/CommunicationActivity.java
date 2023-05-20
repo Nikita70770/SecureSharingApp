@@ -80,6 +80,12 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
+    public void swipeLeftListener() {}
+
+    @Override
+    public void swipeRightListener() {}
+
+    @Override
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.btnSetKey:
@@ -99,15 +105,5 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 .beginTransaction()
                 .replace(R.id.keyboardFragmentContainer, fragment)
                 .commit();
-    }
-
-    @Override
-    public void swipeLeftListener() {
-
-    }
-
-    @Override
-    public void swipeRightListener() {
-
     }
 }
