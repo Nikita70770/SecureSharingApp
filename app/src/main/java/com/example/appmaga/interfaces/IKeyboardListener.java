@@ -1,5 +1,6 @@
 package com.example.appmaga.interfaces;
 
-public interface ISwipeLeftListener {
+public interface IKeyboardListener {
     void swipeLeftListener();
+    void swipeRightListener();
 }
