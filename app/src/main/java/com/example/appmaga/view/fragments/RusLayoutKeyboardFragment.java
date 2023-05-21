@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import androidx.fragment.app.Fragment;
@@ -27,6 +29,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
 
     private Button btnSpecialCharacters, btnSpace;
     private ImageButton btnCapsLock, btnDelete, btnEnter;
+    private PopupMenu popup;
 
     private InputConnection inputConnection; // Our communication link to the EditText
     private OnSwipeTouchListener swipeTouchListener1 = new OnSwipeTouchListener(getContext()){
@@ -82,7 +85,9 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
             "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э",
-            "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ",", ".");
+            "я", "ч", "с", "м", "и", "т", "ь", "б", "ю");
+
+    private List<String> layoutSpecialCharacters = Arrays.asList(".", ",", "!", "?", ":", "/");
 
     private final int[] BUTTONS_IDS = {
             R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
@@ -91,11 +96,14 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
             R.id.button_18, R.id.button_19, R.id.button_20, R.id.button_21, R.id.button_22, R.id.button_23,
             R.id.button_24, R.id.button_25, R.id.button_26, R.id.button_27, R.id.button_28, R.id.button_29,
             R.id.button_30, R.id.button_31, R.id.button_32, R.id.button_33, R.id.button_34, R.id.button_35,
-            R.id.button_36, R.id.button_37, R.id.button_38, R.id.button_39, R.id.button_40, R.id.button_41,
-            R.id.button_42
+            R.id.button_36, R.id.button_37, R.id.button_38, R.id.button_39, R.id.button_40
+    };
+    private final int[] MENU_ITEMS_IDS = {
+            R.id.item_character_0, R.id.item_character_1, R.id.item_character_2,
+            R.id.item_character_3, R.id.item_character_4, R.id.item_character_5
     };
     private Button[] listButtons;
-
+    private MenuItem[] menuItems;
     public static RusLayoutKeyboardFragment newInstance(){
         return new RusLayoutKeyboardFragment();
     }
@@ -106,6 +114,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
         if(savedInstanceState == null){
             rusLayoutInUpperCase = new ArrayList<>();
             listButtons = new Button[BUTTONS_IDS.length];
+            menuItems = new MenuItem[MENU_ITEMS_IDS.length];
             keyValues  = new SparseArray<>();
             listCodes = new ArrayList<>();
         }
@@ -200,6 +209,22 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 break;
 
             case R.id.button_special_characters:
+                popup = new PopupMenu(getContext(), btnSpecialCharacters);
+                popup.getMenuInflater().inflate(R.menu.special_characters_menu, popup.getMenu());
+                for(int i = 0; i < MENU_ITEMS_IDS.length; i++){
+                    int idItem = MENU_ITEMS_IDS[i];
+                    menuItems[i] = popup.getMenu().findItem(idItem);
+                    keyValues.put(idItem, layoutSpecialCharacters.get(i));
+                }
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        String value = keyValues.get(item.getItemId());
+                        inputConnection.commitText(value, 1);
+                        return true;
+                    }
+                });
+                popup.show();
                 break;
 
             default:

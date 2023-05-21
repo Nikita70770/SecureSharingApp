@@ -389,26 +389,11 @@
             android:textSize="16sp"
             android:text="!#1"/>
         <Button
-            android:id="@+id/button_41"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            android:text=","/>
-        <Button
             android:id="@+id/button_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="Русский"/>
-        <Button
-            android:id="@+id/button_42"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textSize="16sp"
-            android:text="."/>
         <ImageButton
             android:id="@+id/button_enter"
             android:layout_width="0dp"

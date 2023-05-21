@@ -345,25 +345,14 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textSize="16sp"
             android:text="!#1"/>
-        <Button
-            android:id="@+id/button_80"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text=","/>
         <Button
             android:id="@+id/button_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
             android:text="English"/>
-        <Button
-            android:id="@+id/button_81"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="."/>
         <ImageButton
             android:id="@+id/button_enter"
             android:layout_width="0dp"

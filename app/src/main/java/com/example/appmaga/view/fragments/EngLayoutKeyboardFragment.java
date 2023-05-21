@@ -89,7 +89,7 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
             R.id.button_64, R.id.button_65, R.id.button_66, R.id.button_67, R.id.button_68,
             R.id.button_69, R.id.button_70, R.id.button_71, R.id.button_72, R.id.button_73,
             R.id.button_74, R.id.button_75, R.id.button_76, R.id.button_77, R.id.button_78,
-            R.id.button_79, R.id.button_80, R.id.button_81
+            R.id.button_79
     };
     private Button[] listButtons;
 
