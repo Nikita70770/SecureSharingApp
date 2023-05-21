@@ -5,12 +5,14 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.PopupMenu;
 
 import androidx.fragment.app.Fragment;
 
@@ -26,6 +28,8 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
 
     private Button btnSpecialCharacters, btnSpace;
     private ImageButton btnCapsLock, btnDelete, btnEnter;
+    private PopupMenu popup;
+
     private InputConnection inputConnection;
     private OnSwipeTouchListener swipeTouchListener = new OnSwipeTouchListener(getContext()){
         private float startX, startY, endX, endY;
@@ -79,7 +83,13 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
             "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
             "a", "s", "d", "f", "g", "h", "j", "k", "l",
-            "z", "x", "c", "v", "b", "n", "m", ",", ".");
+            "z", "x", "c", "v", "b", "n", "m");
+    private List<String> layoutSpecialCharacters = Arrays.asList(".", ",", "!", "?", ":", "/");
+    private final int[] MENU_ITEMS_IDS = {
+            R.id.item_character_0, R.id.item_character_1, R.id.item_character_2,
+            R.id.item_character_3, R.id.item_character_4, R.id.item_character_5
+    };
+    private MenuItem[] menuItems;
 
     private final int[] BUTTONS_IDS = {
             R.id.button_44, R.id.button_45, R.id.button_46, R.id.button_47, R.id.button_48,
@@ -107,6 +117,7 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
         if(savedInstanceState == null){
             engLayoutInUpperCase = new ArrayList<>();
             listButtons = new Button[BUTTONS_IDS.length];
+            menuItems = new MenuItem[MENU_ITEMS_IDS.length];
             keyValues  = new SparseArray<>();
             listCodes = new ArrayList<>();
         }
@@ -198,6 +209,22 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 break;
 
             case R.id.button_special_characters:
+                popup = new PopupMenu(getContext(), btnSpecialCharacters);
+                popup.getMenuInflater().inflate(R.menu.special_characters_menu, popup.getMenu());
+                for(int i = 0; i < MENU_ITEMS_IDS.length; i++){
+                    int idItem = MENU_ITEMS_IDS[i];
+                    menuItems[i] = popup.getMenu().findItem(idItem);
+                    keyValues.put(idItem, layoutSpecialCharacters.get(i));
+                }
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        String value = keyValues.get(item.getItemId());
+                        inputConnection.commitText(value, 1);
+                        return true;
+                    }
+                });
+                popup.show();
                 break;
 
             default:

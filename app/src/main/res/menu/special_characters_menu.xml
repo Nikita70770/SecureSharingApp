@@ -11,7 +11,7 @@
         android:title="!"/>
     <item
         android:id="@+id/item_character_3"
-        android:title="1"/>
+        android:title="\?"/>
     <item
         android:id="@+id/item_character_4"
         android:title=":"/>
