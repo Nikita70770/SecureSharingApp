@@ -79,16 +79,20 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     private List<String> listCodes;
     private List<String> rusLayoutInUpperCase;
     private List<String> rusLayoutInLowerCase = Arrays.asList(
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
             "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э",
             "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", ",", ".");
 
     private final int[] BUTTONS_IDS = {
-            R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5, R.id.button_6,
-            R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_10, R.id.button_11, R.id.button_12, R.id.button_13,
-            R.id.button_14, R.id.button_15, R.id.button_16, R.id.button_17, R.id.button_18, R.id.button_19, R.id.button_20,
-            R.id.button_21, R.id.button_22, R.id.button_23, R.id.button_24, R.id.button_25, R.id.button_26, R.id.button_27,
-            R.id.button_28, R.id.button_29, R.id.button_30, R.id.button_31, R.id.button_32
+            R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
+            R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_10, R.id.button_11,
+            R.id.button_12, R.id.button_13, R.id.button_14, R.id.button_15, R.id.button_16, R.id.button_17,
+            R.id.button_18, R.id.button_19, R.id.button_20, R.id.button_21, R.id.button_22, R.id.button_23,
+            R.id.button_24, R.id.button_25, R.id.button_26, R.id.button_27, R.id.button_28, R.id.button_29,
+            R.id.button_30, R.id.button_31, R.id.button_32, R.id.button_33, R.id.button_34, R.id.button_35,
+            R.id.button_36, R.id.button_37, R.id.button_38, R.id.button_39, R.id.button_40, R.id.button_41,
+            R.id.button_42
     };
     private Button[] listButtons;
 

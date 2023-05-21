@@ -76,16 +76,20 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
     private List<String> listCodes;
     private List<String> engLayoutInUpperCase;
     private List<String> engLayoutInLowerCase = Arrays.asList(
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
             "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
             "a", "s", "d", "f", "g", "h", "j", "k", "l",
             "z", "x", "c", "v", "b", "n", "m", ",", ".");
 
     private final int[] BUTTONS_IDS = {
-            R.id.button_33, R.id.button_34, R.id.button_35, R.id.button_36, R.id.button_37, R.id.button_38,
-            R.id.button_39, R.id.button_40, R.id.button_41, R.id.button_42, R.id.button_43, R.id.button_44,
-            R.id.button_45, R.id.button_46, R.id.button_47, R.id.button_48, R.id.button_49, R.id.button_50,
-            R.id.button_51, R.id.button_52, R.id.button_53, R.id.button_54, R.id.button_55, R.id.button_56,
-            R.id.button_57, R.id.button_58, R.id.button_59, R.id.button_60
+            R.id.button_44, R.id.button_45, R.id.button_46, R.id.button_47, R.id.button_48,
+            R.id.button_49, R.id.button_50, R.id.button_51, R.id.button_52, R.id.button_53,
+            R.id.button_54, R.id.button_55, R.id.button_56, R.id.button_57, R.id.button_58,
+            R.id.button_59, R.id.button_60, R.id.button_61, R.id.button_62, R.id.button_63,
+            R.id.button_64, R.id.button_65, R.id.button_66, R.id.button_67, R.id.button_68,
+            R.id.button_69, R.id.button_70, R.id.button_71, R.id.button_72, R.id.button_73,
+            R.id.button_74, R.id.button_75, R.id.button_76, R.id.button_77, R.id.button_78,
+            R.id.button_79, R.id.button_80, R.id.button_81
     };
     private Button[] listButtons;
 
