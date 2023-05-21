@@ -25,7 +25,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         IKeyboardListener {
 
     private EditText editTextInputMessage;
-    private Button btnSetKey, btnSendMessage;
+    private Button btnClearMessage, btnSetKey, btnSendMessage;
     private RusLayoutKeyboardFragment rusLayoutKeyboard;
     private EngLayoutKeyboardFragment engLayoutKeyboard;
 
@@ -46,7 +46,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         initElements();
 
         viewModel = new ViewModelProvider(this).get(CommunicationViewModel.class);
-        viewModel.init();
+        viewModel.init(CommunicationActivity.this);
     }
 
     private void setLayoutKeyboard(String layout){
@@ -66,7 +66,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
 
     private void initElements(){
         editTextInputMessage = findViewById(R.id.editTextInputMessage);
-        btnSetKey = (Button) findViewById(R.id.btnSetKey);
+        btnSetKey = findViewById(R.id.btnSetKey);
+        btnClearMessage = findViewById(R.id.btnClearMessage);
         btnSendMessage = findViewById(R.id.btnSendMessage);
 
         // prevent system keyboard from appearing when EditText is tapped
@@ -74,6 +75,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         editTextInputMessage.setShowSoftInputOnFocus(false);
 
         btnSetKey.setOnClickListener(this);
+        btnClearMessage.setOnClickListener(this);
         btnSendMessage.setOnClickListener(this);
 
         setLayoutKeyboard(keyboardLayouts[0]);
@@ -95,6 +97,10 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
             case R.id.btnSetKey:
                 KeysExchangeFragment.newInstance().show(getSupportFragmentManager(),
                         "keysExchangeFragment");
+                break;
+
+            case R.id.btnClearMessage:
+                editTextInputMessage.setText("");
                 break;
 
             case R.id.btnSendMessage:

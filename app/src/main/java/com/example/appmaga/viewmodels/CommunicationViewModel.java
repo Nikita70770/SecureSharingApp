@@ -1,37 +1,29 @@
 package com.example.appmaga.viewmodels;
 
-import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
-
-import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
-
+import androidx.lifecycle.ViewModel;
 import com.example.appmaga.model.repository.DataRepository;
 
-public class CommunicationViewModel extends AndroidViewModel {
+public class CommunicationViewModel extends ViewModel {
 
     private DataRepository repository;
     private Context context;
 
-    public void init(){
-        this.context = getApplication().getBaseContext();
-        this.repository = new DataRepository(getApplication().getBaseContext());
+    public void init(Context context){
+        this.context = context;
+        this.repository = new DataRepository(context);
         this.repository.setPreferencesInstance();
-    }
-
-    public CommunicationViewModel(@NonNull Application application) {
-        super(application);
     }
 
     public int getGeneralSecretKey(){
         return repository.getGeneralSecretKey();
     }
 
-    public void openWindowWithMessengers(String message){
-        final Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(Intent.EXTRA_TEXT, message);
+    public void openWindowWithMessengers(String data){
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.putExtra(Intent.EXTRA_TEXT, data);
         intent.setType("*/*");
         context.startActivity(Intent.createChooser(intent, "Share with friends"));
     }

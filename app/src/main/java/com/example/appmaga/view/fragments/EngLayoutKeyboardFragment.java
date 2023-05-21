@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputConnection;
@@ -24,9 +25,11 @@ import java.util.List;
 public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickListener {
 
     private Button btnSpecialCharacters, btnSpace;
-    private ImageButton btnDelete, btnEnter;
+    private ImageButton btnCapsLock, btnDelete, btnEnter;
     private InputConnection inputConnection;
     private OnSwipeTouchListener swipeTouchListener = new OnSwipeTouchListener(getContext()){
+        private float startX, startY, endX, endY;
+        private final int CLICK_ACTION_THRESHOLD = 200;
         @Override
         public void onSwipeLeft() {
             keyboardListener.swipeLeftListener(getString(R.string.russian_keyboard_layout));
@@ -36,12 +39,43 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
         public void onSwipeRight() {
             keyboardListener.swipeLeftListener(getString(R.string.russian_keyboard_layout));
         }
+
+        @Override
+        public boolean onTouch(View view, MotionEvent event) {
+            super.onTouch(view, event);
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN:
+                    startX = event.getX();
+                    startY = event.getY();
+                    break;
+                case MotionEvent.ACTION_UP:
+                    endX = event.getX();
+                    endY = event.getY();
+                    if (isAClick(startX, endX, startY, endY)) {
+                        String value = keyValues.get(view.getId());
+                        inputConnection.commitText(value, 1);
+                        view.performClick();
+                    }
+                    break;
+            }
+            return false;
+        }
+
+        private boolean isAClick(float startX, float endX, float startY, float endY) {
+            float differenceX = Math.abs(startX - endX);
+            float differenceY = Math.abs(startY - endY);
+
+            return !(differenceX > CLICK_ACTION_THRESHOLD
+                    || differenceY > CLICK_ACTION_THRESHOLD);
+        }
     };
 
     private IKeyboardListener keyboardListener;
+    private int countClickCapsLock = 0;
     private SparseArray<String> keyValues;
     private List<String> listCodes;
-    private List<String> engLayout = Arrays.asList(
+    private List<String> engLayoutInUpperCase;
+    private List<String> engLayoutInLowerCase = Arrays.asList(
             "q", "w", "e", "r", "t", "y", "u", "i", "o", "p",
             "a", "s", "d", "f", "g", "h", "j", "k", "l",
             "z", "x", "c", "v", "b", "n", "m", ",", ".");
@@ -53,6 +87,7 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
             R.id.button_51, R.id.button_52, R.id.button_53, R.id.button_54, R.id.button_55, R.id.button_56,
             R.id.button_57, R.id.button_58, R.id.button_59, R.id.button_60
     };
+    private Button[] listButtons;
 
     public static EngLayoutKeyboardFragment newInstance(){
         return new EngLayoutKeyboardFragment();
@@ -66,6 +101,8 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState == null){
+            engLayoutInUpperCase = new ArrayList<>();
+            listButtons = new Button[BUTTONS_IDS.length];
             keyValues  = new SparseArray<>();
             listCodes = new ArrayList<>();
         }
@@ -91,22 +128,22 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
     private void initViewElements(View view) {
         for(int i = 0; i < BUTTONS_IDS.length; i++){
             int id = BUTTONS_IDS[i];
-            Button btn = view.findViewById(id);
-            btn.setOnClickListener(this);
-            keyValues.put(id, engLayout.get(i));
+            listButtons[i] = view.findViewById(id);
+            listButtons[i].setOnClickListener(this);
+            keyValues.put(id, engLayoutInLowerCase.get(i));
         }
 
+        btnCapsLock = view.findViewById(R.id.button_caps_lock);
         btnSpecialCharacters = view.findViewById(R.id.button_special_characters);
         btnSpace = view.findViewById(R.id.button_space);
         btnDelete = view.findViewById(R.id.button_delete);
         btnEnter = view.findViewById(R.id.button_enter);
 
+        btnCapsLock.setOnClickListener(this);
         btnSpecialCharacters.setOnClickListener(this);
-        btnSpace.setOnClickListener(this);
         btnDelete.setOnClickListener(this);
-        btnEnter.setOnClickListener(this);
-
         btnSpace.setOnTouchListener(swipeTouchListener);
+        btnEnter.setOnClickListener(this);
 
         keyValues.put(R.id.button_space, " ");
         keyValues.put(R.id.button_enter, "\n");
@@ -129,6 +166,30 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 else {
                     // delete the selection
                     inputConnection.commitText("", 1);
+                }
+                break;
+
+            case R.id.button_caps_lock:
+                switch (++countClickCapsLock){
+                    case 1:
+                        btnCapsLock.setImageResource(R.drawable.ic_caps_lock2);
+                        for(int i = 0; i < engLayoutInLowerCase.size(); i++){
+                            String sym = engLayoutInLowerCase.get(i).toUpperCase();
+                            engLayoutInUpperCase.add(sym);
+                            listButtons[i].setText(engLayoutInUpperCase.get(i));
+                            keyValues.put(BUTTONS_IDS[i], engLayoutInUpperCase.get(i));
+                        }
+                        break;
+
+                    case 2:
+                        btnCapsLock.setImageResource(R.drawable.ic_caps_lock1);
+                        countClickCapsLock = 0;
+                        for(int i = 0; i < engLayoutInLowerCase.size(); i++){
+                            String sym = engLayoutInLowerCase.get(i);
+                            listButtons[i].setText(sym);
+                            keyValues.put(BUTTONS_IDS[i], engLayoutInLowerCase.get(i));
+                        }
+                        break;
                 }
                 break;
 

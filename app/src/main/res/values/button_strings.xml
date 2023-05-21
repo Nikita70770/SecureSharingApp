@@ -8,5 +8,7 @@
     <string name="btn_set_key">Установить ключ</string>
     <string name="btn_send_data">Отправить данные</string>
     <string name="btn_save_data">Сохранить данные</string>
-    <string name="btn_calc_secret_key">Вычислить секретный ключ </string>
+    <string name="btn_calc_secret_key">Вычислить секретный ключ</string>
+    <string name="btn_send_message">Отправить</string>
+    <string name="btn_clear_message">Очистить</string>
 </resources>

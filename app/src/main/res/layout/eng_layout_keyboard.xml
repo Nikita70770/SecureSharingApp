@@ -15,6 +15,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="q"/>
         <Button
             android:id="@+id/button_34"
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="w"/>
         <Button
             android:id="@+id/button_35"
@@ -29,6 +31,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="e"/>
         <Button
             android:id="@+id/button_36"
@@ -36,6 +39,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="r"/>
         <Button
             android:id="@+id/button_37"
@@ -43,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="t"/>
         <Button
             android:id="@+id/button_38"
@@ -50,6 +55,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="y"/>
         <Button
             android:id="@+id/button_39"
@@ -57,6 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="u"/>
         <Button
             android:id="@+id/button_40"
@@ -64,6 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="i"/>
         <Button
             android:id="@+id/button_41"
@@ -71,6 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="o"/>
         <Button
             android:id="@+id/button_42"
@@ -78,6 +87,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="p"/>
     </LinearLayout>
 
@@ -91,6 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="a"/>
         <Button
             android:id="@+id/button_44"
@@ -98,6 +109,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="s"/>
         <Button
             android:id="@+id/button_45"
@@ -105,6 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="d"/>
         <Button
             android:id="@+id/button_46"
@@ -112,6 +125,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="f"/>
         <Button
             android:id="@+id/button_47"
@@ -119,6 +133,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="g"/>
         <Button
             android:id="@+id/button_48"
@@ -126,6 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="h"/>
         <Button
             android:id="@+id/button_49"
@@ -133,6 +149,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="j"/>
         <Button
             android:id="@+id/button_50"
@@ -140,6 +157,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="k"/>
         <Button
             android:id="@+id/button_51"
@@ -147,6 +165,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="l"/>
     </LinearLayout>
 
@@ -169,6 +188,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="z"/>
         <Button
             android:id="@+id/button_53"
@@ -176,6 +196,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="x"/>
         <Button
             android:id="@+id/button_54"
@@ -183,6 +204,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="c"/>
         <Button
             android:id="@+id/button_55"
@@ -190,6 +212,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="v"/>
         <Button
             android:id="@+id/button_56"
@@ -197,6 +220,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="b"/>
         <Button
             android:id="@+id/button_57"
@@ -204,6 +228,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="n"/>
         <Button
             android:id="@+id/button_58"
@@ -211,6 +236,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="m"/>
         <ImageButton
             android:id="@+id/button_delete"
