@@ -60,7 +60,10 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
         editTextPasswordLogForm = view.findViewById(R.id.editTextPasswordLogForm);
 
         // Потом убрать
-        editTextNameLogForm.setText(viewModel.getUser().getLogin());
+        String userName = viewModel.getUser().getLogin();
+        if(userName.equals("Tiffany")){ editTextPasswordLogForm.setText("123456789"); }
+        else if(userName.equals("Jacob")) { editTextPasswordLogForm.setText("987654321"); }
+        editTextNameLogForm.setText(userName);
 
         btnLogin = view.findViewById(R.id.btnLogin);
         btnSignUp = view.findViewById(R.id.btnSignUp);

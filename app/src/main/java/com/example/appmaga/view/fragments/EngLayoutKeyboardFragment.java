@@ -38,6 +38,7 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
         }
     };
 
+    private IKeyboardListener keyboardListener;
     private SparseArray<String> keyValues;
     private List<String> listCodes;
     private List<String> engLayout = Arrays.asList(
@@ -52,8 +53,6 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
             R.id.button_51, R.id.button_52, R.id.button_53, R.id.button_54, R.id.button_55, R.id.button_56,
             R.id.button_57, R.id.button_58, R.id.button_59, R.id.button_60
     };
-
-    private IKeyboardListener keyboardListener;
 
     public static EngLayoutKeyboardFragment newInstance(){
         return new EngLayoutKeyboardFragment();

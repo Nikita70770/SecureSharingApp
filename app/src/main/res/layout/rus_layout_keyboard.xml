@@ -14,66 +14,88 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="й"/>
         <Button
             android:id="@+id/button_1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ц"/>
         <Button
             android:id="@+id/button_2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="у"/>
         <Button
             android:id="@+id/button_3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="к"/>
         <Button
             android:id="@+id/button_4"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="е"/>
         <Button
             android:id="@+id/button_5"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="н"/>
         <Button
             android:id="@+id/button_6"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="г"/>
         <Button
             android:id="@+id/button_7"
-            android:layout_width="0dp"
+            android:layout_width="3dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ш"/>
         <Button
             android:id="@+id/button_8"
-            android:layout_width="0dp"
+            android:layout_width="3dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="щ"/>
         <Button
             android:id="@+id/button_9"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="з"/>
         <Button
             android:id="@+id/button_10"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="х"/>
     </LinearLayout>
 
@@ -86,66 +108,88 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ф"/>
         <Button
             android:id="@+id/button_12"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ы"/>
         <Button
             android:id="@+id/button_13"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="в"/>
         <Button
             android:id="@+id/button_14"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="а"/>
         <Button
             android:id="@+id/button_15"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="п"/>
         <Button
             android:id="@+id/button_16"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="р"/>
         <Button
             android:id="@+id/button_17"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="о"/>
         <Button
             android:id="@+id/button_18"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="л"/>
         <Button
             android:id="@+id/button_19"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="д"/>
         <Button
             android:id="@+id/button_20"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ж"/>
         <Button
             android:id="@+id/button_21"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="э"/>
     </LinearLayout>
 
@@ -167,54 +211,72 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="я"/>
         <Button
             android:id="@+id/button_23"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ч"/>
         <Button
             android:id="@+id/button_24"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="с"/>
         <Button
             android:id="@+id/button_25"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="м"/>
         <Button
             android:id="@+id/button_26"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="и"/>
         <Button
             android:id="@+id/button_27"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="т"/>
         <Button
             android:id="@+id/button_28"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ь"/>
         <Button
             android:id="@+id/button_29"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="б"/>
         <Button
             android:id="@+id/button_30"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="ю"/>
         <ImageButton
             android:id="@+id/button_delete"
@@ -237,24 +299,32 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="!#1"/>
         <Button
             android:id="@+id/button_31"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text=","/>
         <Button
             android:id="@+id/button_space"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="Русский"/>
         <Button
             android:id="@+id/button_32"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textAllCaps="false"
+            android:textSize="16sp"
             android:text="."/>
         <ImageButton
             android:id="@+id/button_enter"
