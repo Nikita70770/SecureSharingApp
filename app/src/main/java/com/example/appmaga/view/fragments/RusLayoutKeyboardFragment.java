@@ -3,7 +3,6 @@ package com.example.appmaga.view.fragments;
 import android.content.Context;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.MotionEvent;
@@ -17,13 +16,11 @@ import android.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.R;
-import com.example.appmaga.encryption.keyboard.KeyboardConstants;
 import com.example.appmaga.encryption.keyboard.KeyboardRusLayoutHelper;
 import com.example.appmaga.encryption.keyboard.OnSwipeTouchListener;
 import com.example.appmaga.interfaces.IKeyboardListener;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickListener {
@@ -35,7 +32,6 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
 
     private IKeyboardListener keyboardListener;
     private KeyboardRusLayoutHelper helper;
-    private KeyboardConstants constants;
     private InputConnection inputConnection; // Our communication link to the EditText
 
     private int lenBtnIds, lenImgBtnIds;
@@ -91,11 +87,10 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState == null){
-            constants = new KeyboardConstants();
             helper = new KeyboardRusLayoutHelper();
 
-            lenBtnIds = constants.getButtonsIdsRus().length;
-            lenImgBtnIds = constants.getImageButtonsIds().length;
+            lenBtnIds = helper.getButtonsIdsRus().length;
+            lenImgBtnIds = helper.getImageButtonsIds().length;
 
             listButtons = new Button[lenBtnIds];
             listImageButtons = new ImageButton[lenImgBtnIds];
@@ -126,7 +121,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
 
     private void initViewElements(View view){
         for(int i = 0; i < lenBtnIds; i++){
-            int id = constants.getButtonsIdsRus()[i];
+            int id = helper.getButtonsIdsRus()[i];
             listButtons[i] = view.findViewById(id);
             if(id == R.id.button_space){
                 listButtons[i].setOnTouchListener(swipeTouchListener);
@@ -134,11 +129,9 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
         }
 
         for(int j = 0; j < lenImgBtnIds; j++){
-            int id = constants.getImageButtonsIds()[j];
+            int id = helper.getImageButtonsIds()[j];
             listImageButtons[j] = view.findViewById(id);
-            if(id == R.id.button_space){
-                listImageButtons[j].setOnTouchListener(swipeTouchListener);
-            }else listImageButtons[j].setOnClickListener(this);
+            listImageButtons[j].setOnClickListener(this);
         }
     }
 
