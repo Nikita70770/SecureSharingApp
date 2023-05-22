@@ -17,6 +17,8 @@ import android.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.R;
+import com.example.appmaga.encryption.keyboard.KeyboardConstants;
+import com.example.appmaga.encryption.keyboard.KeyboardRusLayoutHelper;
 import com.example.appmaga.encryption.keyboard.OnSwipeTouchListener;
 import com.example.appmaga.interfaces.IKeyboardListener;
 
@@ -26,12 +28,21 @@ import java.util.List;
 
 public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickListener {
 
-    private Button btnSpecialCharacters, btnSpace;
-    private ImageButton btnCapsLock, btnDelete, btnEnter;
+    private Button[] listButtons;
+    private ImageButton[] listImageButtons;
     private PopupMenu popup;
 
+
+    private IKeyboardListener keyboardListener;
+    private KeyboardRusLayoutHelper helper;
+    private KeyboardConstants constants;
     private InputConnection inputConnection; // Our communication link to the EditText
-    private OnSwipeTouchListener swipeTouchListener1 = new OnSwipeTouchListener(getContext()){
+
+    private int lenBtnIds, lenImgBtnIds;
+    private int countClickCapsLock = 0;
+    private List<String> listCodes;
+
+    private OnSwipeTouchListener swipeTouchListener = new OnSwipeTouchListener(getContext()){
         private float startX, startY, endX, endY;
         private final int CLICK_ACTION_THRESHOLD = 200;
         @Override
@@ -56,8 +67,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                     endX = event.getX();
                     endY = event.getY();
                     if (isAClick(startX, endX, startY, endY)) {
-                        String value = keyValues.get(view.getId());
-                        inputConnection.commitText(value, 1);
+                        inputConnection.commitText(" ", 1);
                         view.performClick();
                     }
                     break;
@@ -69,40 +79,10 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
             float differenceX = Math.abs(startX - endX);
             float differenceY = Math.abs(startY - endY);
 
-            return !(differenceX > CLICK_ACTION_THRESHOLD
-                    || differenceY > CLICK_ACTION_THRESHOLD);
+            return !(differenceX > CLICK_ACTION_THRESHOLD || differenceY > CLICK_ACTION_THRESHOLD);
         }
     };
 
-    private IKeyboardListener keyboardListener;
-    private int countClickCapsLock = 0;
-    private SparseArray<String> keyValues;
-
-    private List<String> listCodes;
-    private List<String> rusLayoutInUpperCase;
-    private List<String> rusLayoutInLowerCase = Arrays.asList(
-            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
-            "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
-            "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э",
-            "я", "ч", "с", "м", "и", "т", "ь", "б", "ю");
-
-    private List<String> layoutSpecialCharacters = Arrays.asList(".", ",", "!", "?", ":", "/");
-
-    private final int[] BUTTONS_IDS = {
-            R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
-            R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9, R.id.button_10, R.id.button_11,
-            R.id.button_12, R.id.button_13, R.id.button_14, R.id.button_15, R.id.button_16, R.id.button_17,
-            R.id.button_18, R.id.button_19, R.id.button_20, R.id.button_21, R.id.button_22, R.id.button_23,
-            R.id.button_24, R.id.button_25, R.id.button_26, R.id.button_27, R.id.button_28, R.id.button_29,
-            R.id.button_30, R.id.button_31, R.id.button_32, R.id.button_33, R.id.button_34, R.id.button_35,
-            R.id.button_36, R.id.button_37, R.id.button_38, R.id.button_39, R.id.button_40
-    };
-    private final int[] MENU_ITEMS_IDS = {
-            R.id.item_character_0, R.id.item_character_1, R.id.item_character_2,
-            R.id.item_character_3, R.id.item_character_4, R.id.item_character_5
-    };
-    private Button[] listButtons;
-    private MenuItem[] menuItems;
     public static RusLayoutKeyboardFragment newInstance(){
         return new RusLayoutKeyboardFragment();
     }
@@ -111,10 +91,14 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if(savedInstanceState == null){
-            rusLayoutInUpperCase = new ArrayList<>();
-            listButtons = new Button[BUTTONS_IDS.length];
-            menuItems = new MenuItem[MENU_ITEMS_IDS.length];
-            keyValues  = new SparseArray<>();
+            constants = new KeyboardConstants();
+            helper = new KeyboardRusLayoutHelper();
+
+            lenBtnIds = constants.getButtonsIdsRus().length;
+            lenImgBtnIds = constants.getImageButtonsIds().length;
+
+            listButtons = new Button[lenBtnIds];
+            listImageButtons = new ImageButton[lenImgBtnIds];
             listCodes = new ArrayList<>();
         }
     }
@@ -141,35 +125,32 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     }
 
     private void initViewElements(View view){
-        for(int i = 0; i < BUTTONS_IDS.length; i++){
-            int id = BUTTONS_IDS[i];
+        for(int i = 0; i < lenBtnIds; i++){
+            int id = constants.getButtonsIdsRus()[i];
             listButtons[i] = view.findViewById(id);
-            listButtons[i].setOnClickListener(this);
-            keyValues.put(id, rusLayoutInLowerCase.get(i));
+            if(id == R.id.button_space){
+                listButtons[i].setOnTouchListener(swipeTouchListener);
+            }else listButtons[i].setOnClickListener(this);
         }
 
-        btnCapsLock = view.findViewById(R.id.button_caps_lock);
-        btnSpecialCharacters = view.findViewById(R.id.button_special_characters);
-        btnSpace = view.findViewById(R.id.button_space);
-        btnDelete = view.findViewById(R.id.button_delete);
-        btnEnter = view.findViewById(R.id.button_enter);
-
-        btnCapsLock.setOnClickListener(this);
-        btnSpecialCharacters.setOnClickListener(this);
-        btnSpace.setOnTouchListener(swipeTouchListener1);
-        btnDelete.setOnClickListener(this);
-        btnEnter.setOnClickListener(this);
-
-        keyValues.put(R.id.button_space, " ");
-        keyValues.put(R.id.button_enter, "\n");
+        for(int j = 0; j < lenImgBtnIds; j++){
+            int id = constants.getImageButtonsIds()[j];
+            listImageButtons[j] = view.findViewById(id);
+            if(id == R.id.button_space){
+                listImageButtons[j].setOnTouchListener(swipeTouchListener);
+            }else listImageButtons[j].setOnClickListener(this);
+        }
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View view) {
         // do nothing if the InputConnection has not been set yet
         if (inputConnection == null) return;
 
-        switch (v.getId()){
+        switch (view.getId()){
+            case R.id.button_enter:
+                inputConnection.commitText("\n", 1);
+                break;
             case R.id.button_delete:
                 if(listCodes.size() > 0) listCodes.remove(listCodes.size()-1);
 
@@ -185,40 +166,33 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 break;
 
             case R.id.button_caps_lock:
+                ImageButton btnCapsLock = (ImageButton)view;
                 switch (++countClickCapsLock){
                     case 1:
                         btnCapsLock.setImageResource(R.drawable.ic_caps_lock2);
-                        for(int i = 0; i < rusLayoutInLowerCase.size(); i++){
-                            String sym = rusLayoutInLowerCase.get(i).toUpperCase();
-                            rusLayoutInUpperCase.add(sym);
-                            listButtons[i].setText(rusLayoutInUpperCase.get(i));
-                            keyValues.put(BUTTONS_IDS[i], rusLayoutInUpperCase.get(i));
+                        for(int i = 0; i < helper.getLayoutInUpperCase().size(); i++){
+                            String sym = helper.getLayoutInUpperCase().get(i);
+                            listButtons[i].setText(sym);
                         }
                         break;
                     case 2:
                         btnCapsLock.setImageResource(R.drawable.ic_caps_lock1);
                         countClickCapsLock = 0;
-                        for(int i = 0; i < rusLayoutInLowerCase.size(); i++){
-                            String sym = rusLayoutInLowerCase.get(i);
+                        for(int i = 0; i < helper.getLayoutInLowerCase().size(); i++){
+                            String sym = helper.getLayoutInLowerCase().get(i);
                             listButtons[i].setText(sym);
-                            keyValues.put(BUTTONS_IDS[i], rusLayoutInLowerCase.get(i));
                         }
                         break;
                 }
                 break;
 
             case R.id.button_special_characters:
-                popup = new PopupMenu(getContext(), btnSpecialCharacters);
+                popup = new PopupMenu(getContext(), (Button)view);
                 popup.getMenuInflater().inflate(R.menu.special_characters_menu, popup.getMenu());
-                for(int i = 0; i < MENU_ITEMS_IDS.length; i++){
-                    int idItem = MENU_ITEMS_IDS[i];
-                    menuItems[i] = popup.getMenu().findItem(idItem);
-                    keyValues.put(idItem, layoutSpecialCharacters.get(i));
-                }
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        String value = keyValues.get(item.getItemId());
+                        String value = String.valueOf(item.getTitle());
                         inputConnection.commitText(value, 1);
                         return true;
                     }
@@ -227,7 +201,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 break;
 
             default:
-                String value = keyValues.get(v.getId());
+                String value = (((Button)view).getText()).toString();
                 inputConnection.commitText(value, 1);
                 break;
         }
