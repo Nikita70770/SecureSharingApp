@@ -21,7 +21,7 @@ public class KeyboardEngLayoutHelper {
 
     private List<String> layoutSpecialCharacters = Arrays.asList(".", ",", "!", "?", ":", "/");
 
-    private final int[] BUTTONS_IDS = {
+    private final int[] BUTTONS_IDS_ENG_LAYOUT = {
             R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4,
             R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9,
             R.id.button_54, R.id.button_55, R.id.button_56, R.id.button_57, R.id.button_58,
@@ -37,4 +37,51 @@ public class KeyboardEngLayoutHelper {
     };
 
     public KeyboardEngLayoutHelper() {}
+
+    public List<String> getNumbersKeyboard() {
+        return numbersKeyboard;
+    }
+
+    public int getSizeNumbersKeyboard() {
+        return numbersKeyboard.size();
+    }
+
+    public List<String> getLayoutInLowerCase() {
+        return engLayoutInLowerCase;
+    }
+    public int getSizeLayoutInLowerCase(){
+        return engLayoutInLowerCase.size();
+    }
+
+    public List<String> getLayoutInUpperCase() {
+        return engLayoutInUpperCase;
+    }
+
+    public int getSizeLayoutInUpperCase() {
+        return engLayoutInUpperCase.size();
+    }
+
+    public List<String> getSpecialCharacters() {
+        return layoutSpecialCharacters;
+    }
+
+    public int getSizeSpecialCharacters() {
+        return layoutSpecialCharacters.size();
+    }
+
+    public int[] getButtonsIdsRus() {
+        return BUTTONS_IDS_ENG_LAYOUT;
+    }
+
+    public int getLenButtonsIdsRus() {
+        return BUTTONS_IDS_ENG_LAYOUT.length;
+    }
+
+    public int[] getImageButtonsIds() {
+        return IMAGE_BUTTONS_IDS;
+    }
+
+    public int getLenImageButtonsIds() {
+        return IMAGE_BUTTONS_IDS.length;
+    }
 }
