@@ -42,6 +42,11 @@ public class KeyboardRusLayoutHelper {
     public List<String> getNumbersKeyboard() {
         return numbersKeyboard;
     }
+    public List<String> getSortedNumbersKeyboard(){
+        List<String> list = new ArrayList<>(getNumbersKeyboard());
+        Collections.sort(list);
+        return list;
+    }
     public int getSizeNumbersKeyboard() {
         return numbersKeyboard.size();
     }

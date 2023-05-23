@@ -110,6 +110,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
 //                        + replacementTable.getSizeArrCharacter());
 //                Log.i("arrChars", replacementTable.getArrCharacters().toString() + " len = "
 //                        + replacementTable.getArrCharacters().size());
+//                Log.i("encrTable", replacementTable.getEncryptionTable().toString() +
+//                        " len = " + replacementTable.getEncryptionTable().size());
                 editTextInputMessage.setText("");
                 break;
 

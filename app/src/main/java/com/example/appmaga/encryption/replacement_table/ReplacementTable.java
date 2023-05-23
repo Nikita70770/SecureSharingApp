@@ -25,11 +25,11 @@ public class ReplacementTable {
         this.keyboardRusHelper = new KeyboardRusLayoutHelper();
         this.keyboardEngHelper = new KeyboardEngLayoutHelper();
 
-        this.encryptionTable = new HashMap<>();
         this.decryptionTable = new HashMap<>();
 
         initArrCharacters();
         initArrBinNumbers();
+        initEncryptionTable();
     }
 
 
@@ -39,7 +39,7 @@ public class ReplacementTable {
         Stream.of(
                 keyboardEngHelper.getSortedLayoutInLowerCase(), keyboardEngHelper.getSortedLayoutInUpperCase(),
                 keyboardRusHelper.getSortedLayoutInLowerCase(), keyboardRusHelper.getSortedLayoutInUpperCase(),
-                keyboardRusHelper.getNumbersKeyboard(), keyboardRusHelper.getSpecialCharacters()
+                keyboardRusHelper.getSortedNumbersKeyboard(), keyboardRusHelper.getSpecialCharacters()
         ).forEach(arrCharacters::addAll);
 
         // Удаление повторяющихся символов
@@ -57,15 +57,15 @@ public class ReplacementTable {
 
 
     public void initArrBinNumbers(){
-        int countBit = 7;
+        int maxCountBit = 7;
         int size = getSizeArrCharacter();
 
         arrBinNumbers = new ArrayList<>();
         for(int i = 0; i < size; i++){
             String binNum = Integer.toBinaryString(i);
             String sequence = "";
-            if(binNum.length() < 7){
-                for(int j = 0; j < (countBit - binNum.length()); j++){
+            if(binNum.length() < maxCountBit){
+                for(int j = 0; j < (maxCountBit - binNum.length()); j++){
                     sequence += "0";
                 }
             }
@@ -78,5 +78,20 @@ public class ReplacementTable {
     }
     public int getSizeArrBinNumbers(){
         return arrBinNumbers.size();
+    }
+
+
+    public void initEncryptionTable(){
+        encryptionTable = new HashMap<>();
+        if(getSizeArrCharacter() == getSizeArrCharacter()){
+            for(int i = 0; i < getSizeArrCharacter(); i++){
+                String key = getArrBinNumbers().get(i);
+                String value = getArrCharacters().get(i);
+                encryptionTable.put(key, value);
+            }
+        }
+    }
+    public Map<String, String> getEncryptionTable() {
+        return encryptionTable;
     }
 }
