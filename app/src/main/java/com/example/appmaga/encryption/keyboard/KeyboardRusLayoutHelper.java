@@ -1,7 +1,5 @@
 package com.example.appmaga.encryption.keyboard;
 
-import android.util.SparseArray;
-
 import com.example.appmaga.R;
 
 import java.util.Arrays;
@@ -36,49 +34,56 @@ public class KeyboardRusLayoutHelper {
 
     public KeyboardRusLayoutHelper(){}
 
+
     public List<String> getNumbersKeyboard() {
         return numbersKeyboard;
     }
-
     public int getSizeNumbersKeyboard() {
         return numbersKeyboard.size();
     }
 
+
     public List<String> getLayoutInLowerCase() {
         return rusLayoutInLowerCase;
+    }
+    public List<String> getSortedLayoutInLowerCase(){
+        return getLayoutInLowerCase().stream().sorted().collect(Collectors.toList());
     }
     public int getSizeLayoutInLowerCase(){
         return rusLayoutInLowerCase.size();
     }
 
+
     public List<String> getLayoutInUpperCase() {
         return rusLayoutInUpperCase;
     }
-
+    public List<String> getSortedLayoutInUpperCase(){
+        return getLayoutInUpperCase().stream().sorted().collect(Collectors.toList());
+    }
     public int getSizeLayoutInUpperCase() {
         return rusLayoutInUpperCase.size();
     }
 
+
     public List<String> getSpecialCharacters() {
         return layoutSpecialCharacters;
     }
-
     public int getSizeSpecialCharacters() {
         return layoutSpecialCharacters.size();
     }
 
+
     public int[] getButtonsIdsRus() {
         return BUTTONS_IDS_RUS_LAYOUT;
     }
-
     public int getLenButtonsIdsRus() {
         return BUTTONS_IDS_RUS_LAYOUT.length;
     }
 
+
     public int[] getImageButtonsIds() {
         return IMAGE_BUTTONS_IDS;
     }
-
     public int getLenImageButtonsIds() {
         return IMAGE_BUTTONS_IDS.length;
     }

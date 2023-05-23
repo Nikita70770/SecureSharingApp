@@ -38,49 +38,56 @@ public class KeyboardEngLayoutHelper {
 
     public KeyboardEngLayoutHelper() {}
 
+
     public List<String> getNumbersKeyboard() {
         return numbersKeyboard;
     }
-
     public int getSizeNumbersKeyboard() {
         return numbersKeyboard.size();
     }
 
+
     public List<String> getLayoutInLowerCase() {
         return engLayoutInLowerCase;
+    }
+    public List<String> getSortedLayoutInLowerCase(){
+        return getLayoutInLowerCase().stream().sorted().collect(Collectors.toList());
     }
     public int getSizeLayoutInLowerCase(){
         return engLayoutInLowerCase.size();
     }
 
+
     public List<String> getLayoutInUpperCase() {
         return engLayoutInUpperCase;
     }
-
+    public List<String> getSortedLayoutInUpperCase(){
+        return getLayoutInUpperCase().stream().sorted().collect(Collectors.toList());
+    }
     public int getSizeLayoutInUpperCase() {
         return engLayoutInUpperCase.size();
     }
 
+
     public List<String> getSpecialCharacters() {
         return layoutSpecialCharacters;
     }
-
     public int getSizeSpecialCharacters() {
         return layoutSpecialCharacters.size();
     }
 
+
     public int[] getButtonsIdsRus() {
         return BUTTONS_IDS_ENG_LAYOUT;
     }
-
     public int getLenButtonsIdsRus() {
         return BUTTONS_IDS_ENG_LAYOUT.length;
     }
 
+
     public int[] getImageButtonsIds() {
         return IMAGE_BUTTONS_IDS;
     }
-
     public int getLenImageButtonsIds() {
         return IMAGE_BUTTONS_IDS.length;
     }
