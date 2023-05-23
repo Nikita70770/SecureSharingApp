@@ -205,7 +205,8 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 break;
 
             default:
-                String value = (((Button)view).getText()).toString();
+                Button button = (Button)view;
+                String value = button.getText().toString();
                 inputConnection.commitText(value, 1);
                 break;
         }

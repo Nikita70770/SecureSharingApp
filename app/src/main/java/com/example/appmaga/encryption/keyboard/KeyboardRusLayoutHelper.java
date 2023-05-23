@@ -16,7 +16,7 @@ public class KeyboardRusLayoutHelper {
     private final List<String> rusLayoutInUpperCase = rusLayoutInLowerCase.stream().map(String::toUpperCase)
             .collect(Collectors.toList());
     private final List<String> layoutSpecialCharacters = Arrays.asList(
-            ".", ",", "!", "?", ":", "/");
+            " ", "\n", ".", ",", "!", "?", ":", "/");
 
     private final int[] BUTTONS_IDS_RUS_LAYOUT = {
             R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,

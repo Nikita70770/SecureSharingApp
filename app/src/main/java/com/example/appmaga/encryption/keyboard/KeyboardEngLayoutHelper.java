@@ -19,7 +19,8 @@ public class KeyboardEngLayoutHelper {
     private final List<String> engLayoutInUpperCase = engLayoutInLowerCase.stream().map(String::toUpperCase)
             .collect(Collectors.toList());
 
-    private List<String> layoutSpecialCharacters = Arrays.asList(".", ",", "!", "?", ":", "/");
+    private List<String> layoutSpecialCharacters = Arrays.asList(
+            " ", "\n", ".", ",", "!", "?", ":", "/");
 
     private final int[] BUTTONS_IDS_ENG_LAYOUT = {
             R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4,
