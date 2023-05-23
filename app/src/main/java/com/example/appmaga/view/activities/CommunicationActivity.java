@@ -105,13 +105,6 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btnClearMessage:
-                ReplacementTable replacementTable = new ReplacementTable();
-//                Log.i("arrBinSeq", replacementTable.getArrBinNumbers().toString() + " len = "
-//                        + replacementTable.getSizeArrCharacter());
-//                Log.i("arrChars", replacementTable.getArrCharacters().toString() + " len = "
-//                        + replacementTable.getArrCharacters().size());
-//                Log.i("encrTable", replacementTable.getEncryptionTable().toString() +
-//                        " len = " + replacementTable.getEncryptionTable().size());
                 editTextInputMessage.setText("");
                 break;
 

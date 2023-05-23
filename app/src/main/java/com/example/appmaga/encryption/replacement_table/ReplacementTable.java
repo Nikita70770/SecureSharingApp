@@ -25,11 +25,11 @@ public class ReplacementTable {
         this.keyboardRusHelper = new KeyboardRusLayoutHelper();
         this.keyboardEngHelper = new KeyboardEngLayoutHelper();
 
-        this.decryptionTable = new HashMap<>();
-
         initArrCharacters();
         initArrBinNumbers();
+
         initEncryptionTable();
+        initDecryptionTable();
     }
 
 
@@ -83,15 +83,26 @@ public class ReplacementTable {
 
     public void initEncryptionTable(){
         encryptionTable = new HashMap<>();
-        if(getSizeArrCharacter() == getSizeArrCharacter()){
-            for(int i = 0; i < getSizeArrCharacter(); i++){
-                String key = getArrBinNumbers().get(i);
-                String value = getArrCharacters().get(i);
-                encryptionTable.put(key, value);
-            }
+        for(int i = 0; i < getSizeArrCharacter(); i++){
+            String key = getArrBinNumbers().get(i);
+            String value = getArrCharacters().get(i);
+            encryptionTable.put(key, value);
         }
     }
     public Map<String, String> getEncryptionTable() {
         return encryptionTable;
+    }
+
+
+    public void initDecryptionTable(){
+        decryptionTable = new HashMap<>();
+        for(int i = 0; i < getSizeArrCharacter(); i++){
+            String key = getArrCharacters().get(i);
+            String value = getArrBinNumbers().get(i);
+            decryptionTable.put(key, value);
+        }
+    }
+    public Map<String, String> getDecryptionTable() {
+        return decryptionTable;
     }
 }
