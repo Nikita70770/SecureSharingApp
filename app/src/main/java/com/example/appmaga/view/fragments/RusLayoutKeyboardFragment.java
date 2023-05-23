@@ -86,17 +86,15 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if(savedInstanceState == null){
-            helper = new KeyboardRusLayoutHelper();
+        helper = new KeyboardRusLayoutHelper();
 
-            lenBtnIds = helper.getLenButtonsIdsRus();
-            lenImgBtnIds = helper.getLenImageButtonsIds();
+        lenBtnIds = helper.getLenButtonsIdsRus();
+        lenImgBtnIds = helper.getLenImageButtonsIds();
 
-            listButtons = new Button[lenBtnIds];
-            listImageButtons = new ImageButton[lenImgBtnIds];
+        listButtons = new Button[lenBtnIds];
+        listImageButtons = new ImageButton[lenImgBtnIds];
 
-            listCodes = new ArrayList<>();
-        }
+        listCodes = new ArrayList<>();
     }
 
     @Override

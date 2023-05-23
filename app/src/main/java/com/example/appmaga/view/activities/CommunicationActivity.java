@@ -38,10 +38,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         super.onCreate(savedInstanceState);
         setContentView(R.layout.communiacation_user_fragment);
 
-        if(savedInstanceState == null){
-            fragmentManager = getSupportFragmentManager();
-            keyboardLayouts = new String[]{ "rus", "eng" };
-        }
+        fragmentManager = getSupportFragmentManager();
+        keyboardLayouts = new String[]{ "rus", "eng" };
 
         initElements();
 
