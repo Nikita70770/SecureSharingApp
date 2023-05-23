@@ -2,8 +2,12 @@ package com.example.appmaga.encryption.keyboard;
 
 import com.example.appmaga.R;
 
+import java.text.Collator;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 public class KeyboardRusLayoutHelper {
@@ -12,7 +16,7 @@ public class KeyboardRusLayoutHelper {
     private final List<String> rusLayoutInLowerCase = Arrays.asList(
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
             "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э",
-            "я", "ч", "с", "м", "и", "т", "ь", "б", "ю");
+            "я", "ч", "с", "м", "и", "т", "ь", "б", "ю", "ъ", "ё");
     private final List<String> rusLayoutInUpperCase = rusLayoutInLowerCase.stream().map(String::toUpperCase)
             .collect(Collectors.toList());
     private final List<String> layoutSpecialCharacters = Arrays.asList(
@@ -29,7 +33,7 @@ public class KeyboardRusLayoutHelper {
             R.id.button_space, R.id.button_special_characters
     };
     private final int[] IMAGE_BUTTONS_IDS = {
-            R.id.button_enter, R.id.button_caps_lock, R.id.button_delete
+            R.id.button_additional_characters, R.id.button_enter, R.id.button_caps_lock, R.id.button_delete
     };
 
     public KeyboardRusLayoutHelper(){}
@@ -47,7 +51,14 @@ public class KeyboardRusLayoutHelper {
         return rusLayoutInLowerCase;
     }
     public List<String> getSortedLayoutInLowerCase(){
-        return getLayoutInLowerCase().stream().sorted().collect(Collectors.toList());
+        List<String> list = new ArrayList<>(getLayoutInLowerCase());
+        Collections.sort(list, (o1, o2) -> {
+            if (o1.length() != o2.length()) {
+                return o1.length() - o2.length();
+            }
+            return Collator.getInstance(Locale.forLanguageTag("ru")).compare(o1, o2);
+        });
+        return list;
     }
     public int getSizeLayoutInLowerCase(){
         return rusLayoutInLowerCase.size();
@@ -58,7 +69,14 @@ public class KeyboardRusLayoutHelper {
         return rusLayoutInUpperCase;
     }
     public List<String> getSortedLayoutInUpperCase(){
-        return getLayoutInUpperCase().stream().sorted().collect(Collectors.toList());
+        List<String> list = new ArrayList<>(getLayoutInUpperCase());
+        Collections.sort(list, (o1, o2) -> {
+            if (o1.length() != o2.length()) {
+                return o1.length() - o2.length();
+            }
+            return Collator.getInstance(Locale.forLanguageTag("ru")).compare(o1, o2);
+        });
+        return list;
     }
     public int getSizeLayoutInUpperCase() {
         return rusLayoutInUpperCase.size();

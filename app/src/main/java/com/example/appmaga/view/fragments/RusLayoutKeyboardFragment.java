@@ -174,7 +174,9 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 switch (++countClickCapsLock){
                     case 1:
                         btnCapsLock.setImageResource(R.drawable.ic_caps_lock2);
-                        for(int j = 0; j < sizeLayoutInUpperCase; j++){
+                        // 2 - это кол-во дополнительных символов (ё и ъ),
+                        // которые не входят в основную раскладку
+                        for(int j = 0; j < (sizeLayoutInUpperCase - 2); j++){
                             String sym = helper.getLayoutInUpperCase().get(j);
                             listButtons[j + sizeListNumbers].setText(sym);
                         }
@@ -182,7 +184,9 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                     case 2:
                         btnCapsLock.setImageResource(R.drawable.ic_caps_lock1);
                         countClickCapsLock = 0;
-                        for(int j = 0; j < sizeLayoutInLowerCase; j++){
+                        // 2 - это кол-во дополнительных символов (ё и ъ),
+                        // которые не входят в основную раскладку
+                        for(int j = 0; j < (sizeLayoutInLowerCase - 2); j++){
                             String sym = helper.getLayoutInLowerCase().get(j);
                             listButtons[j + sizeListNumbers].setText(sym);
                         }
@@ -193,6 +197,20 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
             case R.id.button_special_characters:
                 popup = new PopupMenu(getContext(), (Button)view);
                 popup.getMenuInflater().inflate(R.menu.special_characters_menu, popup.getMenu());
+                popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        String value = String.valueOf(item.getTitle());
+                        inputConnection.commitText(value, 1);
+                        return true;
+                    }
+                });
+                popup.show();
+                break;
+
+            case R.id.button_additional_characters:
+                popup = new PopupMenu(getContext(), (ImageButton)view);
+                popup.getMenuInflater().inflate(R.menu.additional_characters_menu, popup.getMenu());
                 popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {

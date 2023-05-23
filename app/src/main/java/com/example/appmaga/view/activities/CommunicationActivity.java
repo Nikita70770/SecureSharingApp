@@ -16,12 +16,15 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.encryption.keyboard.KeyboardRusLayoutHelper;
 import com.example.appmaga.encryption.replacement_table.ReplacementTable;
 import com.example.appmaga.interfaces.IKeyboardListener;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.view.fragments.EngLayoutKeyboardFragment;
 import com.example.appmaga.view.fragments.RusLayoutKeyboardFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
+
+import java.util.Collections;
 
 public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener,
         IKeyboardListener {

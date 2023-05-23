@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/additional_character_1_1"
+        android:textAllCaps="false"
+        android:title="ё"/>
+    <item
+        android:id="@+id/additional_character_1_2"
+        android:textAllCaps="true"
+        android:title="Ё"/>
+    <item
+        android:id="@+id/additional_character_2_1"
+        android:textAllCaps="false"
+        android:title="ъ"/>
+    <item
+        android:id="@+id/additional_character_2_2"
+        android:textAllCaps="true"
+        android:title="Ъ"/>
+</menu>
