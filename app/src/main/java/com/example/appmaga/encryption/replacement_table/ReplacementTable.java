@@ -15,6 +15,8 @@ public class ReplacementTable {
     private KeyboardEngLayoutHelper keyboardEngHelper;
 
     private List<String> arrCharacters;
+    private String[] similarCharacters;
+
     private Map<String, Integer> encryptionTable;
     private Map<Integer, String> decryptionTable;
 
@@ -33,10 +35,17 @@ public class ReplacementTable {
 
     public void initArrCharacters(){
         arrCharacters = new ArrayList<>();
+        similarCharacters = new String[]{"а", "А", "с", "С", "е", "Е", "о", "О"};
         Stream.of(
                 keyboardEngHelper.getSortedLayoutInLowerCase(), keyboardEngHelper.getSortedLayoutInUpperCase(),
                 keyboardRusHelper.getSortedLayoutInLowerCase(), keyboardRusHelper.getSortedLayoutInUpperCase(),
                 keyboardRusHelper.getNumbersKeyboard(), keyboardRusHelper.getSpecialCharacters()
         ).forEach(arrCharacters::addAll);
+
+        // Удаление повторяющихся символов
+        for(int i = 0; i < similarCharacters.length; i++){
+            String sym = similarCharacters[i];
+            arrCharacters.remove(sym);
+        }
     }
 }
