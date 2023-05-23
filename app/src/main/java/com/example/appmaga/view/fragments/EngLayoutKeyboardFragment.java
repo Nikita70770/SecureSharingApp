@@ -91,9 +91,19 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
     };
     private MenuItem[] menuItems;
 
+//    private final int[] BUTTONS_IDS = {
+//            R.id.button_44, R.id.button_45, R.id.button_46, R.id.button_47, R.id.button_48,
+//            R.id.button_49, R.id.button_50, R.id.button_51, R.id.button_52, R.id.button_53,
+//            R.id.button_54, R.id.button_55, R.id.button_56, R.id.button_57, R.id.button_58,
+//            R.id.button_59, R.id.button_60, R.id.button_61, R.id.button_62, R.id.button_63,
+//            R.id.button_64, R.id.button_65, R.id.button_66, R.id.button_67, R.id.button_68,
+//            R.id.button_69, R.id.button_70, R.id.button_71, R.id.button_72, R.id.button_73,
+//            R.id.button_74, R.id.button_75, R.id.button_76, R.id.button_77, R.id.button_78,
+//            R.id.button_79
+//    };
     private final int[] BUTTONS_IDS = {
-            R.id.button_44, R.id.button_45, R.id.button_46, R.id.button_47, R.id.button_48,
-            R.id.button_49, R.id.button_50, R.id.button_51, R.id.button_52, R.id.button_53,
+            R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4,
+            R.id.button_5, R.id.button_6, R.id.button_7, R.id.button_8, R.id.button_9,
             R.id.button_54, R.id.button_55, R.id.button_56, R.id.button_57, R.id.button_58,
             R.id.button_59, R.id.button_60, R.id.button_61, R.id.button_62, R.id.button_63,
             R.id.button_64, R.id.button_65, R.id.button_66, R.id.button_67, R.id.button_68,
