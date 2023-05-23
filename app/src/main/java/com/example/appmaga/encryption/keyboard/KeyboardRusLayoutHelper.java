@@ -4,21 +4,21 @@ import android.util.SparseArray;
 
 import com.example.appmaga.R;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class KeyboardRusLayoutHelper {
-    private List<String> rusLayoutInUpperCase;
     private final List<String> numbersKeyboard = Arrays.asList(
             "1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
     private final List<String> rusLayoutInLowerCase = Arrays.asList(
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
             "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э",
             "я", "ч", "с", "м", "и", "т", "ь", "б", "ю");
+    private final List<String> rusLayoutInUpperCase = rusLayoutInLowerCase.stream().map(String::toUpperCase)
+            .collect(Collectors.toList());
     private final List<String> layoutSpecialCharacters = Arrays.asList(
             ".", ",", "!", "?", ":", "/");
-    private SparseArray<String> keyValues;
 
     private final int[] BUTTONS_IDS_RUS_LAYOUT = {
             R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
@@ -34,9 +34,7 @@ public class KeyboardRusLayoutHelper {
             R.id.button_enter, R.id.button_caps_lock, R.id.button_delete
     };
 
-    public KeyboardRusLayoutHelper(){
-        setRusLayoutInUpperCase();
-    }
+    public KeyboardRusLayoutHelper(){}
 
     public List<String> getNumbersKeyboard() {
         return numbersKeyboard;
@@ -59,14 +57,6 @@ public class KeyboardRusLayoutHelper {
 
     public int getSizeLayoutInUpperCase() {
         return rusLayoutInUpperCase.size();
-    }
-
-    public void setRusLayoutInUpperCase() {
-        rusLayoutInUpperCase = new ArrayList<>();
-        for(int i = 0; i < rusLayoutInLowerCase.size(); i++){
-            String sym = rusLayoutInLowerCase.get(i).toUpperCase();
-            rusLayoutInUpperCase.add(sym);
-        }
     }
 
     public List<String> getSpecialCharacters() {
