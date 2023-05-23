@@ -1,4 +1,4 @@
-package com.example.appmaga.encryption.mersenne_twister;
+package com.example.appmaga.cryptographic_algorithms.mersenne_twister;
 
 public class MersenneTwister64bit {
     private final long UPPER_MASK = 0xFFFFFFFF80000000L;

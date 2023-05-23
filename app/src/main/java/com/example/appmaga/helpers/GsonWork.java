@@ -1,7 +1,7 @@
 package com.example.appmaga.helpers;
 
-import com.example.appmaga.encryption.chap_authentication.Chap;
-import com.example.appmaga.encryption.diffie_hellman.DHAlgorithm;
+import com.example.appmaga.cryptographic_algorithms.chap_authentication.Chap;
+import com.example.appmaga.cryptographic_algorithms.diffie_hellman.DHAlgorithm;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;
 import com.google.gson.Gson;

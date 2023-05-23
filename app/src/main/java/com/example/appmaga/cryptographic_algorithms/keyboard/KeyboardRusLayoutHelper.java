@@ -1,4 +1,4 @@
-package com.example.appmaga.encryption.keyboard;
+package com.example.appmaga.cryptographic_algorithms.keyboard;
 
 import com.example.appmaga.R;
 

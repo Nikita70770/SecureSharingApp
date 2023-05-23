@@ -7,7 +7,7 @@ import android.content.Intent;
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
-import com.example.appmaga.encryption.diffie_hellman.DHAlgorithm;
+import com.example.appmaga.cryptographic_algorithms.diffie_hellman.DHAlgorithm;
 import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.model.repository.DataRepository;
 

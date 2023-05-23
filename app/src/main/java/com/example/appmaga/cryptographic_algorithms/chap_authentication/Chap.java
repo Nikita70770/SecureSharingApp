@@ -1,4 +1,4 @@
-package com.example.appmaga.encryption.chap_authentication;
+package com.example.appmaga.cryptographic_algorithms.chap_authentication;
 
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;

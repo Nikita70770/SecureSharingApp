@@ -1,7 +1,7 @@
-package com.example.appmaga.encryption.replacement_table;
+package com.example.appmaga.cryptographic_algorithms.replacement_table;
 
-import com.example.appmaga.encryption.keyboard.KeyboardEngLayoutHelper;
-import com.example.appmaga.encryption.keyboard.KeyboardRusLayoutHelper;
+import com.example.appmaga.cryptographic_algorithms.keyboard.KeyboardEngLayoutHelper;
+import com.example.appmaga.cryptographic_algorithms.keyboard.KeyboardRusLayoutHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;

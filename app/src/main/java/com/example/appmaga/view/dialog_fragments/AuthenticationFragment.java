@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.appmaga.encryption.chap_authentication.Chap;
+import com.example.appmaga.cryptographic_algorithms.chap_authentication.Chap;
 import com.example.appmaga.helpers.constants.ConstantKeysFragment;
 import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.R;

@@ -16,8 +16,8 @@ import android.widget.PopupMenu;
 import androidx.fragment.app.Fragment;
 
 import com.example.appmaga.R;
-import com.example.appmaga.encryption.keyboard.KeyboardRusLayoutHelper;
-import com.example.appmaga.encryption.keyboard.OnSwipeTouchListener;
+import com.example.appmaga.cryptographic_algorithms.keyboard.KeyboardRusLayoutHelper;
+import com.example.appmaga.cryptographic_algorithms.keyboard.OnSwipeTouchListener;
 import com.example.appmaga.interfaces.IKeyboardListener;
 
 import java.util.ArrayList;

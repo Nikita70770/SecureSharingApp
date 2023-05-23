@@ -1,4 +1,4 @@
-package com.example.appmaga.encryption.diffie_hellman;
+package com.example.appmaga.cryptographic_algorithms.diffie_hellman;
 
 import com.example.appmaga.helpers.MathHelper;
 

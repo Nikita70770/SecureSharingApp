@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.view.adapters.ContactsAdapter;
-import com.example.appmaga.encryption.chap_authentication.Chap;
+import com.example.appmaga.cryptographic_algorithms.chap_authentication.Chap;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
 import com.example.appmaga.R;
