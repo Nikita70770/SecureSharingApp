@@ -94,6 +94,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
 
             listButtons = new Button[lenBtnIds];
             listImageButtons = new ImageButton[lenImgBtnIds];
+
             listCodes = new ArrayList<>();
         }
     }
