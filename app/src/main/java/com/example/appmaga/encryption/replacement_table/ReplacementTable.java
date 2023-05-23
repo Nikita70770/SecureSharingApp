@@ -15,23 +15,23 @@ public class ReplacementTable {
     private KeyboardEngLayoutHelper keyboardEngHelper;
 
     private List<String> arrCharacters;
+    private List<String> arrBinNumbers;
     private String[] similarCharacters;
 
-    private Map<String, Integer> encryptionTable;
-    private Map<Integer, String> decryptionTable;
+    private Map<String, String> encryptionTable;
+    private Map<String, String> decryptionTable;
 
     public ReplacementTable() {
         this.keyboardRusHelper = new KeyboardRusLayoutHelper();
         this.keyboardEngHelper = new KeyboardEngLayoutHelper();
+
         this.encryptionTable = new HashMap<>();
         this.decryptionTable = new HashMap<>();
 
         initArrCharacters();
+        initArrBinNumbers();
     }
 
-    public List<String> getArrCharacters() {
-        return arrCharacters;
-    }
 
     public void initArrCharacters(){
         arrCharacters = new ArrayList<>();
@@ -47,5 +47,36 @@ public class ReplacementTable {
             String sym = similarCharacters[i];
             arrCharacters.remove(sym);
         }
+    }
+    public List<String> getArrCharacters() {
+        return arrCharacters;
+    }
+    public int getSizeArrCharacter(){
+        return getArrCharacters().size();
+    }
+
+
+    public void initArrBinNumbers(){
+        int countBit = 7;
+        int size = getSizeArrCharacter();
+
+        arrBinNumbers = new ArrayList<>();
+        for(int i = 0; i < size; i++){
+            String binNum = Integer.toBinaryString(i);
+            String sequence = "";
+            if(binNum.length() < 7){
+                for(int j = 0; j < (countBit - binNum.length()); j++){
+                    sequence += "0";
+                }
+            }
+            binNum = sequence + binNum;
+            arrBinNumbers.add(binNum);
+        }
+    }
+    public List<String> getArrBinNumbers() {
+        return arrBinNumbers;
+    }
+    public int getSizeArrBinNumbers(){
+        return arrBinNumbers.size();
     }
 }
