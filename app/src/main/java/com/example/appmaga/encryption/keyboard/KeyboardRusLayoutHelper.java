@@ -1,5 +1,7 @@
 package com.example.appmaga.encryption.keyboard;
 
+import android.util.SparseArray;
+
 import com.example.appmaga.R;
 
 import java.util.ArrayList;
@@ -8,13 +10,15 @@ import java.util.List;
 
 public class KeyboardRusLayoutHelper {
     private List<String> rusLayoutInUpperCase;
+    private final List<String> numbersKeyboard = Arrays.asList(
+            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0");
     private final List<String> rusLayoutInLowerCase = Arrays.asList(
-            "1", "2", "3", "4", "5", "6", "7", "8", "9", "0",
             "й", "ц", "у", "к", "е", "н", "г", "ш", "щ", "з", "х",
             "ф", "ы", "в", "а", "п", "р", "о", "л", "д", "ж", "э",
             "я", "ч", "с", "м", "и", "т", "ь", "б", "ю");
     private final List<String> layoutSpecialCharacters = Arrays.asList(
             ".", ",", "!", "?", ":", "/");
+    private SparseArray<String> keyValues;
 
     private final int[] BUTTONS_IDS_RUS_LAYOUT = {
             R.id.button_0, R.id.button_1, R.id.button_2, R.id.button_3, R.id.button_4, R.id.button_5,
@@ -34,8 +38,27 @@ public class KeyboardRusLayoutHelper {
         setRusLayoutInUpperCase();
     }
 
+    public List<String> getNumbersKeyboard() {
+        return numbersKeyboard;
+    }
+
+    public int getSizeNumbersKeyboard() {
+        return numbersKeyboard.size();
+    }
+
+    public List<String> getLayoutInLowerCase() {
+        return rusLayoutInLowerCase;
+    }
+    public int getSizeLayoutInLowerCase(){
+        return rusLayoutInLowerCase.size();
+    }
+
     public List<String> getLayoutInUpperCase() {
         return rusLayoutInUpperCase;
+    }
+
+    public int getSizeLayoutInUpperCase() {
+        return rusLayoutInUpperCase.size();
     }
 
     public void setRusLayoutInUpperCase() {
@@ -46,19 +69,27 @@ public class KeyboardRusLayoutHelper {
         }
     }
 
-    public List<String> getLayoutInLowerCase() {
-        return rusLayoutInLowerCase;
-    }
-
     public List<String> getSpecialCharacters() {
         return layoutSpecialCharacters;
+    }
+
+    public int getSizeSpecialCharacters() {
+        return layoutSpecialCharacters.size();
     }
 
     public int[] getButtonsIdsRus() {
         return BUTTONS_IDS_RUS_LAYOUT;
     }
 
+    public int getLenButtonsIdsRus() {
+        return BUTTONS_IDS_RUS_LAYOUT.length;
+    }
+
     public int[] getImageButtonsIds() {
         return IMAGE_BUTTONS_IDS;
+    }
+
+    public int getLenImageButtonsIds() {
+        return IMAGE_BUTTONS_IDS.length;
     }
 }

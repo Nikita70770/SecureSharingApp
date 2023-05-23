@@ -89,8 +89,8 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
         if(savedInstanceState == null){
             helper = new KeyboardRusLayoutHelper();
 
-            lenBtnIds = helper.getButtonsIdsRus().length;
-            lenImgBtnIds = helper.getImageButtonsIds().length;
+            lenBtnIds = helper.getLenButtonsIdsRus();
+            lenImgBtnIds = helper.getLenImageButtonsIds();
 
             listButtons = new Button[lenBtnIds];
             listImageButtons = new ImageButton[lenImgBtnIds];
@@ -159,21 +159,31 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
                 break;
 
             case R.id.button_caps_lock:
+                int sizeListNumbers = helper.getSizeNumbersKeyboard();
+                int sizeLayoutInLowerCase = helper.getSizeLayoutInLowerCase();
+                int sizeLayoutInUpperCase = helper.getSizeLayoutInUpperCase();
+
                 ImageButton btnCapsLock = (ImageButton)view;
+
+                for(int i = 0; i < sizeListNumbers; i++){
+                    String sym = helper.getNumbersKeyboard().get(i);
+                    listButtons[i].setText(sym);
+                }
+
                 switch (++countClickCapsLock){
                     case 1:
                         btnCapsLock.setImageResource(R.drawable.ic_caps_lock2);
-                        for(int i = 0; i < helper.getLayoutInUpperCase().size(); i++){
-                            String sym = helper.getLayoutInUpperCase().get(i);
-                            listButtons[i].setText(sym);
+                        for(int j = 0; j < sizeLayoutInUpperCase; j++){
+                            String sym = helper.getLayoutInUpperCase().get(j);
+                            listButtons[j + sizeListNumbers].setText(sym);
                         }
                         break;
                     case 2:
                         btnCapsLock.setImageResource(R.drawable.ic_caps_lock1);
                         countClickCapsLock = 0;
-                        for(int i = 0; i < helper.getLayoutInLowerCase().size(); i++){
-                            String sym = helper.getLayoutInLowerCase().get(i);
-                            listButtons[i].setText(sym);
+                        for(int j = 0; j < sizeLayoutInLowerCase; j++){
+                            String sym = helper.getLayoutInLowerCase().get(j);
+                            listButtons[j + sizeListNumbers].setText(sym);
                         }
                         break;
                 }
