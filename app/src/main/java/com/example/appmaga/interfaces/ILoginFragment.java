@@ -1,6 +1,6 @@
 package com.example.appmaga.interfaces;
 
-public interface ILoginFragmentListener {
+public interface ILoginFragment {
     void onLoginListener();
 
     void onLoginSignUpListener();

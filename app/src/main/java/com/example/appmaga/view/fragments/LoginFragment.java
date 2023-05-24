@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.appmaga.interfaces.ILoginFragmentListener;
+import com.example.appmaga.interfaces.ILoginFragment;
 import com.example.appmaga.R;
 import com.example.appmaga.viewmodels.LoginViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +22,7 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
 
     private Button btnLogin, btnSignUp;
 
-    private ILoginFragmentListener loginFragmentListener;
+    private ILoginFragment loginFragmentListener;
     private LoginViewModel viewModel;
 
     public static LoginFragment newInstance() {
@@ -47,8 +47,8 @@ public class LoginFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof ILoginFragmentListener) {
-            loginFragmentListener = (ILoginFragmentListener) context;
+        if (context instanceof ILoginFragment) {
+            loginFragmentListener = (ILoginFragment) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement ILoginFragmentListener");

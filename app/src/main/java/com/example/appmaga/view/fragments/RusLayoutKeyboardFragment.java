@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.appmaga.R;
 import com.example.appmaga.cryptographic_algorithms.keyboard.KeyboardRusLayoutHelper;
 import com.example.appmaga.cryptographic_algorithms.keyboard.OnSwipeTouchListener;
-import com.example.appmaga.interfaces.IKeyboardListener;
+import com.example.appmaga.interfaces.IKeyboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     private PopupMenu popup;
 
 
-    private IKeyboardListener keyboardListener;
+    private IKeyboard keyboardListener;
     private KeyboardRusLayoutHelper helper;
     private InputConnection inputConnection; // Our communication link to the EditText
 
@@ -100,8 +100,8 @@ public class RusLayoutKeyboardFragment extends Fragment implements View.OnClickL
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof IKeyboardListener){
-            keyboardListener = (IKeyboardListener) context;
+        if(context instanceof IKeyboard){
+            keyboardListener = (IKeyboard) context;
         }else new RuntimeException(context.toString()
                 + " must implement IKeyboardListener");
     }

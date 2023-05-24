@@ -15,15 +15,14 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
-import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
-import com.example.appmaga.interfaces.IKeyboardListener;
+import com.example.appmaga.interfaces.IKeyboard;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.view.fragments.EngLayoutKeyboardFragment;
 import com.example.appmaga.view.fragments.RusLayoutKeyboardFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
 public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener,
-        IKeyboardListener {
+        IKeyboard {
 
     private EditText editTextInputMessage;
     private Button btnClearMessage, btnSetKey, btnSendMessage;
@@ -99,9 +98,6 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btnClearMessage:
-//                ReplacementTable replacementTable = new ReplacementTable(3);
-//                replacementTable.showEncryptionTable();
-//                replacementTable.showDecryptionTable();
                 editTextInputMessage.setText("");
                 break;
 

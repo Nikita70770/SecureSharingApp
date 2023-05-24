@@ -18,7 +18,7 @@ import androidx.fragment.app.Fragment;
 import com.example.appmaga.R;
 import com.example.appmaga.cryptographic_algorithms.keyboard.KeyboardEngLayoutHelper;
 import com.example.appmaga.cryptographic_algorithms.keyboard.OnSwipeTouchListener;
-import com.example.appmaga.interfaces.IKeyboardListener;
+import com.example.appmaga.interfaces.IKeyboard;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +30,7 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
     private PopupMenu popup;
 
     private KeyboardEngLayoutHelper helper;
-    private IKeyboardListener keyboardListener;
+    private IKeyboard keyboardListener;
     private InputConnection inputConnection;
 
     private int lenBtnIds, lenImgBtnIds;
@@ -101,8 +101,8 @@ public class EngLayoutKeyboardFragment extends Fragment implements View.OnClickL
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof IKeyboardListener){
-            keyboardListener = (IKeyboardListener) context;
+        if(context instanceof IKeyboard){
+            keyboardListener = (IKeyboard) context;
         }else new RuntimeException(context.toString()
                 + " must implement IKeyboardListener");
     }

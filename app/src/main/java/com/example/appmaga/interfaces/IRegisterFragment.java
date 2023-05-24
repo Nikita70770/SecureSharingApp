@@ -1,6 +1,6 @@
 package com.example.appmaga.interfaces;
 
-public interface IRegisterFragmentListener {
+public interface IRegisterFragment {
     void onRegisterListener();
     void onRegisterSignInListener();
 }

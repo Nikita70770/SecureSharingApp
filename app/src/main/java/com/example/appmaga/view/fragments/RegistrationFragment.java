@@ -11,7 +11,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
-import com.example.appmaga.interfaces.IRegisterFragmentListener;
+import com.example.appmaga.interfaces.IRegisterFragment;
 import com.example.appmaga.R;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.viewmodels.RegistrationViewModel;
@@ -23,7 +23,7 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
 
     private Button btnSignIn, btnRegister;
 
-    private IRegisterFragmentListener fragmentListener;
+    private IRegisterFragment fragmentListener;
     private RegistrationViewModel viewModel;
 
     public static RegistrationFragment newInstance() {
@@ -47,8 +47,8 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof IRegisterFragmentListener) {
-            fragmentListener = (IRegisterFragmentListener) context;
+        if (context instanceof IRegisterFragment) {
+            fragmentListener = (IRegisterFragment) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement IRegisterFragmentListener");

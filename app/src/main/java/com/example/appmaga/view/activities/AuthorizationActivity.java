@@ -7,11 +7,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import com.example.appmaga.view.fragments.LoginFragment;
 import com.example.appmaga.view.fragments.RegistrationFragment;
-import com.example.appmaga.interfaces.ILoginFragmentListener;
-import com.example.appmaga.interfaces.IRegisterFragmentListener;
+import com.example.appmaga.interfaces.ILoginFragment;
+import com.example.appmaga.interfaces.IRegisterFragment;
 import com.example.appmaga.R;
 
-public class AuthorizationActivity extends AppCompatActivity implements IRegisterFragmentListener, ILoginFragmentListener {
+public class AuthorizationActivity extends AppCompatActivity implements IRegisterFragment, ILoginFragment {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     private Intent intent;
 

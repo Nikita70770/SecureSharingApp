@@ -9,7 +9,6 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.appmaga.view.dialog_fragments.AddContactFragment;
 import com.example.appmaga.view.dialog_fragments.DataExchangeFragment;
 import com.example.appmaga.view.fragments.ChatsFragment;
-import com.example.appmaga.interfaces.IMainActivityListener;
 import com.example.appmaga.R;
 import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.google.android.material.navigation.NavigationView;
