@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.cryptographic_algorithms.encryption.MessageEncryption;
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.interfaces.ICommunicationActivity;
@@ -31,12 +32,14 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
 
     private EditText editTextInputMessage;
     private Button btnClearMessage, btnSetKey, btnSendMessage;
+
     private RusLayoutKeyboardFragment rusLayoutKeyboard;
     private EngLayoutKeyboardFragment engLayoutKeyboard;
-
     private FragmentManager fragmentManager;
-    private CommunicationViewModel viewModel;
 
+    private CommunicationViewModel viewModel;
+    private ReplacementTable table;
+    private MessageEncryption messageEncryption;
     private String[] keyboardLayouts;
     private String binSequence;
 
@@ -84,6 +87,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         btnSendMessage.setOnClickListener(this);
 
         setLayoutKeyboard(keyboardLayouts[0]);
+
+        editTextInputMessage.setText("Привет");
     }
 
     @Override
@@ -109,7 +114,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 break;
 
             case R.id.btnSendMessage:
-                String message = editTextInputMessage.getText().toString();
+                String message = getEnteredMessage();
                 viewModel.openWindowWithMessengers(message);
                 break;
         }
@@ -125,6 +130,14 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         String shiftPartGen = binSequence.length() < 7 ? binSequence : binSequence.substring(0, 7);
         int shiftStep = MathHelper.getNumFromBinSequence(shiftPartGen);
         Log.i("Values", "shiftPartGen = " + shiftPartGen + " shiftStep = " + shiftStep);
+
+        String message = getEnteredMessage();
+        table = new ReplacementTable(shiftStep);
+//        table.showEncryptionTable();
+//        table.showDecryptionTable();
+
+        messageEncryption = new MessageEncryption(message, binSequence, table);
+        messageEncryption.convertToBinSequence();
     }
 
     private void replaceFragment(Fragment fragment){
@@ -132,5 +145,9 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 .beginTransaction()
                 .replace(R.id.keyboardFragmentContainer, fragment)
                 .commit();
+    }
+
+    private String getEnteredMessage(){
+        return editTextInputMessage.getText().toString();
     }
 }

@@ -1,5 +1,7 @@
 package com.example.appmaga.cryptographic_algorithms.encryption;
 
+import android.util.Log;
+
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 
 public class MessageEncryption {
@@ -11,26 +13,36 @@ public class MessageEncryption {
         this.table = replacementTable;
     }
 
-    private String prepareMsgForEncryption(String message){
-        if(isCyrillic(message)){
-            String preparedMessage = message;
-            for(char ch : preparedMessage.toCharArray()){
-                table.getSimilarCharacters().forEach((key, value) -> {
-                    if(String.valueOf(ch).equals(key)){
-                        preparedMessage.replace(key, table.getSimilarCharacters().get(key));
-                    }
-                });
-            }
-            return preparedMessage;
-        }else return message;
+    public String convertToBinSequence(){
+        String result = "";
+        String preparedMsg = prepareMsgForEncryption();
+        for(char ch : preparedMsg.toCharArray()){
+            result += table.getEncryptionTable().get(String.valueOf(ch));
+        }
+        return result;
     }
 
     private boolean isCyrillic(String message){
         int count = 0;
         for(char ch : message.toCharArray()){
             if(Character.UnicodeBlock.of(ch) ==
-            Character.UnicodeBlock.CYRILLIC){ count++; }
+                    Character.UnicodeBlock.CYRILLIC){ count++; }
         }
         return count == message.length() ? true : false;
+    }
+
+    private String prepareMsgForEncryption(){
+        if(isCyrillic(message)){
+            char[] msgToArray = message.toCharArray();
+            for(int i = 0; i < msgToArray.length; i++){
+                int index = i;
+                table.getSimilarCharacters().forEach((key, value) -> {
+                    if(msgToArray[index] == key.charAt(0)){
+                        msgToArray[index] = value.charAt(0);
+                    }
+                });
+            }
+            return String.valueOf(msgToArray);
+        }else return message;
     }
 }
