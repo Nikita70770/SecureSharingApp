@@ -2,7 +2,11 @@ package com.example.appmaga.cryptographic_algorithms.encryption;
 
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MessageEncryption {
+    private List<Integer> listSavedSizes;
     private String message, convertedMsg, binSequence;
     private ReplacementTable table;
 
@@ -10,6 +14,7 @@ public class MessageEncryption {
         this.message = message;
         this.binSequence = sequence;
         this.table = replacementTable;
+        this.listSavedSizes = new ArrayList<>();
     }
 
 
@@ -44,11 +49,25 @@ public class MessageEncryption {
             result += table.getEncryptionTable().get(String.valueOf(ch));
         }
         convertedMsg = result;
+        listSavedSizes.add(getLenEncryptedMsg());
     }
     public String getEncryptedMsg() {
         return convertedMsg;
     }
     public int getLenEncryptedMsg(){
-        return convertedMsg.length();
+        return getEncryptedMsg().length();
+    }
+
+
+    public String getBinSequence() {
+        return binSequence;
+    }
+    public String getPartBinSequence(){
+        int size = listSavedSizes.size();
+        int startPos = size == 0 ? 0 : (listSavedSizes.get(size) + 1);
+        int endPos = getLenEncryptedMsg();
+
+        listSavedSizes.add(endPos);
+        return getBinSequence().substring(startPos, endPos);
     }
 }
