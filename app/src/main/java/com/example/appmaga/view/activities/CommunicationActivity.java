@@ -2,11 +2,13 @@ package com.example.appmaga.view.activities;
 
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -15,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.interfaces.ICommunicationActivity;
 import com.example.appmaga.interfaces.IKeyboard;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
@@ -32,7 +35,9 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
 
     private FragmentManager fragmentManager;
     private CommunicationViewModel viewModel;
+
     private String[] keyboardLayouts;
+    private String binSequence;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -110,7 +115,16 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void setBinSequenceListener(long[] data) {}
+    public void initBinSequenceListener(long[] data) {
+        //Тут только получаем последовательность.
+        binSequence = MathHelper.getLargeBinSequence(data);
+        Log.i("binSequence", "binSequence = " + binSequence + " len = " + binSequence.length());
+
+        // Все остальное нужно будет перенести в другое место.
+        String shiftPartGen = binSequence.length() < 7 ? binSequence : binSequence.substring(0, 7);
+        int shiftStep = MathHelper.getNumFromBinSequence(shiftPartGen);
+        Log.i("Values", "shiftPartGen = " + shiftPartGen + " shiftStep = " + shiftStep);
+    }
 
     private void replaceFragment(Fragment fragment){
         fragmentManager

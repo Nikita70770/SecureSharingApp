@@ -20,7 +20,6 @@ public class ReplacementTable {
     private List<String> listBinNumbers;
     private String[] similarCharacters;
 
-
     private LinkedHashMap<String, String> encryptionTable;
     private LinkedHashMap<String, String> decryptionTable;
 
