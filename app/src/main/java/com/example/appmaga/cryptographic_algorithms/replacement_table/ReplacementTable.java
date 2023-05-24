@@ -1,12 +1,14 @@
 package com.example.appmaga.cryptographic_algorithms.replacement_table;
 
+import android.util.Log;
+
 import com.example.appmaga.cryptographic_algorithms.keyboard.KeyboardEngLayoutHelper;
 import com.example.appmaga.cryptographic_algorithms.keyboard.KeyboardRusLayoutHelper;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.Collections;
+import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Stream;
 
 public class ReplacementTable {
@@ -14,53 +16,54 @@ public class ReplacementTable {
     private KeyboardRusLayoutHelper keyboardRusHelper;
     private KeyboardEngLayoutHelper keyboardEngHelper;
 
-    private List<String> arrCharacters;
-    private List<String> arrBinNumbers;
+    private List<String> listCharacters;
+    private List<String> listBinNumbers;
     private String[] similarCharacters;
 
-    private Map<String, String> encryptionTable;
-    private Map<String, String> decryptionTable;
 
-    public ReplacementTable() {
+    private LinkedHashMap<String, String> encryptionTable;
+    private LinkedHashMap<String, String> decryptionTable;
+
+    public ReplacementTable(int shiftStep) {
         this.keyboardRusHelper = new KeyboardRusLayoutHelper();
         this.keyboardEngHelper = new KeyboardEngLayoutHelper();
 
-        initArrCharacters();
-        initArrBinNumbers();
+        initListCharacters();
+        initListBinNumbers(shiftStep);
 
         initEncryptionTable();
         initDecryptionTable();
     }
 
 
-    public void initArrCharacters(){
-        arrCharacters = new ArrayList<>();
+    public void initListCharacters(){
+        listCharacters = new ArrayList<>();
         similarCharacters = new String[]{"а", "А", "с", "С", "е", "Е", "о", "О"};
         Stream.of(
                 keyboardEngHelper.getSortedLayoutInLowerCase(), keyboardEngHelper.getSortedLayoutInUpperCase(),
                 keyboardRusHelper.getSortedLayoutInLowerCase(), keyboardRusHelper.getSortedLayoutInUpperCase(),
                 keyboardRusHelper.getSortedNumbersKeyboard(), keyboardRusHelper.getSpecialCharacters()
-        ).forEach(arrCharacters::addAll);
+        ).forEach(listCharacters::addAll);
 
         // Удаление повторяющихся символов
         for(int i = 0; i < similarCharacters.length; i++){
             String sym = similarCharacters[i];
-            arrCharacters.remove(sym);
+            listCharacters.remove(sym);
         }
     }
-    public List<String> getArrCharacters() {
-        return arrCharacters;
+    public List<String> getListCharacters() {
+        return listCharacters;
     }
-    public int getSizeArrCharacter(){
-        return getArrCharacters().size();
+    public int getSizeListCharacter(){
+        return getListCharacters().size();
     }
 
 
-    public void initArrBinNumbers(){
+    public void initListBinNumbers(int step){
         int maxCountBit = 7;
-        int size = getSizeArrCharacter();
+        int size = getSizeListCharacter();
 
-        arrBinNumbers = new ArrayList<>();
+        listBinNumbers = new ArrayList<>();
         for(int i = 0; i < size; i++){
             String binNum = Integer.toBinaryString(i);
             String sequence = "";
@@ -70,39 +73,48 @@ public class ReplacementTable {
                 }
             }
             binNum = sequence + binNum;
-            arrBinNumbers.add(binNum);
+            listBinNumbers.add(binNum);
         }
+        Collections.rotate(listBinNumbers, step);
     }
-    public List<String> getArrBinNumbers() {
-        return arrBinNumbers;
+    public List<String> getListBinNumbers() {
+        return listBinNumbers;
     }
     public int getSizeArrBinNumbers(){
-        return arrBinNumbers.size();
+        return listBinNumbers.size();
     }
 
 
     public void initEncryptionTable(){
-        encryptionTable = new HashMap<>();
-        for(int i = 0; i < getSizeArrCharacter(); i++){
-            String key = getArrBinNumbers().get(i);
-            String value = getArrCharacters().get(i);
+        encryptionTable = new LinkedHashMap();
+        for(int i = 0; i < getSizeListCharacter(); i++){
+            String key = getListCharacters().get(i);
+            String value = getListBinNumbers().get(i);
             encryptionTable.put(key, value);
         }
     }
-    public Map<String, String> getEncryptionTable() {
+    public LinkedHashMap<String, String> getEncryptionTable() {
         return encryptionTable;
+    }
+    public void showEncryptionTable(){
+        getEncryptionTable().forEach((key, value) -> Log.i("elemEncrTable",
+                "key = " + key + " value = " + value));
     }
 
 
     public void initDecryptionTable(){
-        decryptionTable = new HashMap<>();
-        for(int i = 0; i < getSizeArrCharacter(); i++){
-            String key = getArrCharacters().get(i);
-            String value = getArrBinNumbers().get(i);
+        decryptionTable = new LinkedHashMap();
+        for(int i = 0; i < getSizeListCharacter(); i++){
+            String key = getListBinNumbers().get(i);
+            String value = getListCharacters().get(i);
             decryptionTable.put(key, value);
         }
     }
-    public Map<String, String> getDecryptionTable() {
+    public LinkedHashMap<String, String> getDecryptionTable() {
         return decryptionTable;
+    }
+    public void showDecryptionTable(){
+        getDecryptionTable().forEach((key, value) -> Log.i("elemDecrTable",
+                "key = " + key + " value = " + value));
     }
 }
