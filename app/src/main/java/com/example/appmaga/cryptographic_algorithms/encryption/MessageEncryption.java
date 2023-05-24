@@ -1,26 +1,17 @@
 package com.example.appmaga.cryptographic_algorithms.encryption;
 
-import android.util.Log;
-
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 
 public class MessageEncryption {
-    private String message, binSequence;
+    private String message, convertedMsg, binSequence;
     private ReplacementTable table;
+
     public MessageEncryption(String message, String sequence, ReplacementTable replacementTable) {
         this.message = message;
         this.binSequence = sequence;
         this.table = replacementTable;
     }
 
-    public String convertToBinSequence(){
-        String result = "";
-        String preparedMsg = prepareMsgForEncryption();
-        for(char ch : preparedMsg.toCharArray()){
-            result += table.getEncryptionTable().get(String.valueOf(ch));
-        }
-        return result;
-    }
 
     private boolean isCyrillic(String message){
         int count = 0;
@@ -30,7 +21,6 @@ public class MessageEncryption {
         }
         return count == message.length() ? true : false;
     }
-
     private String prepareMsgForEncryption(){
         if(isCyrillic(message)){
             char[] msgToArray = message.toCharArray();
@@ -44,5 +34,21 @@ public class MessageEncryption {
             }
             return String.valueOf(msgToArray);
         }else return message;
+    }
+
+
+    public void convertToBinSequence(){
+        String result = "";
+        String preparedMsg = prepareMsgForEncryption();
+        for(char ch : preparedMsg.toCharArray()){
+            result += table.getEncryptionTable().get(String.valueOf(ch));
+        }
+        convertedMsg = result;
+    }
+    public String getEncryptedMsg() {
+        return convertedMsg;
+    }
+    public int getLenEncryptedMsg(){
+        return convertedMsg.length();
     }
 }

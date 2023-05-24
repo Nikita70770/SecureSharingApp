@@ -127,7 +127,10 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         Log.i("binSequence", "len = " + binSequence.length());
 
         // Все остальное нужно будет перенести в другое место.
-        String shiftPartGen = binSequence.length() < 7 ? binSequence : binSequence.substring(0, 7);
+        int countFirstChars = 7;
+        String shiftPartGen = binSequence.length() < countFirstChars ? binSequence
+                : binSequence.substring(0, countFirstChars);
+        String leftPartGen = binSequence.substring((countFirstChars + 1));
         int shiftStep = MathHelper.getNumFromBinSequence(shiftPartGen);
         Log.i("Values", "shiftPartGen = " + shiftPartGen + " shiftStep = " + shiftStep);
 
@@ -136,7 +139,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
 //        table.showEncryptionTable();
 //        table.showDecryptionTable();
 
-        messageEncryption = new MessageEncryption(message, binSequence, table);
+        Log.i("Values", "leftPartGen len = " + leftPartGen.length());
+        messageEncryption = new MessageEncryption(message, leftPartGen, table);
         messageEncryption.convertToBinSequence();
     }
 
