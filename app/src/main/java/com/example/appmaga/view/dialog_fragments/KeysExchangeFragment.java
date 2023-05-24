@@ -1,5 +1,6 @@
 package com.example.appmaga.view.dialog_fragments;
 
+import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -8,10 +9,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.cryptographic_algorithms.mersenne_twister.MersenneTwister64bit;
+import com.example.appmaga.interfaces.ICommunicationActivity;
 import com.example.appmaga.viewmodels.KeysExchangeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -20,7 +24,9 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
     private TextInputEditText editTextValues, editTextValuePublicKey;
     private Button btnSendValues, btnSaveValues, btnCalcSecretKey;
 
+    private ICommunicationActivity listener;
     private KeysExchangeViewModel viewModel;
+    private MersenneTwister64bit mersenneTwister;
 
     public static KeysExchangeFragment newInstance(){
         return new KeysExchangeFragment();
@@ -34,6 +40,15 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
         viewModel.init(getContext());
 
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof ICommunicationActivity){
+            listener = (ICommunicationActivity) context;
+        }else throw new RuntimeException(context.toString()
+                + " must implement ICommunicationActivity");
     }
 
     @Override
@@ -82,8 +97,13 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
                 editTextValuePublicKey.setEnabled(true);
 
                 viewModel.calcGeneralSecretKey(getValuePublicKey());
-                getDialog().dismiss();
+                int key = viewModel.getGeneralSecretKey();
 
+                mersenneTwister = new MersenneTwister64bit(key);
+                long[] data = mersenneTwister.generateNumbers(1094);
+                listener.setBinSequenceListener(data);
+
+                getDialog().dismiss();
                 Toast.makeText(this.getContext(), R.string.toast_successful_calc_secret_key, Toast.LENGTH_SHORT).show();
                 break;
         }

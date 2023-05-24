@@ -15,6 +15,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.interfaces.ICommunicationActivity;
 import com.example.appmaga.interfaces.IKeyboard;
 import com.example.appmaga.view.dialog_fragments.KeysExchangeFragment;
 import com.example.appmaga.view.fragments.EngLayoutKeyboardFragment;
@@ -22,7 +23,7 @@ import com.example.appmaga.view.fragments.RusLayoutKeyboardFragment;
 import com.example.appmaga.viewmodels.CommunicationViewModel;
 
 public class CommunicationActivity extends AppCompatActivity implements View.OnClickListener,
-        IKeyboard {
+        IKeyboard, ICommunicationActivity {
 
     private EditText editTextInputMessage;
     private Button btnClearMessage, btnSetKey, btnSendMessage;
@@ -107,6 +108,9 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 break;
         }
     }
+
+    @Override
+    public void setBinSequenceListener(long[] data) {}
 
     private void replaceFragment(Fragment fragment){
         fragmentManager

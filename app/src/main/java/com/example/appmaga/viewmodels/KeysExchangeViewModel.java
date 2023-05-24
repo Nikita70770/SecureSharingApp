@@ -4,7 +4,6 @@ import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 
-import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
 
 import com.example.appmaga.cryptographic_algorithms.diffie_hellman.DHAlgorithm;
@@ -17,7 +16,7 @@ public class KeysExchangeViewModel extends AndroidViewModel {
     private DataRepository repository;
     private DHAlgorithm algorithm;
 
-    public KeysExchangeViewModel(@NonNull Application application) {
+    public KeysExchangeViewModel(Application application) {
         super(application);
     }
 
@@ -55,6 +54,10 @@ public class KeysExchangeViewModel extends AndroidViewModel {
         algorithm.setValueKey(value);
         algorithm.calcGeneralSecretKey();
         repository.saveGeneralSecretKey(algorithm.getGeneralSecretKey());
+    }
+
+    public int getGeneralSecretKey(){
+        return algorithm.getGeneralSecretKey();
     }
 
     public void setAlgorithm() {
