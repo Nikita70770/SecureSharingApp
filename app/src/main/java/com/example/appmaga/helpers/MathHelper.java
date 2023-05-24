@@ -32,33 +32,33 @@ public class MathHelper {
         return hexString.toString();
     }
 
+
     public static int getRandomN(int min, int max){
         int randValue = (int) (Math.random() * ((max - min) + 1) + min);
         return randValue;
     }
+
 
     private static BigInteger pow(int value, int powValue){
         BigInteger val = new BigInteger(String.valueOf(value));
         BigInteger resPow = val.pow(powValue);
         return resPow;
     }
-
     public static int calcPublicKey(int valG, int secretKey, int valP){
         BigInteger resPow = pow(valG, secretKey);
         BigInteger publicKey = resPow.mod(BigInteger.valueOf(valP));
         return publicKey.intValue();
     }
-
     public static int calcGeneralSecretKey(int publicKeyContact, int secretKey, int valP){
         BigInteger resPow = pow(publicKeyContact, secretKey);
         BigInteger generalSecretKey = resPow.mod(BigInteger.valueOf(valP));
         return generalSecretKey.intValue();
     }
 
+
     public static int getNumFromBinSequence(String value){
         return Integer.parseInt(value, 2);
     }
-
     public static String getLargeBinSequence(long[] data){
         String binNum, binSequence = "";
         int lenBinNum;
@@ -73,5 +73,17 @@ public class MathHelper {
             binSequence += binNum;
         }
         return binSequence;
+    }
+    public String calcSumByModTwo(String str1, String str2){
+        String sum = "";
+        char[] sequence1 = str1.toCharArray();
+        char[] sequence2 = str2.toCharArray();
+        int maxLen = str1.length() > str2.length() ? str1.length() : str2.length();
+
+        for(int i = 0; i < maxLen; i++){
+            int val = (sequence1[i] ^ sequence2[i]);
+            sum += String.valueOf(val);
+        }
+        return sum;
     }
 }
