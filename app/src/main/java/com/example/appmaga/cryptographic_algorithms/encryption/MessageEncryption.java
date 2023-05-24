@@ -3,11 +3,12 @@ package com.example.appmaga.cryptographic_algorithms.encryption;
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MessageEncryption {
     private List<Integer> listSavedSizes;
-    private String message, convertedMsg, binSequence;
+    private String message, convertedMsg, binSequence, result;
     private ReplacementTable table;
 
     public MessageEncryption(String message, String sequence, ReplacementTable replacementTable) {
@@ -64,10 +65,28 @@ public class MessageEncryption {
     }
     public String getPartBinSequence(){
         int size = listSavedSizes.size();
-        int startPos = size == 0 ? 0 : (listSavedSizes.get(size) + 1);
+        int startPos = size == 0 ? 0 : (listSavedSizes.get(size));
         int endPos = getLenEncryptedMsg();
 
         listSavedSizes.add(endPos);
         return getBinSequence().substring(startPos, endPos);
+    }
+
+
+    public String getResult() {
+        return result;
+    }
+    public void setResult(String sum) {
+        LinkedHashMap<String, String> tableDecr = table.getDecryptionTable();
+        String val, sym;
+        int index = 0, lenSequence = 7;
+
+        this.result = "";
+        while (index <= sum.length()){
+            val = sum.substring(index, (index + lenSequence));
+            sym = tableDecr.get(val);
+            result += sym;
+            index += lenSequence;
+        }
     }
 }
