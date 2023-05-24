@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.interfaces.ICommunicationActivity;
 import com.example.appmaga.interfaces.IKeyboard;
@@ -118,7 +119,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     public void initBinSequenceListener(long[] data) {
         //Тут только получаем последовательность.
         binSequence = MathHelper.getLargeBinSequence(data);
-        Log.i("binSequence", "binSequence = " + binSequence + " len = " + binSequence.length());
+        Log.i("binSequence", "len = " + binSequence.length());
 
         // Все остальное нужно будет перенести в другое место.
         String shiftPartGen = binSequence.length() < 7 ? binSequence : binSequence.substring(0, 7);
