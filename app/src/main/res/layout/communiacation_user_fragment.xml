@@ -70,4 +70,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"></FrameLayout>
 
+    <Button
+        android:id="@+id/btnOperations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="42dp"
+        android:text="Операции"
+        app:layout_constraintStart_toEndOf="@+id/btnClearMessage"
+        app:layout_constraintTop_toBottomOf="@+id/textInputMessage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

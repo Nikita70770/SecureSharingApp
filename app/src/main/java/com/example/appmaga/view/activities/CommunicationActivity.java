@@ -3,12 +3,13 @@ package com.example.appmaga.view.activities;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputConnection;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+import android.widget.PopupMenu;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,7 +32,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         IKeyboard, ICommunicationActivity {
 
     private EditText editTextInputMessage;
-    private Button btnClearMessage, btnSetKey, btnSendMessage;
+    private Button btnClearMessage, btnSetKey, btnSendMessage, btnOperations;
+    private PopupMenu popupMenu;
 
     private RusLayoutKeyboardFragment rusLayoutKeyboard;
     private EngLayoutKeyboardFragment engLayoutKeyboard;
@@ -76,6 +78,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         editTextInputMessage = findViewById(R.id.editTextInputMessage);
         btnSetKey = findViewById(R.id.btnSetKey);
         btnClearMessage = findViewById(R.id.btnClearMessage);
+        btnOperations = findViewById(R.id.btnOperations);
         btnSendMessage = findViewById(R.id.btnSendMessage);
 
         // prevent system keyboard from appearing when EditText is tapped
@@ -84,6 +87,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
 
         btnSetKey.setOnClickListener(this);
         btnClearMessage.setOnClickListener(this);
+        btnOperations.setOnClickListener(this);
         btnSendMessage.setOnClickListener(this);
 
         setLayoutKeyboard(keyboardLayouts[0]);
@@ -113,6 +117,27 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                 editTextInputMessage.setText("");
                 break;
 
+            case R.id.btnOperations:
+                popupMenu = new PopupMenu(getBaseContext(), (Button)view);
+                popupMenu.getMenuInflater().inflate(R.menu.operations_menu, popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        switch (item.getItemId()){
+                            case R.id.operation_encryption:
+                                //
+                                return true;
+                            case R.id.operation_decryption:
+                                //
+                                return true;
+                            default:
+                                return false;
+                        }
+                    }
+                });
+                popupMenu.show();
+                break;
+
             case R.id.btnSendMessage:
                 String message = getEnteredMessage();
                 viewModel.openWindowWithMessengers(message);
@@ -130,18 +155,28 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         int countFirstChars = 7;
         String shiftPartGen = binSequence.length() < countFirstChars ? binSequence
                 : binSequence.substring(0, countFirstChars);
-        String leftPartGen = binSequence.substring((countFirstChars + 1));
+        String leftPartGen = binSequence.substring((countFirstChars));
         int shiftStep = MathHelper.getNumFromBinSequence(shiftPartGen);
         Log.i("Values", "shiftPartGen = " + shiftPartGen + " shiftStep = " + shiftStep);
 
         String message = getEnteredMessage();
-        table = new ReplacementTable(shiftStep);
+        table = new ReplacementTable(0);
+//        table = new ReplacementTable(shiftStep);
 //        table.showEncryptionTable();
 //        table.showDecryptionTable();
 
         Log.i("Values", "leftPartGen len = " + leftPartGen.length());
         messageEncryption = new MessageEncryption(message, leftPartGen, table);
         messageEncryption.convertToBinSequence();
+
+        String encrText = messageEncryption.getEncryptedMsg();
+        String nPartSeq = messageEncryption.getPartBinSequence();
+        Log.i("nPartSeq", "nPartSeq = " + nPartSeq);
+        String sumByModTwo = MathHelper.calcSumByModTwo(encrText, nPartSeq);
+
+        messageEncryption.setResult(sumByModTwo);
+        String res = messageEncryption.getResult();
+        Log.i("Result", "res = " + res);
     }
 
     private void replaceFragment(Fragment fragment){

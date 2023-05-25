@@ -1,5 +1,7 @@
 package com.example.appmaga.cryptographic_algorithms.encryption;
 
+import android.util.Log;
+
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 
 import java.util.ArrayList;
@@ -65,8 +67,10 @@ public class MessageEncryption {
     }
     public String getPartBinSequence(){
         int size = listSavedSizes.size();
-        int startPos = size == 0 ? 0 : (listSavedSizes.get(size));
+        int startPos = size >= 1 ? 0 : listSavedSizes.get(size-1);
         int endPos = getLenEncryptedMsg();
+        Log.i("startPos", "startPos = " + startPos + " endPos = " + endPos);
+
 
         listSavedSizes.add(endPos);
         return getBinSequence().substring(startPos, endPos);
@@ -82,7 +86,7 @@ public class MessageEncryption {
         int index = 0, lenSequence = 7;
 
         this.result = "";
-        while (index <= sum.length()){
+        while (index < sum.length()){
             val = sum.substring(index, (index + lenSequence));
             sym = tableDecr.get(val);
             result += sym;

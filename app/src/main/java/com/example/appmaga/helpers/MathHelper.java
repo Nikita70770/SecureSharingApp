@@ -1,5 +1,7 @@
 package com.example.appmaga.helpers;
 
+import android.util.Log;
+
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -74,7 +76,7 @@ public class MathHelper {
         }
         return binSequence;
     }
-    public String calcSumByModTwo(String str1, String str2){
+    public static String calcSumByModTwo(String str1, String str2){
         String sum = "";
         char[] sequence1 = str1.toCharArray();
         char[] sequence2 = str2.toCharArray();
