@@ -78,14 +78,15 @@ public class MathHelper {
     }
     public static String calcSumByModTwo(String str1, String str2){
         String sum = "";
-        char[] sequence1 = str1.toCharArray();
-        char[] sequence2 = str2.toCharArray();
         int maxLen = str1.length() > str2.length() ? str1.length() : str2.length();
-
+        Log.i("Strs", "str1 = " + str1 + " str2 = " + str2);
         for(int i = 0; i < maxLen; i++){
-            int val = (sequence1[i] ^ sequence2[i]);
+            int a = Integer.parseInt(String.valueOf(str1.charAt(i)));
+            int b = Integer.parseInt(String.valueOf(str2.charAt(i)));
+            int val = (a ^ b);
             sum += String.valueOf(val);
         }
+        Log.i("sumByMod", "sum = " + sum);
         return sum;
     }
 }

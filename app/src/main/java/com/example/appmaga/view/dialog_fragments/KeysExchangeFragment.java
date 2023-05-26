@@ -101,7 +101,7 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
 
                 mersenneTwister = new MersenneTwister64bit(key);
                 long[] data = mersenneTwister.generateNumbers(1094);
-                listener.initBinSequenceListener(data);
+                listener.prepareDataForEncryption(data);
 
                 getDialog().dismiss();
                 Toast.makeText(this.getContext(), R.string.toast_successful_calc_secret_key, Toast.LENGTH_SHORT).show();

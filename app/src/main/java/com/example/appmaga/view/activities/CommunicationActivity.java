@@ -91,8 +91,6 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         btnSendMessage.setOnClickListener(this);
 
         setLayoutKeyboard(keyboardLayouts[0]);
-
-        editTextInputMessage.setText("Привет");
     }
 
     @Override
@@ -125,7 +123,9 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.operation_encryption:
-                                //
+                                String message = getEnteredMessage();
+                                String res = performEncryption(message);
+                                editTextInputMessage.setText(res);
                                 return true;
                             case R.id.operation_decryption:
                                 //
@@ -146,37 +146,40 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void initBinSequenceListener(long[] data) {
-        //Тут только получаем последовательность.
+    public void prepareDataForEncryption(long[] data) {
+        int countFirstChars = 7;
         binSequence = MathHelper.getLargeBinSequence(data);
         Log.i("binSequence", "len = " + binSequence.length());
 
-        // Все остальное нужно будет перенести в другое место.
-        int countFirstChars = 7;
         String shiftPartGen = binSequence.length() < countFirstChars ? binSequence
                 : binSequence.substring(0, countFirstChars);
-        String leftPartGen = binSequence.substring((countFirstChars));
         int shiftStep = MathHelper.getNumFromBinSequence(shiftPartGen);
         Log.i("Values", "shiftPartGen = " + shiftPartGen + " shiftStep = " + shiftStep);
 
-        String message = getEnteredMessage();
-        table = new ReplacementTable(0);
-//        table = new ReplacementTable(shiftStep);
-//        table.showEncryptionTable();
-//        table.showDecryptionTable();
+        table = new ReplacementTable(shiftStep);
+        table.showEncryptionTable();
+        table.showDecryptionTable();
 
+        String leftPartGen = binSequence.substring((countFirstChars));
         Log.i("Values", "leftPartGen len = " + leftPartGen.length());
-        messageEncryption = new MessageEncryption(message, leftPartGen, table);
+
+        messageEncryption = new MessageEncryption(leftPartGen, table);
+        messageEncryption.setListSavedSizes();
+    }
+
+    private String performEncryption(String message){
+        messageEncryption.setMessage(message);
         messageEncryption.convertToBinSequence();
 
         String encrText = messageEncryption.getEncryptedMsg();
         String nPartSeq = messageEncryption.getPartBinSequence();
-        Log.i("nPartSeq", "nPartSeq = " + nPartSeq);
         String sumByModTwo = MathHelper.calcSumByModTwo(encrText, nPartSeq);
+        Log.i("nPartSeq", "nPartSeq = " + nPartSeq);
 
         messageEncryption.setResult(sumByModTwo);
         String res = messageEncryption.getResult();
-        Log.i("Result", "res = " + res);
+
+        return res;
     }
 
     private void replaceFragment(Fragment fragment){

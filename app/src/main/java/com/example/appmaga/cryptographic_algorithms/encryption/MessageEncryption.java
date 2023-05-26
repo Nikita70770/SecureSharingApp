@@ -13,23 +13,37 @@ public class MessageEncryption {
     private String message, convertedMsg, binSequence, result;
     private ReplacementTable table;
 
-    public MessageEncryption(String message, String sequence, ReplacementTable replacementTable) {
-        this.message = message;
+    public MessageEncryption(String sequence, ReplacementTable replacementTable) {
+        this.message = "";
         this.binSequence = sequence;
         this.table = replacementTable;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+
+    public void setListSavedSizes() {
         this.listSavedSizes = new ArrayList<>();
     }
 
-
     private boolean isCyrillic(String message){
         int count = 0;
-        for(char ch : message.toCharArray()){
+        String testMsg = message.replaceAll("[^A-Za-z0-9]","");
+        for(char ch : testMsg.toCharArray()){
             if(Character.UnicodeBlock.of(ch) ==
                     Character.UnicodeBlock.CYRILLIC){ count++; }
         }
-        return count == message.length() ? true : false;
+        Log.i("isCyrillicValues", "count = " + count + " testMsg.length() = " + testMsg.length());
+        Log.i("testMsg", "testMsg = " + testMsg);
+        return count == testMsg.length() ? true : false;
     }
     private String prepareMsgForEncryption(){
+        String message = getMessage();
         if(isCyrillic(message)){
             char[] msgToArray = message.toCharArray();
             for(int i = 0; i < msgToArray.length; i++){
@@ -41,18 +55,18 @@ public class MessageEncryption {
                 });
             }
             return String.valueOf(msgToArray);
-        }else return message;
+        }else return this.message;
     }
 
 
     public void convertToBinSequence(){
-        String result = "";
+        String res = "";
         String preparedMsg = prepareMsgForEncryption();
         for(char ch : preparedMsg.toCharArray()){
-            result += table.getEncryptionTable().get(String.valueOf(ch));
+            res += table.getEncryptionTable().get(String.valueOf(ch));
         }
-        convertedMsg = result;
-        listSavedSizes.add(getLenEncryptedMsg());
+        convertedMsg = res;
+        Log.i("convertedMsg", convertedMsg);
     }
     public String getEncryptedMsg() {
         return convertedMsg;
@@ -67,30 +81,33 @@ public class MessageEncryption {
     }
     public String getPartBinSequence(){
         int size = listSavedSizes.size();
-        int startPos = size >= 1 ? 0 : listSavedSizes.get(size-1);
-        int endPos = getLenEncryptedMsg();
+        int startPos = size < 1 ? 0 : listSavedSizes.get(size - 1);
+        int endPos = startPos + getLenEncryptedMsg();
         Log.i("startPos", "startPos = " + startPos + " endPos = " + endPos);
-
 
         listSavedSizes.add(endPos);
         return getBinSequence().substring(startPos, endPos);
     }
 
 
-    public String getResult() {
-        return result;
-    }
     public void setResult(String sum) {
         LinkedHashMap<String, String> tableDecr = table.getDecryptionTable();
         String val, sym;
-        int index = 0, lenSequence = 7;
-
+        int lenSequence = 7;
+        int startPos, endPos = 0;
+        int maxCount = (int) Math.floor(sum.length() / lenSequence);
+        Log.i("maxCount", "maxCount = " + maxCount);
         this.result = "";
-        while (index < sum.length()){
-            val = sum.substring(index, (index + lenSequence));
+        for(int i = 0; i < maxCount; i++){
+            startPos = endPos;
+            endPos = startPos + lenSequence;
+            val = sum.substring(startPos, endPos);
             sym = tableDecr.get(val);
+            Log.i("Poss", "startPos = " + startPos + " endPos = " + endPos + " sym = " + sym);
             result += sym;
-            index += lenSequence;
         }
+    }
+    public String getResult() {
+        return result;
     }
 }
