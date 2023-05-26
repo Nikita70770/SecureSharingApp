@@ -171,15 +171,16 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         messageDecryption = new MessageDecryption(leftPartGen, table);
 
         messageEncryption.setListSavedSizes();
+        messageDecryption.setListSavedSizes();
     }
 
     private String performEncryption(String message){
         messageEncryption.setMessage(message);
         messageEncryption.convertToBinSequence();
 
-        String encrText = messageEncryption.getConvertedMsg();
+        String convertedText = messageEncryption.getConvertedMsg();
         String nPartSeq = messageEncryption.getPartBinSequence();
-        String sumByModTwo = MathHelper.calcSumByModTwo(encrText, nPartSeq);
+        String sumByModTwo = MathHelper.calcSumByModTwo(convertedText, nPartSeq);
         Log.i("nPartSeq", "nPartSeq = " + nPartSeq);
 
         messageEncryption.setResult(sumByModTwo);
@@ -191,7 +192,14 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         messageDecryption.setEncryptedMessage(message);
         messageDecryption.convertToBinSequence();
 
-        return "res";
+        String convertedText = messageDecryption.getConvertedMsg();
+        String nPartSeq = messageDecryption.getPartBinSequence();
+        String sumByModTwo = MathHelper.calcSumByModTwo(convertedText, nPartSeq);
+
+        messageDecryption.setResult(sumByModTwo);
+        String res = messageDecryption.getResult();
+
+        return res;
     }
 
     private void replaceFragment(Fragment fragment){
