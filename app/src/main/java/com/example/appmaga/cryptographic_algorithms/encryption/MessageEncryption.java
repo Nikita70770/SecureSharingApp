@@ -91,7 +91,7 @@ public class MessageEncryption {
 
 
     public void setResult(String sum) {
-        LinkedHashMap<String, String> tableDecr = table.getDecryptionTable();
+        LinkedHashMap<String, String> tableDecryption = table.getDecryptionTable();
         String val, sym;
         int lenSequence = 7;
         int startPos, endPos = 0;
@@ -102,7 +102,7 @@ public class MessageEncryption {
             startPos = endPos;
             endPos = startPos + lenSequence;
             val = sum.substring(startPos, endPos);
-            sym = tableDecr.get(val);
+            sym = tableDecryption.get(val);
             Log.i("Poss", "startPos = " + startPos + " endPos = " + endPos + " sym = " + sym);
             result += sym;
         }

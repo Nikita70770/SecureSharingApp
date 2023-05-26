@@ -5,6 +5,7 @@ import android.util.Log;
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class MessageDecryption {
@@ -59,7 +60,21 @@ public class MessageDecryption {
     public String getResult() {
         return result;
     }
-    public void setResult(String result) {
-        this.result = result;
+    public void setResult(String sum) {
+        LinkedHashMap<String, String> tableDecryption = table.getDecryptionTable();
+        String val, sym;
+        int lenSequence = 7;
+        int startPos, endPos = 0;
+        int maxCount = (int) Math.floor(sum.length() / lenSequence);
+        Log.i("maxCount", "maxCount = " + maxCount);
+        this.result = "";
+        for(int i = 0; i < maxCount; i++){
+            startPos = endPos;
+            endPos = startPos + lenSequence;
+            val = sum.substring(startPos, endPos);
+            sym = tableDecryption.get(val);
+            Log.i("Poss", "startPos = " + startPos + " endPos = " + endPos + " sym = " + sym);
+            result += sym;
+        }
     }
 }
