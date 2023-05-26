@@ -1,9 +1,11 @@
 package com.example.appmaga.cryptographic_algorithms.decryption;
 
+import android.util.Log;
+
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 
 public class MessageDecryption {
-    private String encryptedMessage, result;
+    private String encryptedMessage, convertedMsg, result;
     private ReplacementTable table;
 
     public MessageDecryption(String encryptedMessage, ReplacementTable table) {
@@ -12,11 +14,24 @@ public class MessageDecryption {
     }
 
 
-    public String getEncryptedMessage() {
-        return encryptedMessage;
-    }
     public void setEncryptedMessage(String encryptedMessage) {
         this.encryptedMessage = encryptedMessage;
+    }
+
+
+    public void convertToBinSequence(){
+        String res = "";
+        for(char ch : encryptedMessage.toCharArray()){
+            res += table.getEncryptionTable().get(String.valueOf(ch));
+        }
+        convertedMsg = res;
+        Log.i("convertedEncrMsg", convertedMsg);
+    }
+    public String getConvertedMsg() {
+        return convertedMsg;
+    }
+    public int getLenConvertedMsg() {
+        return getConvertedMsg().length();
     }
 
 

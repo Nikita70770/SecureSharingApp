@@ -10,12 +10,12 @@ import java.util.List;
 
 public class MessageEncryption {
     private List<Integer> listSavedSizes;
-    private String message, convertedMsg, binSequence, result;
+    private String message, convertedMsg, leftPartGen, result;
     private ReplacementTable table;
 
     public MessageEncryption(String sequence, ReplacementTable replacementTable) {
         this.message = "";
-        this.binSequence = sequence;
+        this.leftPartGen = sequence;
         this.table = replacementTable;
     }
 
@@ -68,25 +68,25 @@ public class MessageEncryption {
         convertedMsg = res;
         Log.i("convertedMsg", convertedMsg);
     }
-    public String getEncryptedMsg() {
+    public String getConvertedMsg() {
         return convertedMsg;
     }
-    public int getLenEncryptedMsg(){
-        return getEncryptedMsg().length();
+    public int getLenConvertedMsg(){
+        return getConvertedMsg().length();
     }
 
 
-    public String getBinSequence() {
-        return binSequence;
+    public String getLeftPartGen() {
+        return leftPartGen;
     }
     public String getPartBinSequence(){
         int size = listSavedSizes.size();
         int startPos = size < 1 ? 0 : listSavedSizes.get(size - 1);
-        int endPos = startPos + getLenEncryptedMsg();
+        int endPos = startPos + getLenConvertedMsg();
         Log.i("startPos", "startPos = " + startPos + " endPos = " + endPos);
 
         listSavedSizes.add(endPos);
-        return getBinSequence().substring(startPos, endPos);
+        return getLeftPartGen().substring(startPos, endPos);
     }
 
 

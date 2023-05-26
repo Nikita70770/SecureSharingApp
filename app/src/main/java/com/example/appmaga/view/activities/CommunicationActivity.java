@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
+import com.example.appmaga.cryptographic_algorithms.decryption.MessageDecryption;
 import com.example.appmaga.cryptographic_algorithms.encryption.MessageEncryption;
 import com.example.appmaga.cryptographic_algorithms.replacement_table.ReplacementTable;
 import com.example.appmaga.helpers.MathHelper;
@@ -41,7 +42,10 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
 
     private CommunicationViewModel viewModel;
     private ReplacementTable table;
+
     private MessageEncryption messageEncryption;
+    private MessageDecryption messageDecryption;
+
     private String[] keyboardLayouts;
     private String binSequence;
 
@@ -123,12 +127,12 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
                     public boolean onMenuItemClick(MenuItem item) {
                         switch (item.getItemId()){
                             case R.id.operation_encryption:
-                                String message = getEnteredMessage();
-                                String res = performEncryption(message);
-                                editTextInputMessage.setText(res);
+                                String resEncryption = performEncryption(getEnteredMessage());
+                                editTextInputMessage.setText(resEncryption);
                                 return true;
                             case R.id.operation_decryption:
-                                //
+                                String resDecryption = performDecryption(getEnteredMessage());
+                                editTextInputMessage.setText(resDecryption);
                                 return true;
                             default:
                                 return false;
@@ -164,6 +168,8 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         Log.i("Values", "leftPartGen len = " + leftPartGen.length());
 
         messageEncryption = new MessageEncryption(leftPartGen, table);
+        messageDecryption = new MessageDecryption(leftPartGen, table);
+
         messageEncryption.setListSavedSizes();
     }
 
@@ -171,7 +177,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         messageEncryption.setMessage(message);
         messageEncryption.convertToBinSequence();
 
-        String encrText = messageEncryption.getEncryptedMsg();
+        String encrText = messageEncryption.getConvertedMsg();
         String nPartSeq = messageEncryption.getPartBinSequence();
         String sumByModTwo = MathHelper.calcSumByModTwo(encrText, nPartSeq);
         Log.i("nPartSeq", "nPartSeq = " + nPartSeq);
@@ -180,6 +186,12 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         String res = messageEncryption.getResult();
 
         return res;
+    }
+    private String performDecryption(String message){
+        messageDecryption.setEncryptedMessage(message);
+        messageDecryption.convertToBinSequence();
+
+        return "res";
     }
 
     private void replaceFragment(Fragment fragment){
