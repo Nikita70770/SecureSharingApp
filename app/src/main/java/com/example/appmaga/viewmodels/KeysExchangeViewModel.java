@@ -13,7 +13,6 @@ import com.example.appmaga.model.repository.DataRepository;
 public class KeysExchangeViewModel extends AndroidViewModel {
 
     private Context context;
-    private DataRepository repository;
     private DHAlgorithm algorithm;
 
     public KeysExchangeViewModel(Application application) {
@@ -22,8 +21,6 @@ public class KeysExchangeViewModel extends AndroidViewModel {
 
     public void init(Context context){
         this.context = context;
-        repository = new DataRepository(getApplication().getBaseContext());
-        repository.setPreferencesInstance();
     }
 
     private void openWindowWithMessengers(String data){
@@ -53,7 +50,6 @@ public class KeysExchangeViewModel extends AndroidViewModel {
     public void calcGeneralSecretKey(int value){
         algorithm.setValueKey(value);
         algorithm.calcGeneralSecretKey();
-        repository.saveGeneralSecretKey(algorithm.getGeneralSecretKey());
     }
 
     public int getGeneralSecretKey(){

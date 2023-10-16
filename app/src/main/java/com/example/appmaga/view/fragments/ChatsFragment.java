@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.model.preferences.PreferencesStorage;
 import com.example.appmaga.view.adapters.ContactsAdapter;
-import com.example.appmaga.cryptographic_algorithms.chap_authentication.Chap;
+import com.example.appmaga.cryptographic_algorithms.chap_authentication.ChapProtocol;
 import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.view.dialog_fragments.AuthenticationFragment;
 import com.example.appmaga.R;
@@ -92,11 +92,11 @@ public class ChatsFragment extends Fragment implements ContactsAdapter.IContacts
     @Override
     public void onClickItemListener(Contact contact) {
         User user = PreferencesStorage.init(getContext()).getUser();
-        Chap chap = new Chap(user, contact);
-        chap.makeChapAuthoWithContact(1);
+        ChapProtocol chapProtocol = new ChapProtocol(user, contact);
+        chapProtocol.makeChapAuthoWithContact(1);
 
-        openWindowWithMessengers(chap.getCalcHashSum());
-        AuthenticationFragment.newInstance(chap).
+        openWindowWithMessengers(chapProtocol.getCalcHashSum());
+        AuthenticationFragment.newInstance(chapProtocol).
                 show(getActivity().getSupportFragmentManager(), "authenticationFragment");
     }
 }

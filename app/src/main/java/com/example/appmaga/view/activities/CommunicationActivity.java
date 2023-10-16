@@ -52,7 +52,7 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.communiacation_user_fragment);
+        setContentView(R.layout.activity_communiacation_user);
 
         fragmentManager = getSupportFragmentManager();
         keyboardLayouts = new String[]{ "rus", "eng" };
@@ -150,22 +150,18 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
     }
 
     @Override
-    public void prepareDataForEncryption(long[] data) {
+    public void prepareDataForEncryption(String binSequence) {
         int countFirstChars = 7;
-        binSequence = MathHelper.getLargeBinSequence(data);
-        Log.i("binSequence", "len = " + binSequence.length());
 
         String shiftPartGen = binSequence.length() < countFirstChars ? binSequence
                 : binSequence.substring(0, countFirstChars);
         int shiftStep = MathHelper.getNumFromBinSequence(shiftPartGen);
-        Log.i("Values", "shiftPartGen = " + shiftPartGen + " shiftStep = " + shiftStep);
 
         table = new ReplacementTable(shiftStep);
         table.showEncryptionTable();
         table.showDecryptionTable();
 
         String leftPartGen = binSequence.substring((countFirstChars));
-        Log.i("Values", "leftPartGen len = " + leftPartGen.length());
 
         messageEncryption = new MessageEncryption(leftPartGen, table);
         messageDecryption = new MessageDecryption(leftPartGen, table);
@@ -181,7 +177,6 @@ public class CommunicationActivity extends AppCompatActivity implements View.OnC
         String convertedText = messageEncryption.getConvertedMsg();
         String nPartSeq = messageEncryption.getPartBinSequence();
         String sumByModTwo = MathHelper.calcSumByModTwo(convertedText, nPartSeq);
-        Log.i("nPartSeq", "nPartSeq = " + nPartSeq);
 
         messageEncryption.setResult(sumByModTwo);
         String res = messageEncryption.getResult();

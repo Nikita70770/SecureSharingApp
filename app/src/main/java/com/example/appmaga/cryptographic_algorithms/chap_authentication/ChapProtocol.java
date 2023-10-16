@@ -4,14 +4,14 @@ import com.example.appmaga.model.entities.Contact;
 import com.example.appmaga.model.entities.User;
 import com.example.appmaga.helpers.MathHelper;
 
-public class Chap {
+public class ChapProtocol {
     private User user;
     private Contact contact;
     private String calcHashSum;
     private String resValueUser, resValueContact;
     private boolean resultAuthentication;
 
-    public Chap(User user, Contact contact){
+    public ChapProtocol(User user, Contact contact){
         this.user = user;
         this.contact = contact;
     }

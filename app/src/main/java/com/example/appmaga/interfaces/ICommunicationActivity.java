@@ -1,5 +1,5 @@
 package com.example.appmaga.interfaces;
 
 public interface ICommunicationActivity {
-    void prepareDataForEncryption(long[] data);
+    void prepareDataForEncryption(String binSequence);
 }

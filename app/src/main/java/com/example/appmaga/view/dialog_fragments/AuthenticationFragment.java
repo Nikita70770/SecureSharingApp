@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 
-import com.example.appmaga.cryptographic_algorithms.chap_authentication.Chap;
+import com.example.appmaga.cryptographic_algorithms.chap_authentication.ChapProtocol;
 import com.example.appmaga.helpers.constants.ConstantKeysFragment;
 import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.R;
@@ -23,12 +23,12 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
     private TextInputEditText editTextHashSumWind;
     private Button btnEstablishConnection;
 
-    private Chap chap;
+    private ChapProtocol chapProtocol;
 
-    public static AuthenticationFragment newInstance(Chap chap){
+    public static AuthenticationFragment newInstance(ChapProtocol chapProtocol){
         AuthenticationFragment fragment = new AuthenticationFragment();
         Bundle args = new Bundle();
-        args.putString(ConstantKeysFragment.CHAP_PROTOCOL_KEY, GsonWork.performSerialization(chap));
+        args.putString(ConstantKeysFragment.CHAP_PROTOCOL_KEY, GsonWork.performSerialization(chapProtocol));
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,7 +38,7 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
         super.onCreate(savedInstanceState);
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
         String jsonChap = getArguments().getString(ConstantKeysFragment.CHAP_PROTOCOL_KEY);
-        this.chap = (Chap) GsonWork.performDeserialization(jsonChap, Chap.class.getSimpleName());
+        this.chapProtocol = (ChapProtocol) GsonWork.performDeserialization(jsonChap, ChapProtocol.class.getSimpleName());
     }
 
     @Override
@@ -58,17 +58,17 @@ public class AuthenticationFragment extends DialogFragment implements View.OnCli
     @Override
     public void onClick(View view) {
         String message, loginContact;
-        chap.setResValueUser(getHashSumContact());
-        chap.makeChapAuthoWithContact(2);
+        chapProtocol.setResValueUser(getHashSumContact());
+        chapProtocol.makeChapAuthoWithContact(2);
 
-        if(chap.isResultAuthentication() == true){
-            loginContact = chap.getContact().getLogin();
+        if(chapProtocol.isResultAuthentication() == true){
+            loginContact = chapProtocol.getContact().getLogin();
             message = getString(R.string.toast_successful_connection, loginContact);
             Intent intent = new Intent(getActivity(), CommunicationActivity.class);
             startActivity(intent);
         }
         else{
-            loginContact = chap.getContact().getLogin();
+            loginContact = chapProtocol.getContact().getLogin();
             message = getString(R.string.toast_failed_connection, loginContact);
         }
         Toast.makeText(getContext(), message, Toast.LENGTH_SHORT).show();

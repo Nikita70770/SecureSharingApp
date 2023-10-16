@@ -33,7 +33,6 @@ public class MessageDecryption {
             res += table.getEncryptionTable().get(String.valueOf(ch));
         }
         convertedMsg = res;
-        Log.i("convertedEncrMsg", convertedMsg);
     }
     public String getConvertedMsg() {
         return convertedMsg;
@@ -50,7 +49,6 @@ public class MessageDecryption {
         int size = listSavedSizes.size();
         int startPos = size < 1 ? 0 : listSavedSizes.get(size - 1);
         int endPos = startPos + getLenConvertedMsg();
-        Log.i("startPos", "startPos = " + startPos + " endPos = " + endPos);
 
         listSavedSizes.add(endPos);
         return getLeftPartGen().substring(startPos, endPos);
@@ -66,14 +64,12 @@ public class MessageDecryption {
         int lenSequence = 7;
         int startPos, endPos = 0;
         int maxCount = (int) Math.floor(sum.length() / lenSequence);
-        Log.i("maxCount", "maxCount = " + maxCount);
         this.result = "";
         for(int i = 0; i < maxCount; i++){
             startPos = endPos;
             endPos = startPos + lenSequence;
             val = sum.substring(startPos, endPos);
             sym = tableDecryption.get(val);
-            Log.i("Poss", "startPos = " + startPos + " endPos = " + endPos + " sym = " + sym);
             result += sym;
         }
     }

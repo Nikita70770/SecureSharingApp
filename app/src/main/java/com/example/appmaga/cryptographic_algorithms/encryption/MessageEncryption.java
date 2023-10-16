@@ -31,31 +31,19 @@ public class MessageEncryption {
         this.listSavedSizes = new ArrayList<>();
     }
 
-    private boolean isCyrillic(String message){
-        int count = 0;
-        String testMsg = message.replaceAll("[^A-Za-z0-9]","");
-        for(char ch : testMsg.toCharArray()){
-            if(Character.UnicodeBlock.of(ch) ==
-                    Character.UnicodeBlock.CYRILLIC){ count++; }
-        }
-        Log.i("isCyrillicValues", "count = " + count + " testMsg.length() = " + testMsg.length());
-        Log.i("testMsg", "testMsg = " + testMsg);
-        return count == testMsg.length() ? true : false;
-    }
+
     private String prepareMsgForEncryption(){
         String message = getMessage();
-        if(isCyrillic(message)){
-            char[] msgToArray = message.toCharArray();
-            for(int i = 0; i < msgToArray.length; i++){
-                int index = i;
-                table.getSimilarCharacters().forEach((key, value) -> {
-                    if(msgToArray[index] == key.charAt(0)){
-                        msgToArray[index] = value.charAt(0);
-                    }
-                });
-            }
-            return String.valueOf(msgToArray);
-        }else return this.message;
+        char[] msgToArray = message.toCharArray();
+        for(int i = 0; i < msgToArray.length; i++){
+            int index = i;
+            table.getSimilarCharacters().forEach((key, value) -> {
+                if(msgToArray[index] == key.charAt(0)){
+                    msgToArray[index] = value.charAt(0);
+                }
+            });
+        }
+        return String.valueOf(msgToArray);
     }
 
 
@@ -66,7 +54,6 @@ public class MessageEncryption {
             res += table.getEncryptionTable().get(String.valueOf(ch));
         }
         convertedMsg = res;
-        Log.i("convertedMsg", convertedMsg);
     }
     public String getConvertedMsg() {
         return convertedMsg;
@@ -83,7 +70,6 @@ public class MessageEncryption {
         int size = listSavedSizes.size();
         int startPos = size < 1 ? 0 : listSavedSizes.get(size - 1);
         int endPos = startPos + getLenConvertedMsg();
-        Log.i("startPos", "startPos = " + startPos + " endPos = " + endPos);
 
         listSavedSizes.add(endPos);
         return getLeftPartGen().substring(startPos, endPos);
@@ -96,14 +82,12 @@ public class MessageEncryption {
         int lenSequence = 7;
         int startPos, endPos = 0;
         int maxCount = (int) Math.floor(sum.length() / lenSequence);
-        Log.i("maxCount", "maxCount = " + maxCount);
         this.result = "";
         for(int i = 0; i < maxCount; i++){
             startPos = endPos;
             endPos = startPos + lenSequence;
             val = sum.substring(startPos, endPos);
             sym = tableDecryption.get(val);
-            Log.i("Poss", "startPos = " + startPos + " endPos = " + endPos + " sym = " + sym);
             result += sym;
         }
     }

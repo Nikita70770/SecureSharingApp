@@ -1,13 +1,11 @@
 package com.example.appmaga.view.dialog_fragments;
 
-import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.fragment.app.DialogFragment;
 import androidx.lifecycle.ViewModelProvider;
@@ -15,8 +13,6 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.appmaga.helpers.GsonWork;
 import com.example.appmaga.R;
 import com.example.appmaga.model.entities.User;
-import com.example.appmaga.model.preferences.PreferencesStorage;
-import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.viewmodels.DataExchangeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
 
@@ -38,7 +34,7 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         viewModel = new ViewModelProvider(requireActivity()).get(DataExchangeViewModel.class);
-        viewModel.init();
+        viewModel.init(getContext());
         user = viewModel.getUser();
         setStyle(DialogFragment.STYLE_NO_TITLE, R.style.DialogStyle);
     }
@@ -70,16 +66,8 @@ public class DataExchangeFragment extends DialogFragment implements View.OnClick
     private void sendData(){
         if(viewModel.checkSendData(getUserLogin(), getUserPassword()) == true){
             getDialog().dismiss();
-            openWindowWithMessengers(GsonWork.performSerialization(user));
+            viewModel.openWindowWithMessengers(GsonWork.performSerialization(user));
         }
-    }
-
-    private void openWindowWithMessengers(String data){
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        intent.putExtra(Intent.EXTRA_TEXT, data);
-        intent.setType("*/*");
-        startActivity(Intent.createChooser(intent, "Share with friends"));
     }
 
     private String getUserLogin(){

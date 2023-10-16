@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider;
 
 import com.example.appmaga.R;
 import com.example.appmaga.cryptographic_algorithms.mersenne_twister.MersenneTwister64bit;
+import com.example.appmaga.helpers.MathHelper;
 import com.example.appmaga.interfaces.ICommunicationActivity;
 import com.example.appmaga.viewmodels.KeysExchangeViewModel;
 import com.google.android.material.textfield.TextInputEditText;
@@ -97,11 +98,12 @@ public class KeysExchangeFragment extends DialogFragment implements View.OnClick
                 editTextValuePublicKey.setEnabled(true);
 
                 viewModel.calcGeneralSecretKey(getValuePublicKey());
-                int key = viewModel.getGeneralSecretKey();
+                mersenneTwister = new MersenneTwister64bit(viewModel.getGeneralSecretKey());
 
-                mersenneTwister = new MersenneTwister64bit(key);
                 long[] data = mersenneTwister.generateNumbers(1094);
-                listener.prepareDataForEncryption(data);
+                String binSequence = MathHelper.getLargeBinSequence(data);
+
+                listener.prepareDataForEncryption(binSequence);
 
                 getDialog().dismiss();
                 Toast.makeText(this.getContext(), R.string.toast_successful_calc_secret_key, Toast.LENGTH_SHORT).show();
